@@ -1,8 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +19,304 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.navigation {
+  height: 110px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 0 7rem;
+}
+.brand-name {
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+  font-weight: 500;
+}
+.navigation-menu ul {
+  display: flex;
+  padding: 0;
+}
+.navigation-menu li {
+  list-style-type: none;
+  margin: 0 1rem;
+}
+.navigation-menu li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+}
+.hamburger {
+  border: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283b8b;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  display: none;
+}
+.hamburger:hover {
+  background-color: #2642af;
+}
+.navigation-menu ul {
+  display: flex;
+  padding: 0;
+}
+.navigation-menu li {
+  list-style-type: none;
+  margin: 0 1rem;
+}
+.navigation-menu li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+.hamburger {
+  border: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283b8b;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  display: none;
+}
+.hamburger:hover {
+  background-color: #2642af;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .navigation-menu ul {
+    display: none;
+  }
+  .navigation-menu ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 77px);
+    background-color: white;
+    border-top: 1px solid black;
+  }
+  .navigation-menu li {
+    text-align: center;
+    margin: 0;
+  }
+  .navigation-menu li a {
+    color: black;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+  .navigation-menu li:hover {
+    background-color: #eee;
+  }
+  .navigation-menu ul {
+    /* previous styles */
+    display: none;
+  }
+  .navigation-menu.expanded ul {
+    display: block;
+  }
+}
+
+
+
+/* site info */
+.site-info, .what-we-do__header {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.card {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.math {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/math.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.general-studies {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/general.png');
+  background-position: center;
+  background-size: cover;
+}
+.programming {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/programming.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.biology {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/biology.png');
+  background-position: center;
+  background-size: cover;
+}
+.engin{
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/engin.png');
+  background-position: center;
+  background-size: cover;
+}
+.animal {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/animal.png');
+  background-position: center;
+  background-size: cover;
+}
+.nature {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/nature.png');
+  background-position: center;
+  background-size: cover;
+}
+.science {
+  background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.209), 
+      rgba(0, 0, 0, 0.400)
+    ),
+    /* bottom, image */
+    url('/public/images/science.png');
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+.faq-question-style {
+  width: 100%;
+  background-color:#F7F7F7;
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 0.7rem 0;
+  white-space: pre-wrap;
+}
+
+.faq-question-style:hover {
+  cursor: pointer;
+}
+.faq-cont {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5em;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.faq-answer-style {
+  display: none;
+  font-weight: 300;
+  width: 100%;
+  color: black;
+  border-radius: 5px;
+  padding: 0 1em;
+  text-align: left;
+  font-size: 1.25em;
+  margin: 0.5em 0;
+  white-space: pre-wrap;
+}
+
+.faq-show-animation {
+  display: block;
+  height: fit-content;
+  animation: faq-answer-slide 0.8s;
+}
+
+.faq-rotate-forwards {
+  transform: rotate(180deg);
+  transition: 0.2s transform;
+}
+
+.faq-rotate-back {
+  transform: rotate(0deg);
+  transition: 0.2s transform;
+}
+@keyframes faq-answer-slide {
+  0% {
+      opacity: 0;
+      max-height: 0;
+  }
+
+  100% {
+      opacity: 1;
+      max-height: 500px;
+  }
 }
