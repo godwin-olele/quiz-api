@@ -53,7 +53,7 @@ export default function Faq() {
       </div>
       <div className="w-full grid grid-rows-1 gap-[20px] mt-[4rem]">
         {faqArray.map(({ numId, question, answer, active }, id) => (
-          <div className="" ref={content}>
+          <div className="" ref={content} key={numId}>
             <div
               className="bg-[#F7F7F7] py-[1rem] px-[4rem] flex justify-between items-center"
               onClick={() => setActive(id)}

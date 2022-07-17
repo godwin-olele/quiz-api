@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -11,16 +10,15 @@
 
 body {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 .navigation {
   height: 110px;
@@ -139,11 +137,10 @@ code {
   }
 }
 
-
-
 /* site info */
-.site-info, .what-we-do__header {
-  font-family: 'Space Grotesk', sans-serif;
+.site-info,
+.what-we-do__header {
+  font-family: "Space Grotesk", sans-serif;
 }
 .card {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -151,172 +148,243 @@ code {
 
 .math {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/math.png');
+    /* bottom, image */ url("/public/images/math.png");
   background-position: center;
   background-size: cover;
 }
 
 .general-studies {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/general.png');
+    /* bottom, image */ url("/public/images/general.png");
   background-position: center;
   background-size: cover;
 }
 .programming {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/programming.png');
+    /* bottom, image */ url("/public/images/programming.png");
   background-position: center;
   background-size: cover;
 }
 
 .biology {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/biology.png');
+    /* bottom, image */ url("/public/images/biology.png");
   background-position: center;
   background-size: cover;
 }
-.engin{
+.engin {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/engin.png');
+    /* bottom, image */ url("/public/images/engin.png");
   background-position: center;
   background-size: cover;
 }
 .animal {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/animal.png');
+    /* bottom, image */ url("/public/images/animal.png");
   background-position: center;
   background-size: cover;
 }
 .nature {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/nature.png');
+    /* bottom, image */ url("/public/images/nature.png");
   background-position: center;
   background-size: cover;
 }
 .science {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/science.png');
+    /* bottom, image */ url("/public/images/science.png");
   background-position: center;
   background-size: cover;
 }
 
+.left-bg {
+  background: url("/public/images/signup-bg.png");
+  background-position: top;
+  background-size: cover;
+}
+
+.left-bg-login {
+  background: url("/public/images/signin-bg.png");
+  background-position: top;
+  background-size: cover;
+}
 
 
-.faq-question-style {
+input {
+  border: 1px solid rgba(178, 178, 178, 0.38);
+}
+
+.see-password {
+  font-size: 22px;
+}
+.google {
+  color: #EF8733;
+  font-size: 22px;
+  margin-right: 1.5rem;
+}
+input:focus {
+  outline: none;
+}
+
+
+/* custom cursor  */
+.main-cursor, .secondary-cursor {
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+}
+.main-cursor {
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+  mix-blend-mode: difference;
+}
+.main-cursor .main-cursor-background {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+}
+.secondary-cursor {
+  width: 60px;
+  height: 60px;
+}
+.secondary-cursor .cursor-background {
   width: 100%;
-  background-color:#F7F7F7;
-  color: rgb(0, 0, 0);
-  border-radius: 3px;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  margin: 0.7rem 0;
-  white-space: pre-wrap;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  position: relative;
 }
-
-.faq-question-style:hover {
-  cursor: pointer;
-}
-.faq-cont {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1.5em;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.faq-answer-style {
-  display: none;
-  font-weight: 300;
-  width: 100%;
-  color: black;
-  border-radius: 5px;
-  padding: 0 1em;
-  text-align: left;
-  font-size: 1.25em;
-  margin: 0.5em 0;
-  white-space: pre-wrap;
-}
-
-.faq-show-animation {
+.secondary-cursor .cursor-background:after, .secondary-cursor .cursor-background:before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
   display: block;
-  height: fit-content;
-  animation: faq-answer-slide 0.8s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 }
-
-.faq-rotate-forwards {
-  transform: rotate(180deg);
-  transition: 0.2s transform;
+.secondary-cursor .cursor-background:before {
+  left: 10px;
 }
-
-.faq-rotate-back {
-  transform: rotate(0deg);
-  transition: 0.2s transform;
+.secondary-cursor .cursor-background:after {
+  right: 10px;
 }
-@keyframes faq-answer-slide {
+.slider-drag .cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+.slider-drag .cursor-background:after {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+.slider-drag .cursor-background:before {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+.slider-drag .main-cursor {
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+.hamburger .cursor-background {
+  animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+.hamburger .main-cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+@keyframes fadeIn {
   0% {
-      opacity: 0;
-      max-height: 0;
+    opacity: 0;
   }
-
   100% {
-      opacity: 1;
-      max-height: 500px;
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes bgUp {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: black;
+  }
+}
+@keyframes bgDown {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+@keyframes scaleDown {
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes translateLeftDot {
+  from {
+    transform: translate(20px, -50%);
+  }
+  to {
+    transform: translate(0px, -50%);
+  }
+}
+@keyframes translateRightDot {
+  from {
+    transform: translate(-20px, -50%);
+  }
+  to {
+    transform: translate(0px, -50%);
   }
 }

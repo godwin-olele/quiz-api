@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -15,6 +16,16 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", changeNavbarStyle);
   }, []);
+
+  let navigateToSignUp = useNavigate();
+  function handleClickSignup() {
+    navigateToSignUp("/Signup");
+  }
+
+  let navigateToLogin = useNavigate();
+  function handleClickLogin() {
+    navigateToLogin("/Login");
+  }
 
   return (
     <nav
@@ -71,10 +82,16 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="flex justify-between items-center w-[310px]">
-        <button className="rounded-[10px] border-2 text-[18px] border-orange font-medium py-[10px] px-[40px] text-orange">
+        <button
+          className="rounded-[10px] border-2 text-[18px] border-orange font-medium py-[10px] px-[40px] text-orange"
+          onClick={handleClickLogin}
+        >
           Login
         </button>
-        <button className="rounded-[10px] py-[10px] px-[40px] border-2 text-[18px] border-orange font-medium  bg-orange text-[#fff]">
+        <button
+          className="rounded-[10px] py-[10px] px-[40px] border-2 text-[18px] border-orange font-medium  bg-orange text-[#fff]"
+          onClick={handleClickSignup}
+        >
           Sign-Up
         </button>
       </div>
