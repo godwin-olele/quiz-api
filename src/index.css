@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -11,16 +10,15 @@
 
 body {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 .navigation {
   height: 110px;
@@ -139,11 +137,10 @@ code {
   }
 }
 
-
-
 /* site info */
-.site-info, .what-we-do__header {
-  font-family: 'Space Grotesk', sans-serif;
+.site-info,
+.what-we-do__header {
+  font-family: "Space Grotesk", sans-serif;
 }
 .card {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -151,172 +148,125 @@ code {
 
 .math {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/math.png');
+    /* bottom, image */ url("/public/images/math.png");
   background-position: center;
   background-size: cover;
 }
 
 .general-studies {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/general.png');
+    /* bottom, image */ url("/public/images/general.png");
   background-position: center;
   background-size: cover;
 }
 .programming {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/programming.png');
+    /* bottom, image */ url("/public/images/programming.png");
   background-position: center;
   background-size: cover;
 }
 
 .biology {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/biology.png');
+    /* bottom, image */ url("/public/images/biology.png");
   background-position: center;
   background-size: cover;
 }
-.engin{
+.engin {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/engin.png');
+    /* bottom, image */ url("/public/images/engin.png");
   background-position: center;
   background-size: cover;
 }
 .animal {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/animal.png');
+    /* bottom, image */ url("/public/images/animal.png");
   background-position: center;
   background-size: cover;
 }
 .nature {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/nature.png');
+    /* bottom, image */ url("/public/images/nature.png");
   background-position: center;
   background-size: cover;
 }
 .science {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.209), 
-      rgba(0, 0, 0, 0.400)
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.209),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* bottom, image */
-    url('/public/images/science.png');
+    /* bottom, image */ url("/public/images/science.png");
   background-position: center;
   background-size: cover;
 }
 
-
-
-.faq-question-style {
-  width: 100%;
-  background-color:#F7F7F7;
-  color: rgb(0, 0, 0);
-  border-radius: 3px;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  margin: 0.7rem 0;
-  white-space: pre-wrap;
+.left-bg {
+  background: url("/public/images/signup-bg.png");
+  background-position: top;
+  background-size: cover;
 }
 
-.faq-question-style:hover {
-  cursor: pointer;
-}
-.faq-cont {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1.5em;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.faq-answer-style {
-  display: none;
-  font-weight: 300;
-  width: 100%;
-  color: black;
-  border-radius: 5px;
-  padding: 0 1em;
-  text-align: left;
-  font-size: 1.25em;
-  margin: 0.5em 0;
-  white-space: pre-wrap;
+.left-bg-login {
+  background: url("/public/images/signin-bg.png");
+  background-position: top;
+  background-size: cover;
 }
 
-.faq-show-animation {
-  display: block;
-  height: fit-content;
-  animation: faq-answer-slide 0.8s;
+
+input {
+  border: 1px solid rgba(178, 178, 178, 0.38);
 }
 
-.faq-rotate-forwards {
-  transform: rotate(180deg);
-  transition: 0.2s transform;
+.see-password {
+  font-size: 22px;
+}
+.google {
+  color: #EF8733;
+  font-size: 22px;
+  margin-right: 1.5rem;
+}
+input:focus {
+  outline: none;
 }
 
-.faq-rotate-back {
-  transform: rotate(0deg);
-  transition: 0.2s transform;
-}
-@keyframes faq-answer-slide {
-  0% {
-      opacity: 0;
-      max-height: 0;
-  }
 
-  100% {
-      opacity: 1;
-      max-height: 500px;
-  }
+/* custom cursor  */
+.cursor {
+  background-color: #111;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }

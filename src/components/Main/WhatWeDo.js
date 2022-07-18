@@ -1,4 +1,6 @@
 import React from "react";
+import "react-nice-scroll/dist/styles.css";
+import { ScrollContainer, HorizontalSection } from "react-nice-scroll";
 
 const cards = [
   {

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CountUp from "react-countup";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CallToAction() {
   const [happyCustomer, setHappyCustomer] = useState(44);
   const [onlineQuestion, setOnlineQuestion] = useState(30);
   const [category, setCategory] = useState(2);
 
+  let navigate = useNavigate();
+  function handleClick() {
+    navigate('/home')
+  }
 
   return (
     <div className="px-[7rem] w-full h-[800px] flex justify-between items-center">
@@ -67,7 +73,7 @@ export default function CallToAction() {
         </div>
       </div>
       <div className="w-[1400px] h-auto ml-[5rem]">
-        <img src="/images/taxi-online-learning.png" alt="Loading..." className="w-full"/>
+        <img src="/images/landing-page.png" alt="" className="w-full"/>
       </div>
     </div>
   );
