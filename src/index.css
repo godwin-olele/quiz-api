@@ -260,131 +260,13 @@ input:focus {
 
 
 /* custom cursor  */
-.main-cursor, .secondary-cursor {
-  z-index: 10000;
-  pointer-events: none;
-  transform: translate3d(0, 0, 0);
+.cursor {
+  background-color: #111;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
   position: fixed;
-}
-.main-cursor {
-  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
-  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-  mix-blend-mode: difference;
-}
-.main-cursor .main-cursor-background {
-  width: 30px;
-  height: 30px;
-  background: white;
-  border-radius: 50%;
-}
-.secondary-cursor {
-  width: 60px;
-  height: 60px;
-}
-.secondary-cursor .cursor-background {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1px solid black;
-  position: relative;
-}
-.secondary-cursor .cursor-background:after, .secondary-cursor .cursor-background:before {
-  content: "";
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: white;
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.secondary-cursor .cursor-background:before {
-  left: 10px;
-}
-.secondary-cursor .cursor-background:after {
-  right: 10px;
-}
-.slider-drag .cursor-background {
-  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.slider-drag .cursor-background:after {
-  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.slider-drag .cursor-background:before {
-  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards, translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.slider-drag .main-cursor {
-  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.hamburger .cursor-background {
-  animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-.hamburger .main-cursor-background {
-  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes bgUp {
-  from {
-    background-color: transparent;
-  }
-  to {
-    background-color: black;
-  }
-}
-@keyframes bgDown {
-  from {
-    background-color: black;
-  }
-  to {
-    background-color: transparent;
-  }
-}
-@keyframes scaleUp {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.5);
-  }
-}
-@keyframes scaleDown {
-  from {
-    transform: scale(1.5);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-@keyframes translateLeftDot {
-  from {
-    transform: translate(20px, -50%);
-  }
-  to {
-    transform: translate(0px, -50%);
-  }
-}
-@keyframes translateRightDot {
-  from {
-    transform: translate(-20px, -50%);
-  }
-  to {
-    transform: translate(0px, -50%);
-  }
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
