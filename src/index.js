@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login/Login";
 import UserDashboard from "./components/DashBoard/UserDashboard/UserDashboard";
 import SubmitQuestions from "./components/DashBoard/SubmitQuestions/SubmitQuestions";
 import Feedback from "./components/DashBoard/Feedback/Feedback";
+import SearchQuestions from "./components/DashBoard/SearchQuestions/SearchQuestions";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,7 @@ root.render(
         <Route path="user-dashboard" element={<UserDashboard />} />
         <Route path="submit-questions" element={<SubmitQuestions />} />
         <Route path="feedback" element={<Feedback />} />
+        <Route path="search-questions" element={<SearchQuestions />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

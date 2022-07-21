@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import Dashboard from "../Dashboard/Dashboard";
 import SubmitQuestions from "../SubmitQuestions/SubmitQuestions";
 import Feedback from "../Feedback/Feedback";
+import SearchQuestions from "../SearchQuestions/SearchQuestions";
 
 export default function DashboardNav() {
   const userProfile = {
@@ -121,7 +122,7 @@ export default function DashboardNav() {
         </div>
         <Dashboard />
 
-        {/*<SubmitQuestions/> <Feedback/> */}
+        {/*<SubmitQuestions/> <Feedback/>  <SearchQuestions /> */}
       </main>
     </>
   );
