@@ -374,3 +374,9 @@ input[type="search"]:not(:placeholder-shown) {
   resize: none;
   margin-top: 0.5rem;
 }
+
+.admin-dashboard__Content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+}

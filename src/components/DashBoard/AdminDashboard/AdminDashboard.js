@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import AdminDashboardNav from "../DashboardContents/Nav/AdminDashboardNav";
 
 export default function AdminDashboard() {
   return (
-    <div>AdminDashboard</div>
-  )
+    <>
+      <AdminDashboardNav />
+    </>
+  );
 }

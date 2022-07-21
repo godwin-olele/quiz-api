@@ -5,8 +5,9 @@ import Dashboard from "../Dashboard/Dashboard";
 import SubmitQuestions from "../SubmitQuestions/SubmitQuestions";
 import Feedback from "../Feedback/Feedback";
 import SearchQuestions from "../SearchQuestions/SearchQuestions";
+import AdminDashboard from "../Dashboard/AdminDashboard";
 
-export default function DashboardNav() {
+export default function AdminDashboardNav() {
   const userProfile = {
     name: "James Mark",
     imagePath:
@@ -51,9 +52,12 @@ export default function DashboardNav() {
           </button>
         </form>
         <div className="flex justify-between items-center w-[200px]">
-          <p className=" text-[18px] text-[#373737] font-semibold">
-            {userProfile.name}
-          </p>
+          <div>
+            <p className=" text-[18px] text-[#373737] font-semibold">
+              {userProfile.name}
+            </p>
+            <p className="text-[#041CF3] text-right">Admin</p>
+          </div>
           <div>
             <img
               src={userProfile.imagePath}
@@ -83,7 +87,7 @@ export default function DashboardNav() {
                 className="w-[30px] h-[30px]"
               />
               <p className="text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]">
-                Submit Questions
+                Users
               </p>
             </div>
             <div className="flex justify-start items-center  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ">
@@ -93,17 +97,7 @@ export default function DashboardNav() {
                 className="w-[30px] h-[30px]"
               />
               <p className="text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]">
-                Feedback
-              </p>
-            </div>
-            <div className="flex justify-start items-center  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ">
-              <img
-                src="/images/search.png"
-                alt=""
-                className="w-[30px] h-[30px]"
-              />
-              <p className="text-[18px] text-[#4c4c4c] font-semibold ml-[1.5rem]">
-                Search Questions
+                Questions
               </p>
             </div>
           </div>
@@ -120,7 +114,7 @@ export default function DashboardNav() {
             </div>
           </div>
         </div>
-        <Dashboard />
+        <AdminDashboard />
 
         {/*<SubmitQuestions/> <Feedback/>  <SearchQuestions /> */}
       </main>
