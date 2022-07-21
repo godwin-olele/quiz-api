@@ -94,8 +94,9 @@ export default function DashboardNav() {
             </div>
           </div>
         </div>
-        {/*<Dashboard /> */}
-        <SubmitQuestions/>
+        <Dashboard /> 
+        {/*<SubmitQuestions/> */}
+       
       </main>
     </>
   );
