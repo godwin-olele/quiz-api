@@ -7,7 +7,7 @@ import SignUp from "./components/Auth/SignUp/SignUp";
 import Login from "./components/Auth/Login/Login";
 import UserDashboard from "./components/DashBoard/UserDashboard/UserDashboard";
 import SubmitQuestions from "./components/DashBoard/SubmitQuestions/SubmitQuestions";
-
+import Feedback from "./components/DashBoard/Feedback/Feedback";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +19,7 @@ root.render(
         <Route path="Login" element={<Login />} />
         <Route path="user-dashboard" element={<UserDashboard />} />
         <Route path="submit-questions" element={<SubmitQuestions />} />
+        <Route path="feedback" element={<Feedback />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

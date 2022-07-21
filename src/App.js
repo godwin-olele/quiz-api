@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage";
 import Main from "./pages/Main";
@@ -42,8 +42,6 @@ export default function App() {
     },
   };
 
-  const textEnter = () => setCursorVariant("text");
-  const textLeave = () => setCursorVariant("default");
 
   return (
     <>
