@@ -6,9 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import Login from "./components/Auth/Login/Login";
 import UserDashboard from "./components/DashBoard/UserDashboard/UserDashboard";
-import SubmitQuestions from "./components/DashBoard/SubmitQuestions/SubmitQuestions";
-import Feedback from "./components/DashBoard/Feedback/Feedback";
-import SearchQuestions from "./components/DashBoard/SearchQuestions/SearchQuestions";
+import SubmitQuestions from "./components/DashBoard/DashboardContents/SubmitQuestions/SubmitQuestions";
+import Feedback from "./components/DashBoard/DashboardContents/Feedback/Feedback";
+import SearchQuestions from "./components/DashBoard/DashboardContents/SearchQuestions/SearchQuestions";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

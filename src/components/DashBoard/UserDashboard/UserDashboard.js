@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../SideBar";
-import Dashboard from "../Dashboard/Dashboard";
-import DashboardNav from "../Nav/DashboardNav";
+import Dashboard from "../DashboardContents/Dashboard/Dashboard";
+import DashboardNav from "../DashboardContents/Nav/DashboardNav";
 
 export default function UserDashboard() {
   return (
