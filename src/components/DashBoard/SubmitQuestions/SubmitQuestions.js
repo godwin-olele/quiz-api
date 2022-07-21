@@ -90,13 +90,19 @@ export default function SubmitQuestions() {
               name="answer"
               autoComplete="true"
             />
-            <div className="mt-[1.5rem]  mb-[1.2rem]">
+            <div className="mt-[1.5rem]  mb-[1.5rem]">
               <label htmlFor=" questions" className="text-[#454545]">
                 Explanation
               </label>
               <textarea></textarea>
             </div>
           </div>
+          <button
+              className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition
+               `}
+            >
+              Submit
+            </button>
         </form>
       </div>
     </>
