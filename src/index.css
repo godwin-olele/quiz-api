@@ -246,6 +246,11 @@ input {
   border: 1px solid rgba(178, 178, 178, 0.38);
 }
 
+input[type="password"] {
+  border: 1px solid rgba(178, 178, 178, 0.38);
+  border-right: none;
+}
+
 .see-password {
   font-size: 22px;
 }
@@ -283,26 +288,19 @@ input:focus {
 }
 
 
+/*
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #f9ba8659 inset !important;
+  -webkit-box-shadow: 0 0 0 30px #f9ba8641 inset !important;
 }
-
+*/
 .search-form {
   position: relative;
   width: 30rem;
   background: #ef8733;
   border-radius: var(--rad);
-}
-input,
-.submit {
-  height: 50px;
-  font-family: var(--font-fam);
-  border: 0;
-  color: var(--color-dark);
-  font-size: 18px;
 }
 
 input[type="search"] {
@@ -317,6 +315,10 @@ input[type="search"] {
   position: relative;
   outline: none;
   border: none;
+  height: 50px;
+  font-family: var(--font-fam);
+  color: var(--color-dark);
+  font-size: 18px;
 }
 .submit {
   display: none;
@@ -329,7 +331,7 @@ input[type="search"] {
   border-radius: 10px;
   color: #fff;
 }
-input:not(:placeholder-shown) {
+input[type="search"]:not(:placeholder-shown) {
   border-radius: var(--rad) 0 0 var(--rad);
   width: calc(100% - var(--btn-width));
 }
@@ -351,4 +353,24 @@ input:not(:placeholder-shown) {
 
 .dashboard-icon {
   font-size: 30px;
+}
+
+.submit-question-form select {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid rgba(178, 178, 178, 0.38);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+} 
+.submit-question-form textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(178, 178, 178, 0.38);
+  border-radius: 6px;
+  font-size: 16px;
+  resize: none;
+  margin-top: 0.5rem;
 }

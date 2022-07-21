@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IconContext } from "react-icons";
 import Dashboard from "../Dashboard/Dashboard";
+import SubmitQuestions from "../SubmitQuestions/SubmitQuestions";
 
 export default function DashboardNav() {
   const userProfile = {
@@ -57,7 +58,7 @@ export default function DashboardNav() {
         </div>
       </nav>
       <main className="w-full h-auto bg-[#fafafa] p-[20px] flex ">
-        <div className="w-[350px] mr-[3rem] h-screen rounded-[10px] bg-[#ffffff] py-[3rem] left-nav">
+        <div className="w-[350px] mr-[3rem] min-h-screen rounded-[10px] bg-[#ffffff] py-[3rem] left-nav">
           <div className="w-full h-auto grid grid-cols-1">
             <div className="border-r-2 border-orange flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ">
             <img src="/images/Dashboard.png" alt="" className="w-[30px] h-[30px]"/>
@@ -93,7 +94,8 @@ export default function DashboardNav() {
             </div>
           </div>
         </div>
-        <Dashboard />
+        {/*<Dashboard /> */}
+        <SubmitQuestions/>
       </main>
     </>
   );

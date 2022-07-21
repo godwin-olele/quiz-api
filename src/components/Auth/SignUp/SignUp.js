@@ -65,7 +65,7 @@ export default function SignUp() {
             <div className=" mt-[0.5rem] flex justify-center items-center ">
               <input
                 type={`${showRetypePassword ? "text" : "password"}`}
-                className="w-full h-[52px] py-[13px] px-[20px] rounded-l-[6px] border-r-[0px]"
+                className="w-full h-[52px] py-[13px] px-[20px] rounded-l-[6px] border-r-[0px] "
                 name="confirmPassword"
                 autoComplete="false"
               />
