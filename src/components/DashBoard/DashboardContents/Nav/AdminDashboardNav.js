@@ -6,6 +6,7 @@ import SubmitQuestions from "../SubmitQuestions/SubmitQuestions";
 import Feedback from "../Feedback/Feedback";
 import SearchQuestions from "../SearchQuestions/SearchQuestions";
 import AdminDashboard from "../Dashboard/AdminDashboard";
+import Users from "../Users/Users"
 
 export default function AdminDashboardNav() {
   const userProfile = {
@@ -115,8 +116,9 @@ export default function AdminDashboardNav() {
           </div>
         </div>
         <AdminDashboard />
+        
 
-        {/*<SubmitQuestions/> <Feedback/>  <SearchQuestions /> */}
+        {/*<SubmitQuestions/> <Feedback/> <Users/>   <AdminDashboard /> <SearchQuestions /> */}
       </main>
     </>
   );

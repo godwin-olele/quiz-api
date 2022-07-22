@@ -10,6 +10,7 @@ import SubmitQuestions from "./components/DashBoard/DashboardContents/SubmitQues
 import Feedback from "./components/DashBoard/DashboardContents/Feedback/Feedback";
 import SearchQuestions from "./components/DashBoard/DashboardContents/SearchQuestions/SearchQuestions";
 import AdminDashboard from "./components/DashBoard/AdminDashboard/AdminDashboard";
+import Users from "./components/DashBoard/DashboardContents/Users/Users";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
         <Route path="feedback" element={<Feedback />} />
         <Route path="search-questions" element={<SearchQuestions />} />
         <Route path="admin-dashboard" element={<AdminDashboard />} />
+        <Route path="users" element={<Users />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
