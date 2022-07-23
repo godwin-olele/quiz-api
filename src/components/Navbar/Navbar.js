@@ -27,6 +27,7 @@ export default function Navbar() {
     navigateToLogin("/Login");
   }
 
+
   return (
     <nav
       className={

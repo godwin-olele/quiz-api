@@ -1,11 +1,10 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage";
 import Main from "./pages/Main";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
 export default function App() {
-
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -43,8 +42,9 @@ export default function App() {
   };
 
 
+
   return (
-    <>
+    <> 
       <LandingPage />
       <Main />
       <Footer />
