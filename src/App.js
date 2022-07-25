@@ -1,31 +1,34 @@
-import React, { useState, useEffect} from "react";
-import Footer from "./components/Footer/Footer";
-import LandingPage from "./pages/LandingPage";
-import Main from "./pages/Main";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react"
+import Footer from "./components/Footer/Footer"
+import LandingPage from "./pages/LandingPage"
+import Main from "./pages/Main"
+import { motion } from "framer-motion"
 
 export default function App() {
-
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
-  });
-  const [cursorVariant, setCursorVariant] = useState("default");
+  })
+  const [cursorVariant, setCursorVariant] = useState("default")
 
   useEffect(() => {
     const mouseMove = (e) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
-      });
-    };
+      })
+    }
 
-    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousemove", mouseMove)
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
-  }, []);
+      window.removeEventListener("mousemove", mouseMove)
+    }
+  }, [])
+
+  useEffect(() => {
+    //do more things here
+  }, [])
 
   const variants = {
     default: {
@@ -40,8 +43,7 @@ export default function App() {
       backgroundColor: "yellow",
       mixBlendMode: "difference",
     },
-  };
-
+  }
 
   return (
     <>
@@ -49,10 +51,10 @@ export default function App() {
       <Main />
       <Footer />
       <motion.div
-        className="cursor"
+        className='cursor'
         variants={variants}
         animate={cursorVariant}
       />
     </>
-  );
+  )
 }
