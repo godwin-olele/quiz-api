@@ -30,8 +30,8 @@
     "react-nice-scroll": "^1.0.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.5.2",
     "react-toastify": "^9.0.7",
-    "react-spring": "^9.5.1",
     "styled-components": "^5.3.5",
     "use-count-up": "^3.0.1",
     "web-vitals": "^2.1.4"

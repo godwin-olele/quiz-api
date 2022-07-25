@@ -28,6 +28,7 @@ export default function App() {
 
   useEffect(() => {
     //do more things here
+    /// fetch all the data
   }, [])
 
   const variants = {
@@ -45,9 +46,8 @@ export default function App() {
     },
   }
 
-
   return (
-    <> 
+    <>
       <LandingPage />
       <Main />
       <Footer />

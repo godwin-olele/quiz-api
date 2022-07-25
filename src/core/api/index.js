@@ -79,6 +79,11 @@ export const loginUser = async (credentials) => {
 }
 
 // /auth/email-verify?token=<string
+/**
+ *
+ * @param {string} token is the user's token
+ * @returns {Promise} - the incoming response
+ */
 export const verifyEmailWithToken = async (token) => {
   // dont worry about it
   // bcuz validation is already done
@@ -262,58 +267,22 @@ export const logoutAllUsersExceptYou = async () => {
   return response
 }
 
-// appointment routes
-// /api/appointments/
-export const getAppointmentById = async (id) => {
-  const response = await fetch.get(`/appointments/${id}`)
-
-  return response
-}
-
-export const getAllUserAppointments = async () => {
+export const getStatistics = async () => {
   // dont worry about it
   // bcuz validation is already done
-  const response = await fetch.get(`/appointments`)
-
-  if (response.status === 200) {
-    return response
-  }
+  const response = await fetch.get(`/statistics`)
 
   return response
 }
 
-export const createAnAppointment = async (body) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.post(`/appointments/create`, body)
+// export const submit = async (body) => {
+//   // dont worry about it
+//   // bcuz validation is already done
+//   const response = await fetch.post(`/create`, body)
 
-  if (response.status === 201) {
-    return response
-  }
+//   if (response.status === 201) {
+//     return response
+//   }
 
-  return response
-}
-
-export const finnishAppointmentById = async (id) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/appointments/${id}/finish`)
-
-  if (response.status === 200) {
-    return response
-  }
-
-  return response
-}
-
-export const cancelAppointmentById = async (id) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/appointments/${id}/cancel`)
-
-  if (response.status === 200) {
-    return response
-  }
-
-  return response
-}
+//   return response
+// }
