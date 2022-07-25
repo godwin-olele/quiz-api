@@ -89,19 +89,19 @@ export const verifyEmailWithToken = async (token) => {
   //   "message": "Account has been verified successfully",
   //   "data": []
   // }
-  if (response.status === 200) {
-    const { status, data } = response.data
+  // if (response.status === 200) {
+  // const { status, data } = response.data
 
-    if (status == "success") {
-      const { access, refresh } = data
+  // if (status == "success") {
+  // const { access, refresh } = data
 
-      localStorage.setItem("isVerified", true)
-      // localStorage.setItem("refresh", access)
-      // localStorage.setItem("accessToken", access)
-    }
+  // localStorage.setItem("isVerified", true)
+  // localStorage.setItem("refresh", access)
+  // localStorage.setItem("accessToken", access)
+  // }
 
-    return response
-  }
+  // return response
+  // }
 
   return response
 }
@@ -124,12 +124,6 @@ export const resendEmailVerificationToken = async (email) => {
   //   "message": "Account has been verified successfully",
   //   "data": []
   // }
-  if (response.status === 200) {
-    const { status, data } = response.data
-
-    return response
-  }
-
   return response
 }
 
