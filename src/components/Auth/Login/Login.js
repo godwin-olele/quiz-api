@@ -32,7 +32,8 @@ export default function Login() {
 
   const navigate = useNavigate()
   const next = () => {
-    navigate("/dashboard")
+    // navigate("/dashboard")
+    window.location.href = "/dashboard"
   }
 
   const handleSubmit = (e) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import UserDashboard from "./UserDashboard/UserDashboard"
 import SubmitQuestions from "./DashboardContents/SubmitQuestions/SubmitQuestions"
 import Feedback from "./DashboardContents/Feedback/Feedback"
@@ -8,16 +8,27 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard"
 import Users from "./DashboardContents/Users/Users"
 import Questions from "./DashboardContents/Questions/Questions"
 
+import { useNavigate } from "react-router-dom"
+
 // imports
 import { useStoreActions, useStoreState } from "easy-peasy"
 
 function Home() {
-  //   const user = useStoreState(({ User }) => User.user)
+  // const user = useStoreState(({ User }) => User.user)
+  const fetchUserDetails = useStoreActions(({ User }) => User.fetchUserDetails)
 
-  //   const getUserDetails = useStoreActions(({ User }) => User.getUserDetails)
+  const navigate = useNavigate()
+  const fetchData = async () => {
+    try {
+      fetchUserDetails()
+    } catch (e) {
+      navigate("/Login")
+      localStorage.clear()
+    }
+  }
 
   useEffect(() => {
-    // getUserDetails()
+    fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -3,8 +3,14 @@ import Footer from "./components/Footer/Footer"
 import LandingPage from "./pages/LandingPage"
 import Main from "./pages/Main"
 import { motion } from "framer-motion"
+import { useStoreActions } from "easy-peasy"
+import { getStatistics } from "./core/api"
 
 export default function App() {
+  const fetchStatistics = useStoreActions(
+    (action) => action.Statistics.fetchStatistics
+  )
+
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -27,9 +33,10 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    //do more things here
-    /// fetch all the data
+    fetchData()
   }, [])
+
+  const fetchData = async () => await fetchStatistics()
 
   const variants = {
     default: {

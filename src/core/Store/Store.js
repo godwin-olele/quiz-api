@@ -1,5 +1,5 @@
 import User from "../models/User.model"
-import { action } from "easy-peasy"
+import { thunk, action, createStore } from "easy-peasy"
 
 import { getStatistics } from "../api"
 // todo
@@ -11,28 +11,54 @@ import { getStatistics } from "../api"
 // - [ ] Admin Dashboard
 
 const Statistics = {
-  statistics: null,
-  fetchStatistics: action((state) => {
+  statistics: {
+    question: {
+      all_questions: 3,
+      verified_questions: 2,
+      unverified_questions: 1,
+    },
+    difficulty: {
+      eazy: 2,
+      medium: 1,
+      hard: 0,
+    },
+    category: {
+      Programming: 2,
+      Nature: 0,
+      "Computer science": 0,
+      Animals: 0,
+      Entertainments: 1,
+    },
+    users: {
+      "Total Users": 10,
+      "Total Staff": 5,
+    },
+  },
+  // medthod
+  setStatistics: action((state, payload) => {
+    state.statistics = payload
+  }),
+
+  //actions
+  fetchStatistics: thunk(async (actions) => {
     //do fetch
-    getStatistics()
-      .then(({ data: res }) => {
-        const { status, message, data } = res
+    try {
+      const { data: res } = await getStatistics()
+      const { status, message, data } = res
 
-        console.log(res)
-        state.statistics = data
-        return state
-      })
-      .catch(({ response: { data: res } }) => {
-        const { status, message, error } = res
-
-        console.log(res)
-      })
+      if (status == "success") {
+        actions.setStatistics(data)
+        return data
+      }
+    } catch (e) {
+      return null
+    }
   }),
 }
 
-const Store = {
+const Models = {
   User,
   Statistics,
 }
 
-export default Store
+export default createStore(Models)

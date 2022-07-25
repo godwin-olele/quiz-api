@@ -12,7 +12,7 @@ const init = () => {
   })
 
   if (isLoggedIn()) {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("accessToken")
     instance.defaults.headers.common["Authorization"] = `Bearer ${token}`
   }
 
@@ -68,8 +68,8 @@ export const loginUser = async (credentials) => {
     if (status == "success") {
       const { access, refresh } = data
 
-      localStorage.setItem("refreshToken", access)
-      localStorage.setItem("accessToken", refresh)
+      localStorage.setItem("refreshToken", refresh)
+      localStorage.setItem("accessToken", access)
     }
 
     return response
@@ -236,9 +236,9 @@ export const getUserDetails = async () => {
 
     // to watch any change from any where
     localStorage.setItem("userDetails", JSON.stringify(data))
-
-    return response
   }
+
+  return response
 }
 
 export const logoutCurrentUser = async () => {
