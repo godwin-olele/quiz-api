@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import { useNavigate } from "react-router-dom";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function CallToAction() {
   const [happyCustomer, setHappyCustomer] = useState(44);
@@ -10,17 +11,32 @@ export default function CallToAction() {
 
   let navigate = useNavigate();
   function handleClick() {
-    navigate('/home')
+    navigate("/home");
   }
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   return (
     <div className="px-[7rem] w-full h-[800px] flex justify-between items-center">
       <div className=" w-[1300px] h-auto">
-        <h1 className="text-[50px] font-medium">
+        <h1
+          className="text-[50px] font-medium"
+          data-speed="0.95"
+          data-aos="fade-down-right"
+          data-aos-duration="1500"
+        >
           The Quiz Api Includes a wide number of{" "}
           <span className="text-[#041CF3]">Math’s</span> Questions
         </h1>
-        <p className="mt-[1rem] text-[22px] font-medium text-[#373737]">
+        <p
+          className="mt-[1rem] text-[22px] font-medium text-[#373737]"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1000"
+        >
           Test your knowledge or easily embed a quiz on your website with the
           quiz api
         </p>
@@ -73,7 +89,7 @@ export default function CallToAction() {
         </div>
       </div>
       <div className="w-[1400px] h-auto ml-[5rem]">
-        <img src="/images/landing-page.png" alt="" className="w-full"/>
+        <img src="/images/landing-page.png" alt="" className="w-full" />
       </div>
     </div>
   );
