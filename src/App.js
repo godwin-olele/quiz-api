@@ -45,8 +45,9 @@ export default function App() {
     },
   }
 
+
   return (
-    <>
+    <> 
       <LandingPage />
       <Main />
       <Footer />
