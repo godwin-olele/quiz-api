@@ -17,8 +17,8 @@ export const validateSignupData = (form) => {
   if (!email.includes("@")) errors["email"] = "please provide a valid email"
 
   //username validation
-  if (username.length < 6)
-    errors["username"] = "username cannot less than 6 characters"
+  if (username.length < 3)
+    errors["username"] = "username cannot less than 3 characters"
 
   //password validation
   if (password.length < 8)
