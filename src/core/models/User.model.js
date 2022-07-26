@@ -4,7 +4,11 @@ import { getUserDetails } from "../api"
 // this is a model
 const User = {
   user: null,
+  loading: true,
   // medthods
+  setLoading: action((state, payload) => {
+    state.loading = payload
+  }),
   setUser: action((state, payload) => {
     /// do fectchUser
     state.user = payload
@@ -19,6 +23,8 @@ const User = {
       console.log(res)
       if (status == "success") {
         actions.setUser(data)
+        actions.setLoading(false)
+
         return data
       }
     } catch (e) {

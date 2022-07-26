@@ -14,6 +14,8 @@ export default function UserDashboardNav() {
 
   const activeTab = params["*"]
 
+  // const loadingUserState = useStoreActions
+
   const userProfile = {
     name: "James Mark",
     imagePath:
@@ -124,47 +126,6 @@ export default function UserDashboardNav() {
                 key={index}
               />
             ))}
-
-            {/* <div className='border-r-2 border-orange flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
-              <img
-                src='/images/Dashboard.png'
-                alt=''
-                className='w-[30px] h-[30px]'
-              />
-              <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
-                Dashboard
-              </p>
-            </div>
-            <div className='flex justify-start items-center  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
-              <img
-                src='/images/submit.png'
-                alt=''
-                className='w-[30px] h-[30px]'
-              />
-              <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
-                Submit Questions
-              </p>
-            </div>
-            <div className='flex justify-start items-center  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
-              <img
-                src='/images/Feedback.png'
-                alt=''
-                className='w-[30px] h-[30px]'
-              />
-              <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
-                Feedback
-              </p>
-            </div>
-            <div className='flex justify-start items-center  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
-              <img
-                src='/images/search.png'
-                alt=''
-                className='w-[30px] h-[30px]'
-              />
-              <p className='text-[18px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
-                Search Questions
-              </p>
-            </div> */}
           </div>
           <div className='border-t-[1px] border-[#c4c4c47b] h-[200px] mt-[5rem] flex items-center'>
             <div className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>

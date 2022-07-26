@@ -21,14 +21,6 @@ const init = () => {
 
 export const fetch = init()
 
-// just for test
-export const getAllUsers = async (data) => {
-  const response = await fetch.get(`/users`)
-
-  console.log(response)
-  return response
-}
-
 // user routes
 export const signupUser = async (credentials) => {
   // dont worry about it
@@ -267,22 +259,82 @@ export const logoutAllUsersExceptYou = async () => {
   return response
 }
 
-export const getStatistics = async () => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/statistics`)
+export const getStatistics = async () => await fetch.get(`/statistics`)
 
-  return response
-}
+//
+export const getUserStatistics = async (userId) =>
+  await fetch.get(`/users/${userId}/questions`)
 
-// export const submit = async (body) => {
-//   // dont worry about it
-//   // bcuz validation is already done
-//   const response = await fetch.post(`/create`, body)
+export const getUserQuestions = async (userId) =>
+  await fetch.get(`/users/${userId}/questions`)
 
-//   if (response.status === 201) {
-//     return response
-//   }
+// Questions sections
 
-//   return response
-// }
+export const getPublicQuestions = async (
+  search,
+  limit,
+  category,
+  difficulty,
+  type
+) =>
+  await fetch.get(
+    `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`
+  )
+
+//create
+export const createNewQuestion = async (body) =>
+  await fetch.post(`/questions`, body)
+
+// read
+export const getQuestionById = async (id) => await fetch.get(`/questions`)
+//update
+// /questions/:questionid
+export const updateQuestionById = async (id, body) =>
+  await fetch.put(`/questions/${id}`, body)
+// delete
+// /questions/:questionid
+export const deleteQuestionById = async (id, body) =>
+  await fetch.delete(`/questions/${id}`, body)
+
+// verification
+
+//
+// /questions/:questionid/verification
+export const verifyQuestionById = async (id, body) =>
+  await fetch.post(`/questions/${id}/verification`, body)
+// /questions/:questionid/verification
+export const unverifyQuestionById = async (id) =>
+  await fetch.delete(`/questions/${id}/verification`)
+
+// staff only routes
+
+// /users
+export const getAllUsers = async () => await fetch.get(`/users`)
+
+// /questions/full
+export const getFullQuestions = async () => await fetch.get(`/questions/full`)
+
+// /questions/unverified
+export const getUnverifiedQuestions = async () =>
+  await fetch.get(`/questions/unverified`)
+
+// feedback..
+// /feedback - user only route
+export const getAllFeedback = async () => await fetch.get(`/feedback`)
+
+// /feedback/
+export const createFeedback = async (body) =>
+  await fetch.post(`/feedback`, body)
+
+// /feedback/:feedbackid
+export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}`)
+
+// /feedback/:feedbackid
+export const deleteFeedbackById = async (id) =>
+  await fetch.delete(`/feedback/${id}`)
+
+// /feedback/:feedbackid
+export const updateFeedbackById = async (id, body) =>
+  await fetch.put(`/questions/${id}`, body)
+
+//hurray... i hv finnished

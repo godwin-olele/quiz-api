@@ -3,11 +3,11 @@ import { thunk, action, createStore } from "easy-peasy"
 
 import { getStatistics } from "../api"
 // todo
-// - [ ] Sign up
-// - [ ] Account verification
-// - [ ] Login
-// - [ ] Users dashboard
-// - [ ] Submission of questions
+// - [x] Sign up
+// - [x] Account verification
+// - [x] Login
+// - [ ] Users dashboard --
+// - [ ] Submission of questions --
 // - [ ] Admin Dashboard
 
 const Statistics = {
