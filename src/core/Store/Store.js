@@ -1,7 +1,7 @@
 import User from "../models/User.model"
 import { thunk, action, createStore } from "easy-peasy"
 
-import { getStatistics } from "../api"
+import { getStatistics, getUserStatistics } from "../api"
 // todo
 // - [x] Sign up
 // - [x] Account verification
@@ -11,6 +11,7 @@ import { getStatistics } from "../api"
 // - [ ] Admin Dashboard
 
 const Statistics = {
+  // model
   statistics: {
     question: {
       all_questions: 3,
@@ -54,7 +55,43 @@ const Statistics = {
       return null
     }
   }),
+
+  loading: true,
+  setLoading: action((state, payload) => {
+    state.loading = payload
+  }),
+
+  //model
+  userStatistics: {},
+  // method
+  setUserStatistics: action((state, payload) => {
+    state.userStatistics = payload
+  }),
+
+  //actions
+  fetchUserStatistics: thunk(async (actions, payload) => {
+    actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await getUserStatistics(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        actions.setLoading(false)
+        actions.setUserStatistics(data)
+        return data
+      }
+    } catch (e) {
+      return null
+    }
+  }),
 }
+
+// {
+//   "all_question": 1,
+//   "verified_questions": 1,
+//   "unverified_questions": 0
+// }
 
 const Models = {
   User,

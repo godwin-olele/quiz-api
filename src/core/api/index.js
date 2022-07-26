@@ -263,7 +263,7 @@ export const getStatistics = async () => await fetch.get(`/statistics`)
 
 //
 export const getUserStatistics = async (userId) =>
-  await fetch.get(`/users/${userId}/questions`)
+  await fetch.get(`/users/${userId}/questions-stat`)
 
 export const getUserQuestions = async (userId) =>
   await fetch.get(`/users/${userId}/questions`)

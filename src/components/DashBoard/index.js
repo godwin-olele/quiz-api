@@ -20,7 +20,7 @@ function Home() {
   const navigate = useNavigate()
   const fetchData = async () => {
     try {
-      fetchUserDetails()
+      await fetchUserDetails()
     } catch (e) {
       navigate("/Login")
       localStorage.clear()
@@ -35,7 +35,7 @@ function Home() {
   return (
     <>
       <Routes>
-        <Route path='/*' element={<UserDashboard />} index/>
+        <Route path='/*' element={<UserDashboard />} index />
         {/* <Route path='/submit-questions' element={<SubmitQuestions />} />
         <Route path='/feedback' element={<Feedback />} />
         <Route path='/search-questions' element={<SearchQuestions />} /> */}

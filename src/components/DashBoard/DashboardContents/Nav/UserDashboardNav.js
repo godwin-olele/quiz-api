@@ -7,8 +7,12 @@ import Feedback from "../Feedback/Feedback"
 import SearchQuestions from "../SearchQuestions/SearchQuestions"
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
+import { useStoreActions, useStoreState } from "easy-peasy"
 
 export default function UserDashboardNav() {
+  // store
+  const user = useStoreState(({ User }) => User.user)
+
   const navigate = useNavigate()
   const params = useParams()
 
@@ -143,7 +147,7 @@ export default function UserDashboardNav() {
 
         {/* content */}
         <Routes>
-          <Route path='/*' element={<Dashboard />} />
+          <Route path='/*' element={<Dashboard user={user} />} />
           <Route path='/submit-questions' element={<SubmitQuestions />} />
           <Route path='/feedback' element={<Feedback />} />
           <Route path='/search-questions' element={<SearchQuestions />} />

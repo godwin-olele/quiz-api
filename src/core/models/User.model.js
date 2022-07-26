@@ -3,7 +3,7 @@ import { getUserDetails } from "../api"
 
 // this is a model
 const User = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("userDetails")),
   loading: true,
   // medthods
   setLoading: action((state, payload) => {
