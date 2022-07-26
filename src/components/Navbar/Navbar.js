@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from "react";
-//import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./Navbar.css";
+import { IconContext } from "react-icons";
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 export default function Navbar() {
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [scrollStyle, setScrollStyle] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", changeWidth);
+
+    return () => {
+      window.removeEventListener("resize", changeWidth);
+    };
+  }, []);
 
   useEffect(() => {
     const changeNavbarStyle = () => {
@@ -27,62 +46,37 @@ export default function Navbar() {
     navigateToLogin("/Login");
   }
 
-
   return (
     <nav
       className={
         scrollStyle
-          ? "navigation sticky top-0 z-50 bg-[#ffffff] border-[1px] border-b-[#c2c2c268]  animate-fade-in-down"
-          : "navigation bg-[#fff] animate-fade-in-up"
+          ? "sticky top-0 z-50 bg-[#ffffff] border-b-[1px] border-[#c2c2c268]  animate-fade-in-down"
+          : "bg-[#fff] w-full h-[100px] animate-fade-in-up"
       }
     >
       <a href="/" className="brand-name">
         QuizAPI
       </a>
-      <button
-        className="hamburger"
-        onClick={() => {
-          setIsNavExpanded(!isNavExpanded);
-        }}
-      >
-        {/* icon from heroicons.com */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="white"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      <div
-        className={
-          isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
-        }
-      >
-        <ul>
-          <li>
+      {(toggleMenu || screenWidth > 500) && (
+        <ul className="list">
+          <li className="items">
             <a href="/home">Home</a>
           </li>
-          <li>
+          <li className="items">
             <a href="/about">Api</a>
           </li>
-          <li>
+          <li className="items">
             <a href="/contact">Quiz</a>
           </li>
-          <li>
+          <li className="items">
             <a href="/contact">Contact</a>
           </li>
-          <li>
+          <li className="items">
             <a href="/contact">Attribute</a>
           </li>
         </ul>
-      </div>
-      <div className="flex justify-between items-center w-[310px]">
+      )}
+      <div className="flex justify-between items-center w-[310px] nav-auth">
         <button
           className="rounded-[10px] border-2 text-[18px] border-orange font-medium py-[10px] px-[40px] text-orange"
           onClick={handleClickLogin}
@@ -96,6 +90,16 @@ export default function Navbar() {
           Sign-Up
         </button>
       </div>
+
+      <button onClick={toggleNav} className="btn">
+      <IconContext.Provider
+          value={{ className: "scroll-arrow" }}
+        >
+          <div>
+            <GiHamburgerMenu />
+          </div>
+        </IconContext.Provider>
+      </button>
     </nav>
   );
 }

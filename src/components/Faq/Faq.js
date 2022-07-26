@@ -43,24 +43,24 @@ export default function Faq() {
     setFaqArray(newFaqArray);
   };
   return (
-    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header">
+    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header faq-main-container-mobile">
       <div className="flex justify-center items-center my-0 mx-auto ">
-        <div className="w-[250px] h-[5px] bg-orange rounded-full"></div>
-        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem]">
+        <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
+        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] faq-header-text">
           Frequently Asked Questions
         </h1>
-        <div className="w-[250px] h-[5px] bg-orange rounded-full"></div>
+        <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
       </div>
       <div className="w-full grid grid-rows-1 gap-[20px] mt-[4rem]">
         {faqArray.map(({ numId, question, answer, active }, id) => (
           <div className="" ref={content} key={numId}>
             <div
-              className="bg-[#F7F7F7] py-[1rem] px-[4rem] flex justify-between items-center"
+              className="bg-[#F7F7F7] py-[1rem] px-[4rem] flex justify-between items-center faq-container__mobile"
               onClick={() => setActive(id)}
             >
             <div className="flex justify-center items-center">
             <div>{numId}</div>
-              <p className="ml-[2rem] text-[18px] font-medium text-[#373737] max-w-[44.5rem]">
+              <p className="ml-[2rem] text-[18px] font-medium text-[#373737] max-w-[44.5rem] faq-question">
                 {question}
               </p>
             </div>
@@ -78,7 +78,7 @@ export default function Faq() {
                 className="mt-[1rem] py-[1rem] px-[4rem] rounded-lg"
                 style={{ backgroundColor: "rgba(160, 107, 59, 0.08)" }}
               >
-                <p className="text-[18px] font-medium text-[#373737]">
+                <p className="text-[18px] font-medium text-[#373737] faq-question">
                   {answer}
                 </p>
               </div>
