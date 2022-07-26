@@ -35,13 +35,13 @@ function Home() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<UserDashboard />} />
-        <Route path='/submit-questions' element={<SubmitQuestions />} />
+        <Route path='/*' element={<UserDashboard />} index/>
+        {/* <Route path='/submit-questions' element={<SubmitQuestions />} />
         <Route path='/feedback' element={<Feedback />} />
-        <Route path='/search-questions' element={<SearchQuestions />} />
+        <Route path='/search-questions' element={<SearchQuestions />} /> */}
         <Route path='/admin' element={<AdminDashboard />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/questions' element={<Questions />} />
+        {/* <Route path='/questions' element={<Questions />} /> */}
         {/* <Route path='*' element={<h1>Page does not exits</h1>} /> */}
       </Routes>
     </>
