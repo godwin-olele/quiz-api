@@ -11,7 +11,7 @@ import {
 
 import { createNewQuestion } from "../../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
-import Skeleton from "@mui/material/Skeleton"
+// import Skeleton from "@mui/material/Skeleton"
 
 export default function SubmitQuestions() {
   const [form, setForm] = useState({
@@ -26,7 +26,7 @@ export default function SubmitQuestions() {
       // incorrect_answer_3: "",
     },
     explanation: "Some text...",
-    image: "",
+    // image: "",
   })
 
   // ui stuff
@@ -36,7 +36,7 @@ export default function SubmitQuestions() {
   const [categories, setCategories] = useState([])
 
   const typeList = ["multiple-choice", "True / False"]
-  const difficultyList = ["easy", "medium", "hard"]
+  const difficultyList = ["eazy", "medium", "hard"]
 
   const fetchCategories = () => {
     setCatLoading(true)
@@ -134,12 +134,23 @@ export default function SubmitQuestions() {
           return toast.error(error[0])
         }
 
-        // const keys = Object.keys(error)
-        // keys.forEach((e) => {
-        //   setErrors({
-        //     [e]: error[e][0],
-        //   })
+        const keys = Object.keys(error)
+        const err = {}
+        keys.forEach((e) => {
+
+          err[e] = error[e][0] ?? error[e]
+      setErrors({
+        ...errors,
+        ...err})
+
+        // console.log({
+        //   [e]: error[e][0] ?? error[e],
         // })
+
+      })
+      
+
+        console.log(errors)
         setLoading(false)
       })
   }
@@ -218,10 +229,8 @@ export default function SubmitQuestions() {
               onChange={handleChange}
               error={errors.correct_answer}
             />
-
-            {type !== "True / False" && (
               <>
-                <label htmlFor='incorrect_answers' className='text-[#454545]'>
+              <label htmlFor='incorrect_answers' className='text-[#454545]'>
                   Incorrect Answer
                 </label>
                 <div className='flex flex-wrap gap-2'>
@@ -230,25 +239,29 @@ export default function SubmitQuestions() {
                     name='incorrect_answer_1'
                     value={incorrect_answer_fields.incorrect_answer_1 ?? ""}
                     onChange={handleAnswerFieldsChange}
-                    error={errors.incorrect_answer_1}
+                    error={errors?.incorrect_answer_fields?.incorrect_answer_1 ?? ''}
                   />
+            {type !== "True / False" && (
+               <>
                   <TextField
                     label=''
                     name='incorrect_answer_2'
                     value={incorrect_answer_fields.incorrect_answer_2 ?? ""}
                     onChange={handleAnswerFieldsChange}
-                    error={errors.incorrect_answer_2}
+                    error={errors?.incorrect_answer_fields?.incorrect_answer_2 ?? ''}
                   />
-                  {/* <TextField
+                   <TextField
                     label='Correct Answer'
                     name='correct_answer'
                     value={incorrect_answer_fields.incorrect_answer_3}
                     onChange={handleAnswerFieldsChange}
-                    error={errors.correct_answer}
-                  /> */}
-                </div>
+                    error={errors?.incorrect_answer_fields?.incorrect_answer_3 ?? ''}
+                  /> 
+               </>
+
+)}
+</div>
               </>
-            )}
 
             <TextField
               label='Image'

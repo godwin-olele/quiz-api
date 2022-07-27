@@ -283,28 +283,28 @@ export const getPublicQuestions = async (
 
 //create
 export const createNewQuestion = async (body) =>
-  await fetch.post(`/questions`, body)
+  await fetch.post(`/questions/`, body)
 
 // read
 export const getQuestionById = async (id) => await fetch.get(`/questions`)
 //update
 // /questions/:questionid
 export const updateQuestionById = async (id, body) =>
-  await fetch.put(`/questions/${id}`, body)
+  await fetch.put(`/questions/${id}/`, body)
 // delete
 // /questions/:questionid
 export const deleteQuestionById = async (id, body) =>
-  await fetch.delete(`/questions/${id}`, body)
+  await fetch.delete(`/questions/${id}/`, body)
 
 // verification
 
 //
 // /questions/:questionid/verification
 export const verifyQuestionById = async (id, body) =>
-  await fetch.post(`/questions/${id}/verification`, body)
+  await fetch.post(`/questions/${id}/verification/`, body)
 // /questions/:questionid/verification
 export const unverifyQuestionById = async (id) =>
-  await fetch.delete(`/questions/${id}/verification`)
+  await fetch.delete(`/questions/${id}/verification/`)
 
 // staff only routes
 
@@ -327,7 +327,7 @@ export const createFeedback = async (body) =>
   await fetch.post(`/feedback/`, body)
 
 // /feedback/:feedbackid
-export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}/`)
+export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}`)
 
 // /feedback/:feedbackid
 export const deleteFeedbackById = async (id) =>

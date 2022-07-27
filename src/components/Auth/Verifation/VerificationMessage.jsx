@@ -1,13 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { IconContext } from "react-icons"
-import { HiEye } from "react-icons/hi"
-import { HiEyeOff } from "react-icons/hi"
-import { ImGoogle } from "react-icons/im"
-// geting ready
-
-import { TextField, ObscurableTextField } from "../../Widgets/TextInputField"
-import { validateSigninData } from "../../../utils/validators"
 
 export default function VerificationMessage() {
   const navigate = useNavigate()

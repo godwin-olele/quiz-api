@@ -179,3 +179,17 @@ const validateIncorrectAnswerFields = (
 
   return errors
 }
+
+export const validateSendFeedback = (form) => {
+  const { question, issue, explanation } = form
+
+  const errors = {}
+
+  if (!question) errors["question"] = "is required"
+
+  if (issue === "") errors["issue"] = "cannot be empty"
+  if (explanation === "") errors["explanation"] = "cannot be empty"
+  if (explanation < 3) errors["explanation"] = "cannot less than 3 characters"
+
+  return errors
+}

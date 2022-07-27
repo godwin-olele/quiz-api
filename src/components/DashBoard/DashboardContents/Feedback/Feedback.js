@@ -1,5 +1,8 @@
 import React, { useState } from "react"
+import { validateSendFeedback } from "../../../../utils/validators"
 import { TextField } from "../../../Widgets/InputFields"
+import { createFeedback } from "../../../../core/api"
+import { toast, ToastContainer } from "react-toastify"
 
 export default function Feedback() {
   const [form, setForm] = useState({
@@ -20,13 +23,13 @@ export default function Feedback() {
 
     // do validate
   }
-  /*
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
 
     // do submit
-    const possibleErrors = validateSubmitQuestion(form)
+    const possibleErrors = validateSendFeedback(form)
 
     if (Object.keys(possibleErrors).length > 0) {
       setLoading(false)
@@ -37,7 +40,7 @@ export default function Feedback() {
 
     // continue
 
-    createNewQuestion(form)
+    createFeedback(form)
       .then(({ data: res }) => {
         const { status, message, data } = res
         console.log(res)
@@ -67,11 +70,13 @@ export default function Feedback() {
         setLoading(false)
       })
   }
-*/
+
   const { question, issue, explanation } = form
 
   return (
     <>
+      <ToastContainer />
+
       <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
         <form className=' w-[600px] h-auto submit-question-form'>
           <h1 className='text-[#000000] text-[1.7rem] font-medium'>
