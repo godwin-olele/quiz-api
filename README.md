@@ -1,3 +1,18 @@
+# Quiz api
+
+## we're in development state
+
+## dev
+
+Work on,
+
+- [ ] Sign up
+- [ ] Account verification
+- [ ] Login
+- [ ] Users dashboard
+- [ ] Submission of questions
+- [ ] Admin Dashboard
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

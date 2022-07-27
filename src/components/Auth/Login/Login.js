@@ -4,9 +4,15 @@ import { IconContext } from "react-icons"
 import { HiEye } from "react-icons/hi"
 import { HiEyeOff } from "react-icons/hi"
 import { ImGoogle } from "react-icons/im"
+import { toast, ToastContainer } from "react-toastify"
+import CircularProgress from "@mui/material/CircularProgress"
+import { useNavigate } from "react-router-dom"
+
+// geting ready
+import { loginUser } from "../../../core/api"
 import "./Login.css";
 
-import { TextField, ObscurableTextField } from "../../Widgets/TextInputField"
+import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { validateSigninData } from "../../../utils/validators"
 
 export default function Login() {
@@ -25,6 +31,12 @@ export default function Login() {
     })
   }
 
+  const navigate = useNavigate()
+  const next = () => {
+    // navigate("/dashboard")
+    window.location.href = "/dashboard"
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
@@ -39,85 +51,132 @@ export default function Login() {
 
     setErrors({})
 
-    //
+    // do fetch
+    // bolu
+    // 12345678
+    const isEmail = (email) => email.includes("@")
+    const { credential, password } = form
+
+    const currentCredential = isEmail(credential) ? "email" : "username"
+    const credentials = {
+      [currentCredential]: credential,
+      password,
+    }
+
+    loginUser(credentials)
+      .then(({ data: res }) => {
+        const { status, message, data } = res
+        // if (status == "success") {
+        // }
+
+        toast.success("logged in succesfully")
+        setTimeout(next, 2000)
+      })
+      .catch(({ response: { data: res } }) => {
+        const { status, message, error } = res
+
+        console.log(res)
+
+        if (Array.isArray(error)) {
+          setLoading(false)
+          return toast.error(error[0])
+        }
+
+        const keys = Object.keys(error)
+        keys.forEach((e) => {
+          setErrors({
+            credential: error[e][0],
+          })
+        })
+      })
   }
 
   const { credential, password } = form
 
   return (
-    <div className='h-screen w-full flex what-we-do__header'>
-      <div className='left-bg-login h-screen w-full px-[5rem]'>
-        <div className='w-full h-auto mt-[5rem] flex justify-between items-center'>
-          <a href='/' className='brand-name'>
-            QuizAPI
-          </a>
-          <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <a href='/about'>Api</a>
-            </li>
-          </ul>
+    <>
+      <ToastContainer />
+      <div className='h-screen w-full flex what-we-do__header'>
+        <div className='left-bg-login h-screen w-full px-[5rem]'>
+          <div className='w-full h-auto mt-[5rem] flex justify-between items-center'>
+            <a href='/' className='brand-name'>
+              QuizAPI
+            </a>
+            <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <a href='/about'>Api</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center'>
-        <div className='mt-[-2rem] w-[450px]'>
-          <h1 className='text-[#000000] text-[1.7rem] font-medium'>
-            Welcome Back
-          </h1>
-          <p className='font-medium text-[#454545] mt-[1rem]'>
-            Don’t have an account?
-            <Link
-              to='/Signup'
-              className='border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto ml-1'
-            >
-              Sign-up
-            </Link>
-          </p>
-          {/* form */}
-          <form className='mt-[3rem] md:w-full w-full' onSubmit={handleSubmit}>
-            <TextField
-              type='text'
-              label='Username / Email'
-              name='credential'
-              value={credential}
-              placeholder='Elonmusk'
-              onChange={handleChange}
-              error={errors.credential}
-            />
-            <ObscurableTextField
-              label='Password'
-              name='password'
-              value={password}
-              onChange={handleChange}
-              error={errors.password}
-            />
-            <p className='text-right text-[#454545] mb-[2rem]'>
-              Forgot Password?
+        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center'>
+          <div className='mt-[-2rem] w-[450px]'>
+            <h1 className='text-[#000000] text-[1.7rem] font-medium'>
+              Welcome Back
+            </h1>
+            <p className='font-medium text-[#454545] mt-[1rem]'>
+              Don’t have an account?
+              <Link
+                to='/Signup'
+                className='border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto ml-1'
+              >
+                Sign-up
+              </Link>
             </p>
+            {/* form */}
+            <form
+              className='mt-[3rem] md:w-full w-full'
+              onSubmit={!loading ? handleSubmit : (e) => e.preventDefault()}
+            >
+              <TextField
+                type='text'
+                label='Username / Email'
+                name='credential'
+                value={credential}
+                placeholder='Elonmusk'
+                onChange={handleChange}
+                error={errors.credential}
+              />
+              <ObscurableTextField
+                label='Password'
+                name='password'
+                value={password}
+                onChange={handleChange}
+                error={errors.password}
+              />
+              <p className='text-right text-[#454545] mb-[2rem]'>
+                Forgot Password?
+              </p>
 
-            <button
-              type='submit'
-              className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#fdfbe3] font-semibold mt-auto transition ${
-                loading && "opacity-25"
-              }
+              <button
+                type='submit'
+                className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#fdfbe3] font-semibold mt-auto transition ${
+                  loading && "opacity-25"
+                }
                `}
-            >
-              {!loading ? "Sign In" : "loading..."}
-            </button>
-            <button
-              className={`mt-[1.5rem] flex justify-center items-center py-[13px] w-full outline-none rounded-[6px] border-2 text-[18px] border-orange text-center text-orange font-semibold transition
+              >
+                {!loading ? (
+                  "Sign In"
+                ) : (
+                  <CircularProgress color='inherit' size={25} />
+                )}
+              </button>
+              <button
+                className={`mt-[1.5rem] flex justify-center items-center py-[13px] w-full outline-none rounded-[6px] border-2 text-[18px] border-orange text-center text-orange font-semibold transition
                `}
-            >
-              <IconContext.Provider value={{ className: "google" }}>
-                <ImGoogle />
-              </IconContext.Provider>
-              Sign In with google
-            </button>
-          </form>
+              >
+                <IconContext.Provider value={{ className: "google" }}>
+                  <ImGoogle />
+                </IconContext.Provider>
+                Sign In with google
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

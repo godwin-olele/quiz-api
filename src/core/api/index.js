@@ -1,8 +1,8 @@
 import { API_URL } from "../../constants"
 const axios = require("axios")
 // working on it.
-export const isLoggedIn = () => localStorage.getItem("token")
-export const isVerified = () => localStorage.getItem("isVerified")
+export const isLoggedIn = () => localStorage.getItem("accessToken")
+// export const isVerified = () => localStorage.getItem("isVerified")
 
 // initialize auth
 const init = () => {
@@ -12,7 +12,7 @@ const init = () => {
   })
 
   if (isLoggedIn()) {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("accessToken")
     instance.defaults.headers.common["Authorization"] = `Bearer ${token}`
   }
 
@@ -21,16 +21,7 @@ const init = () => {
 
 export const fetch = init()
 
-// just for test
-export const getAllUsers = async (data) => {
-  const response = await fetch.get(`/users`)
-
-  console.log(response)
-  return response
-}
-
 // user routes
-// api /api/users
 export const signupUser = async (credentials) => {
   // dont worry about it
   // bcuz validation is already done
@@ -45,22 +36,150 @@ export const signupUser = async (credentials) => {
   //   }
   // }
 
-  if (response.status === 201) {
-    // const user = response.data
-    const { data } = response.data
+  // if (response.status === 201) {
+  // const user = response.data
+  // const { data } = response.data
 
-    // localStorage.setItem("isVerified", false)
-    localStorage.setItem("partialUser", JSON.stringify(data))
+  // localStorage.setItem("isVerified", false)
+  // localStorage.setItem("userDetails", JSON.stringify(data))
+
+  //   return response
+  // }
+
+  return response
+}
+
+export const loginUser = async (credentials) => {
+  // dont worry about it
+  // bcuz validation is already done
+  const response = await fetch.post(`/auth/login`, credentials)
+
+  if (response.status === 200) {
+    const { status, data } = response.data
+
+    if (status == "success") {
+      const { access, refresh } = data
+
+      localStorage.setItem("refreshToken", refresh)
+      localStorage.setItem("accessToken", access)
+    }
 
     return response
   }
+
+  return response
 }
+
+// /auth/email-verify?token=<string
+/**
+ *
+ * @param {string} token is the user's token
+ * @returns {Promise} - the incoming response
+ */
+export const verifyEmailWithToken = async (token) => {
+  // dont worry about it
+  // bcuz validation is already done
+  const response = await fetch.get(`/auth/email-verify?token=${token}`)
+
+  // {
+  //   "status": "success",
+  //   "message": "Account has been verified successfully",
+  //   "data": []
+  // }
+  // if (response.status === 200) {
+  // const { status, data } = response.data
+
+  // if (status == "success") {
+  // const { access, refresh } = data
+
+  // localStorage.setItem("isVerified", true)
+  // localStorage.setItem("refresh", access)
+  // localStorage.setItem("accessToken", access)
+  // }
+
+  // return response
+  // }
+
+  return response
+}
+
+// http://127.0.0.1:8000/api/v1/auth/resend-email-token
+/**
+ *
+ * @param {string} email is a string
+ * @returns {Promise} - the incoming response
+ */
+export const resendEmailVerificationToken = async (email) => {
+  // dont worry about it
+  // bcuz validation is already done
+  const response = await fetch.post(`/auth/resend-email-token`, {
+    email,
+  })
+
+  // {
+  //   "status": "success",
+  //   "message": "Account has been verified successfully",
+  //   "data": []
+  // }
+  return response
+}
+
+// /auth/change-password
+// /auth/reset-password
+export const sendResetPasswordEmail = async (email) => {
+  // dont worry about it
+  // bcuz validation is already done
+  const response = await fetch.post(`/auth/reset-password`, {
+    email,
+  })
+
+  //example response
+  // {
+  //   "status": "success",
+  //   "message": "Password reset mail sent",
+  //   "data": {
+  //     "email": "tobi@gmail.com"
+  //   }
+  // }
+  if (response.status === 200) {
+    const { status, data } = response.data
+
+    return response
+  }
+
+  return response
+}
+
+// /auth/reset-password/:uidb64/:token
+export const verifyPasswordResetToken = async () => {
+  const response = await fetch.get(`/auth/reset-password/:uidb64/:token`)
+
+  //example response
+  // {
+  //   "status": "success",
+  //   "message": "Token is valid",
+  //   "data": {
+  //     "token": "b8stry-983af9785ff9c558e2d2f33d60c34b16",
+  //     "uidb64": "OA"
+  //   }
+  // }
+
+  if (response.status === 200) {
+    const { status, data } = response.data
+
+    return response
+  }
+
+  return response
+}
+
+// http://127.0.0.1:8000/api/v1/auth/reset-password/set
 
 // still working on it
 export const updateUser = async (credentials) => {
   // dont worry about it
   // bcuz validation is already done
-  const response = await fetch.patch(`auth/user-profile`, credentials)
+  const response = await fetch.patch(`/auth/user-profile`, credentials)
 
   // {
   //   "status": "success",
@@ -81,24 +200,6 @@ export const updateUser = async (credentials) => {
 
     return response
   }
-  return response
-}
-
-export const loginUser = async (credentials) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.post(`/users/login`, credentials)
-
-  if (response.status === 200) {
-    const user = response.data
-    const { token } = response.data
-
-    localStorage.setItem("token", token)
-    localStorage.setItem("userDetails", JSON.stringify(user))
-
-    return response
-  }
-
   return response
 }
 
@@ -127,9 +228,9 @@ export const getUserDetails = async () => {
 
     // to watch any change from any where
     localStorage.setItem("userDetails", JSON.stringify(data))
-
-    return response
   }
+
+  return response
 }
 
 export const logoutCurrentUser = async () => {
@@ -158,58 +259,98 @@ export const logoutAllUsersExceptYou = async () => {
   return response
 }
 
-// appointment routes
-// /api/appointments/
-export const getAppointmentById = async (id) => {
-  const response = await fetch.get(`/appointments/${id}`)
+export const getStatistics = async () => await fetch.get(`/statistics`)
 
-  return response
-}
+//
+export const getUserStatistics = async (userId) =>
+  await fetch.get(`/users/${userId}/questions-stat`)
 
-export const getAllUserAppointments = async () => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/appointments`)
+export const getUserQuestions = async (userId) =>
+  await fetch.get(`/users/${userId}/questions`)
 
-  if (response.status === 200) {
-    return response
-  }
+// Questions sections
 
-  return response
-}
+export const getPublicQuestions = async (
+  search,
+  limit,
+  category,
+  difficulty,
+  type
+) =>
+  await fetch.get(
+    `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`
+  )
 
-export const createAnAppointment = async (body) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.post(`/appointments/create`, body)
+//create
+export const createNewQuestion = async (body) =>
+  await fetch.post(`/questions/`, body)
 
-  if (response.status === 201) {
-    return response
-  }
+// read
+export const getQuestionById = async (id) => await fetch.get(`/questions`)
+//update
+// /questions/:questionid
+export const updateQuestionById = async (id, body) =>
+  await fetch.put(`/questions/${id}/`, body)
+// delete
+// /questions/:questionid
+export const deleteQuestionById = async (id, body) =>
+  await fetch.delete(`/questions/${id}/`, body)
 
-  return response
-}
+// verification
 
-export const finnishAppointmentById = async (id) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/appointments/${id}/finish`)
+//
+// /questions/:questionid/verification
+export const verifyQuestionById = async (id, body) =>
+  await fetch.post(`/questions/${id}/verification/`, body)
+// /questions/:questionid/verification
+export const unverifyQuestionById = async (id) =>
+  await fetch.delete(`/questions/${id}/verification/`)
 
-  if (response.status === 200) {
-    return response
-  }
+// staff only routes
 
-  return response
-}
+// /users
+export const getAllUsers = async () => await fetch.get(`/users`)
 
-export const cancelAppointmentById = async (id) => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.get(`/appointments/${id}/cancel`)
+// /questions/full
+export const getFullQuestions = async () => await fetch.get(`/questions/full`)
 
-  if (response.status === 200) {
-    return response
-  }
+// /questions/unverified
+export const getUnverifiedQuestions = async () =>
+  await fetch.get(`/questions/unverified`)
 
-  return response
-}
+// feedback..
+// /feedback - user only route
+export const getAllFeedback = async () => await fetch.get(`/feedback`)
+
+// /feedback/
+export const createFeedback = async (body) =>
+  await fetch.post(`/feedback/`, body)
+
+// /feedback/:feedbackid
+export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}`)
+
+// /feedback/:feedbackid
+export const deleteFeedbackById = async (id) =>
+  await fetch.delete(`/feedback/${id}/`)
+
+// /feedback/:feedbackid
+export const updateFeedbackById = async (id, body) =>
+  await fetch.put(`/questions/${id}/`, body)
+
+// /categories
+export const getAllCategories = async () => await fetch.get(`/categories`)
+
+export const createNewCategory = async (body = { name: "", slug: "" }) =>
+  await fetch.post(`/feedback/`, body)
+
+// /categories/:categoryslug
+
+export const deleteCategoryById = async (id) =>
+  await fetch.delete(`/categories/${id}/`)
+
+// /categories/:categoryslug
+
+export const updateCategoryById = async (id, body) =>
+  await fetch.put(`/categories/${id}/`, body)
+
+//hurray... i hv finnished
