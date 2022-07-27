@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { MdOutlineDashboard } from "react-icons/md"
 import { IconContext } from "react-icons"
-import Dashboard from "../Dashboard/Dashboard"
-import SubmitQuestions from "../SubmitQuestions/SubmitQuestions"
-import Feedback from "../Feedback/Feedback"
-import SearchQuestions from "../SearchQuestions/SearchQuestions"
+import Dashboard from "../Dashboard"
+import SubmitQuestions from "../SubmitQuestions"
+import Feedback from "../Feedback"
+import SearchQuestions from "../SearchQuestions"
+import Questions from "../Questions"
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
 import { useStoreActions, useStoreState } from "easy-peasy"
@@ -12,6 +13,11 @@ import { useStoreActions, useStoreState } from "easy-peasy"
 export default function UserDashboardNav() {
   // store
   const user = useStoreState(({ User }) => User.user)
+  const logoutUser = useStoreActions(({ User }) => User.logout)
+  const logout = () => {
+    logoutUser()
+    window.location.href = "/"
+  }
 
   const navigate = useNavigate()
   const params = useParams()
@@ -126,7 +132,10 @@ export default function UserDashboardNav() {
             ))}
           </div>
           <div className='border-t-[1px] border-[#c4c4c47b] h-[200px] mt-[5rem] flex items-center'>
-            <div className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
+            <div
+              onClick={logout}
+              className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '
+            >
               <img
                 src='/images/logout.png'
                 alt=''
@@ -145,6 +154,7 @@ export default function UserDashboardNav() {
           <Route path='/submit-questions' element={<SubmitQuestions />} />
           <Route path='/feedback' element={<Feedback />} />
           <Route path='/search-questions' element={<SearchQuestions />} />
+          <Route path='/questions' element={<Questions />} />
         </Routes>
       </main>
     </>

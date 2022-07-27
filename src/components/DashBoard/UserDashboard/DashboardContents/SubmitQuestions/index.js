@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { getAllCategories } from "../../../../core/api"
-import { validateSubmitQuestion } from "../../../../utils/validators"
+import { getAllCategories } from "../../../../../core/api"
+import { validateSubmitQuestion } from "../../../../../utils/validators"
 import CircularProgress from "@mui/material/CircularProgress"
 import {
   TextField,
   CustomLoaderDropdownInput,
   DropdownInput,
   TextAreaField,
-} from "../../../Widgets/InputFields"
+} from "../../../../Widgets/InputFields"
 
-import { createNewQuestion } from "../../../../core/api"
+import { createNewQuestion } from "../../../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
 // import Skeleton from "@mui/material/Skeleton"
 
@@ -137,18 +137,16 @@ export default function SubmitQuestions() {
         const keys = Object.keys(error)
         const err = {}
         keys.forEach((e) => {
-
           err[e] = error[e][0] ?? error[e]
-      setErrors({
-        ...errors,
-        ...err})
+          setErrors({
+            ...errors,
+            ...err,
+          })
 
-        // console.log({
-        //   [e]: error[e][0] ?? error[e],
-        // })
-
-      })
-      
+          // console.log({
+          //   [e]: error[e][0] ?? error[e],
+          // })
+        })
 
         console.log(errors)
         setLoading(false)
@@ -229,39 +227,46 @@ export default function SubmitQuestions() {
               onChange={handleChange}
               error={errors.correct_answer}
             />
-              <>
+            <>
               <label htmlFor='incorrect_answers' className='text-[#454545]'>
-                  Incorrect Answer
-                </label>
-                <div className='flex flex-wrap gap-2'>
-                  <TextField
-                    label=''
-                    name='incorrect_answer_1'
-                    value={incorrect_answer_fields.incorrect_answer_1 ?? ""}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_1 ?? ''}
-                  />
-            {type !== "True / False" && (
-               <>
-                  <TextField
-                    label=''
-                    name='incorrect_answer_2'
-                    value={incorrect_answer_fields.incorrect_answer_2 ?? ""}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_2 ?? ''}
-                  />
-                   <TextField
-                    label='Correct Answer'
-                    name='correct_answer'
-                    value={incorrect_answer_fields.incorrect_answer_3}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_3 ?? ''}
-                  /> 
-               </>
-
-)}
-</div>
-              </>
+                Incorrect Answer
+              </label>
+              <div className='flex flex-wrap gap-2'>
+                <TextField
+                  label=''
+                  name='incorrect_answer_1'
+                  value={incorrect_answer_fields.incorrect_answer_1 ?? ""}
+                  onChange={handleAnswerFieldsChange}
+                  error={
+                    errors?.incorrect_answer_fields?.incorrect_answer_1 ?? ""
+                  }
+                />
+                {type !== "True / False" && (
+                  <>
+                    <TextField
+                      label=''
+                      name='incorrect_answer_2'
+                      value={incorrect_answer_fields.incorrect_answer_2 ?? ""}
+                      onChange={handleAnswerFieldsChange}
+                      error={
+                        errors?.incorrect_answer_fields?.incorrect_answer_2 ??
+                        ""
+                      }
+                    />
+                    <TextField
+                      label='Correct Answer'
+                      name='correct_answer'
+                      value={incorrect_answer_fields.incorrect_answer_3}
+                      onChange={handleAnswerFieldsChange}
+                      error={
+                        errors?.incorrect_answer_fields?.incorrect_answer_3 ??
+                        ""
+                      }
+                    />
+                  </>
+                )}
+              </div>
+            </>
 
             <TextField
               label='Image'

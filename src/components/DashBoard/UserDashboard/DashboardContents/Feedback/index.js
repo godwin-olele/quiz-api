@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { validateSendFeedback } from "../../../../utils/validators"
-import { TextField } from "../../../Widgets/InputFields"
-import { createFeedback } from "../../../../core/api"
+import { validateSendFeedback } from "../../../../../utils/validators"
+import { TextField } from "../../../../Widgets/InputFields"
+import { createFeedback } from "../../../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
+import { LoadingButton } from "../../../../Widgets/Button/MyButtons"
 
 export default function Feedback() {
   const [form, setForm] = useState({
@@ -77,7 +78,10 @@ export default function Feedback() {
     <>
       <ToastContainer />
 
-      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
+      <div
+        className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'
+        onSubmit={handleSubmit}
+      >
         <form className=' w-[600px] h-auto submit-question-form'>
           <h1 className='text-[#000000] text-[1.7rem] font-medium'>
             Correction Form
@@ -111,12 +115,14 @@ export default function Feedback() {
               placeholder='What Solutions do you Require?'
             />
           </div>
-          <button
+
+          <LoadingButton isLoading={loading} text='Submit' />
+          {/* <button
             className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition
                `}
           >
             Submit
-          </button>
+          </button> */}
         </form>
       </div>
     </>
