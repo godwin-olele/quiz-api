@@ -5,6 +5,7 @@ import Main from "./pages/Main"
 import { motion } from "framer-motion"
 import { useStoreActions } from "easy-peasy"
 import { getStatistics } from "./core/api"
+import PageLayout from "./components/Layout/PageLayout";
 
 export default function App() {
   const fetchStatistics = useStoreActions(

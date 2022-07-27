@@ -14,8 +14,8 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] py-[7rem] ">
-      <p className="text-[2rem] text-[#ffffff] mb-[1rem]">Socials</p>
+    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] pt-[7rem] pb-[3rem] social-container">
+      <p className="text-[2rem] text-[#ffffff] mb-[1rem] social">Socials</p>
       {isHovering && <h2>Hello world</h2>}
       <div className="flex justify-between items-center w-[200px] h-auto cursor-pointer my-0 mx-auto">
         <div
@@ -41,7 +41,7 @@ export default function Footer() {
           <img src="/images/facebook.png" alt="facebook" />
         </div>
       </div>
-      <p className="text-[1.5rem] text-[#ffffff] flex justify-center items-center mt-[3rem]">
+      <p className="text-[1.5rem] text-[#ffffff] flex justify-center items-center mt-[3rem] developer">
         Made with{" "}
         <IconContext.Provider
           value={{ color: "red", className: "global-class-name" }}
