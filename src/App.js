@@ -45,14 +45,14 @@ export default function App() {
   return (
     <div className="flex justify-center">
       <PageLayout>
-        <LandingPage />
-        <Main />
-        <Footer />
-        <motion.div
-          className="cursor"
-          variants={variants}
-          animate={cursorVariant}
-        />
+          <LandingPage />
+          <Main />
+          <Footer />
+          <motion.div
+            className="cursor"
+            variants={variants}
+            animate={cursorVariant}
+          />
       </PageLayout>
     </div>
   );
