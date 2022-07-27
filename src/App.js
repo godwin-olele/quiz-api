@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage";
 import Main from "./pages/Main";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import PageLayout from "./components/Layout/PageLayout";
 
 export default function App() {
   const [mousePosition, setMousePosition] = useState({
@@ -41,18 +42,18 @@ export default function App() {
     },
   };
 
-
-
   return (
-    <> 
-      <LandingPage />
-      <Main />
-      <Footer />
-      <motion.div
-        className="cursor"
-        variants={variants}
-        animate={cursorVariant}
-      />
-    </>
+    <div className="flex justify-center">
+      <PageLayout>
+        <LandingPage />
+        <Main />
+        <Footer />
+        <motion.div
+          className="cursor"
+          variants={variants}
+          animate={cursorVariant}
+        />
+      </PageLayout>
+    </div>
   );
 }
