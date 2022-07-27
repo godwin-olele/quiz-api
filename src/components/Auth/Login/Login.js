@@ -4,7 +4,7 @@ import { IconContext } from "react-icons"
 import { HiEye } from "react-icons/hi"
 import { HiEyeOff } from "react-icons/hi"
 import { ImGoogle } from "react-icons/im"
-// geting ready
+import "./Login.css";
 
 import { TextField, ObscurableTextField } from "../../Widgets/TextInputField"
 import { validateSigninData } from "../../../utils/validators"

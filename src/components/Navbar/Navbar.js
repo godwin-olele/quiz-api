@@ -57,7 +57,7 @@ export default function Navbar() {
       <a href="/" className="brand-name">
         QuizAPI
       </a>
-      {(toggleMenu || screenWidth > 500) && (
+      {(toggleMenu || screenWidth > 1000) && (
         <ul className="list">
           <li className="items">
             <a href="/home">Home</a>

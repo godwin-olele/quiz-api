@@ -19,6 +19,17 @@ export default function CallToAction() {
     AOS.refresh();
   }, []);
 
+
+  let navigateToSignUp = useNavigate();
+  function handleClickSignup() {
+    navigateToSignUp("/Signup");
+  }
+
+  let navigateToLogin = useNavigate();
+  function handleClickLogin() {
+    navigateToLogin("/Login");
+  }
+
   return (
     <div className="px-[7rem] w-full h-[800px] flex justify-between items-center call-to-action-container">
       <div className=" w-[1300px] h-auto call-to-action-sub__container">
@@ -33,19 +44,15 @@ export default function CallToAction() {
         </h1>
         <p
           className="mt-[1rem] text-[22px] font-medium text-[#373737] call-to-action-sub__text"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1000"
         >
           Test your knowledge or easily embed a quiz on your website with the
           quiz api
         </p>
         <div className="flex justify-between items-center w-full mt-[3rem] auth-btn-container">
-          <button className="rounded-[10px] border-2 text-[20px] w-full border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 ">
+          <button className="rounded-[10px] border-2 text-[20px] w-full border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 " onClick={handleClickLogin}>
             Login
           </button>
-          <button className="rounded-[10px] py-[10px] px-[40px] w-full border-2 text-[20px] border-orange font-medium text-orange ml-[3rem] auth-btn-container-2">
+          <button className="rounded-[10px] py-[10px] px-[40px] w-full border-2 text-[20px] border-orange font-medium text-orange ml-[3rem] auth-btn-container-2"  onClick={handleClickSignup}>
             Sign-Up
           </button>
         </div>

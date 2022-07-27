@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] pt-[7rem] pb-[3rem] ">
+    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] pt-[7rem] pb-[3rem] social-container">
       <p className="text-[2rem] text-[#ffffff] mb-[1rem] social">Socials</p>
       {isHovering && <h2>Hello world</h2>}
       <div className="flex justify-between items-center w-[200px] h-auto cursor-pointer my-0 mx-auto">
