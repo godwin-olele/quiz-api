@@ -1,0 +1,8 @@
+/** Mobile **/
+
+@media screen and (max-width: 500px) {
+    .left-bg-login {
+        display: none;
+    }
+}
+

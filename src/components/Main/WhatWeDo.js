@@ -24,11 +24,11 @@ export default function () {
   return (
     <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header">
       <div className="flex justify-center items-center my-0 mx-auto ">
-        <div className="w-[250px] h-[5px] bg-orange rounded-full"></div>
-        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem]">What Do We Do?</h1>
-        <div className="w-[250px] h-[5px] bg-orange rounded-full"></div>
+        <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
+        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] what-we-do-header-text">What Do We Do?</h1>
+        <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
       </div>
-      <div className="grid grid-cols-3 gap-[50px] w-full mt-[4rem]">
+      <div className="grid grid-cols-3 gap-[50px] w-full mt-[4rem] what-we-do__content">
         {cards.map((item, i) => (
           <div
             className="w-full h-auto rounded-[10px] py-[40px] px-[30px] card"
