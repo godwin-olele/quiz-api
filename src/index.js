@@ -17,24 +17,22 @@ import Home from "./components/DashBoard"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<App />} />
-          <Route path='/Signup' element={<SignUp />} />
-          <Route path='/Login' element={<Login />} />
-          <Route
-            path='/auth/email-verification'
-            element={<VerificationMessage />}
-          />
-          <Route path='/auth/verify' element={<VerifyEmail />} />
+  <Provider store={Store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/Signup' element={<SignUp />} />
+        <Route path='/Login' element={<Login />} />
+        <Route
+          path='/auth/email-verification'
+          element={<VerificationMessage />}
+        />
+        <Route path='/auth/verify' element={<VerifyEmail />} />
 
-          <Route element={<ProtectedRoutes />}>
-            <Route path='/dashboard/*' element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/dashboard/*' element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 )

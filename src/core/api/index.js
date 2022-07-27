@@ -324,17 +324,33 @@ export const getAllFeedback = async () => await fetch.get(`/feedback`)
 
 // /feedback/
 export const createFeedback = async (body) =>
-  await fetch.post(`/feedback`, body)
+  await fetch.post(`/feedback/`, body)
 
 // /feedback/:feedbackid
-export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}`)
+export const getFeedbackById = async (id) => await fetch.get(`/feedback/${id}/`)
 
 // /feedback/:feedbackid
 export const deleteFeedbackById = async (id) =>
-  await fetch.delete(`/feedback/${id}`)
+  await fetch.delete(`/feedback/${id}/`)
 
 // /feedback/:feedbackid
 export const updateFeedbackById = async (id, body) =>
-  await fetch.put(`/questions/${id}`, body)
+  await fetch.put(`/questions/${id}/`, body)
+
+// /categories
+export const getAllCategories = async () => await fetch.get(`/categories`)
+
+export const createNewCategory = async (body = { name: "", slug: "" }) =>
+  await fetch.post(`/feedback/`, body)
+
+// /categories/:categoryslug
+
+export const deleteCategoryById = async (id) =>
+  await fetch.delete(`/categories/${id}/`)
+
+// /categories/:categoryslug
+
+export const updateCategoryById = async (id, body) =>
+  await fetch.put(`/categories/${id}/`, body)
 
 //hurray... i hv finnished

@@ -1,43 +1,109 @@
-import React from "react";
+import React, { useState } from "react"
+import { TextField } from "../../../Widgets/InputFields"
 
 export default function Feedback() {
+  const [form, setForm] = useState({
+    question: "",
+    issue: "",
+    explanation: "",
+  })
+
+  // ui stuff
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    })
+
+    // do validate
+  }
+  /*
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    // do submit
+    const possibleErrors = validateSubmitQuestion(form)
+
+    if (Object.keys(possibleErrors).length > 0) {
+      setLoading(false)
+      return setErrors(possibleErrors)
+    }
+
+    setErrors({})
+
+    // continue
+
+    createNewQuestion(form)
+      .then(({ data: res }) => {
+        const { status, message, data } = res
+        console.log(res)
+
+        if (status == "success") {
+          toast.success(message)
+        }
+
+        // setTimeout(next, 5000)
+      })
+      .catch(({ response: { data: res } }) => {
+        const { status, message, error } = res
+
+        console.log(res)
+
+        if (Array.isArray(error)) {
+          setLoading(false)
+          return toast.error(error[0])
+        }
+
+        // const keys = Object.keys(error)
+        // keys.forEach((e) => {
+        //   setErrors({
+        //     [e]: error[e][0],
+        //   })
+        // })
+        setLoading(false)
+      })
+  }
+*/
+  const { question, issue, explanation } = form
+
   return (
     <>
-      <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center">
-        <form className=" w-[600px] h-auto submit-question-form">
-          <h1 className="text-[#000000] text-[1.7rem] font-medium">
+      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
+        <form className=' w-[600px] h-auto submit-question-form'>
+          <h1 className='text-[#000000] text-[1.7rem] font-medium'>
             Correction Form
           </h1>
-          <div className="mt-[2rem]">
-            <label htmlFor="answer" className="text-[#454545]">
-              Question ID
-            </label>
-            <input
-              type="text"
-              placeholder="Enter question ID"
-              className="w-full py-[13px] px-[20px] rounded-[6px] mb-[1.2rem] mt-[0.5rem]"
-              name="answer"
-              autoComplete="true"
+
+          <div className='mt-[2rem]'>
+            <TextField
+              label='Question ID'
+              name='question'
+              value={question}
+              onChange={handleChange}
+              error={errors.question}
+              placeholder='Enter question ID'
             />
-            <label htmlFor="answer" className="text-[#454545]">
-              Issue
-            </label>
-            <input
-              type="text"
-              placeholder="What Issues do you have with this question?"
-              className="w-full py-[13px] px-[20px] rounded-[6px] mb-[1.2rem] mt-[0.5rem]"
-              name="answer"
-              autoComplete="true"
+
+            <TextField
+              label='Issue'
+              name='issue'
+              value={issue}
+              onChange={handleChange}
+              error={errors.issue}
+              placeholder='What Issues do you have with this question?'
             />
-            <label htmlFor="answer" className="text-[#454545]">
-              Explanation
-            </label>
-            <input
-              type="text"
-              placeholder="What Solutions do you Require?"
-              className="w-full py-[13px] px-[20px] rounded-[6px] mb-[3rem] mt-[0.5rem]"
-              name="answer"
-              autoComplete="true"
+
+            <TextField
+              label='Explanation'
+              name='explanation'
+              value={explanation}
+              onChange={handleChange}
+              error={errors.explanation}
+              placeholder='What Solutions do you Require?'
             />
           </div>
           <button
@@ -49,5 +115,5 @@ export default function Feedback() {
         </form>
       </div>
     </>
-  );
+  )
 }

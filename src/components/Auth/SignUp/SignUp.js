@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { validateSignupData } from "../../../utils/validators"
-import { TextField, ObscurableTextField } from "../../Widgets/TextInputField"
+import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { signupUser } from "../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
 import { useNavigate } from "react-router-dom"

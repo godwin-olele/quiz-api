@@ -20,11 +20,7 @@ export default function UserDashboardNav() {
 
   // const loadingUserState = useStoreActions
 
-  const userProfile = {
-    name: "James Mark",
-    imagePath:
-      "https://images.pexels.com/photos/8783902/pexels-photo-8783902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  }
+  const { avatar, bio, first_name, id, last_name, username } = user
 
   const Nav = () => (
     <nav className='navigation-dashboard bg-[#fff]'>
@@ -63,12 +59,10 @@ export default function UserDashboardNav() {
         </button>
       </form>
       <div className='flex justify-between items-center w-[200px]'>
-        <p className=' text-[18px] text-[#373737] font-semibold'>
-          {userProfile.name}
-        </p>
+        <p className=' text-[18px] text-[#373737] font-semibold'>{username}</p>
         <div>
           <img
-            src={userProfile.imagePath}
+            src={avatar}
             alt='avater'
             className='rounded-full w-[60px] h-[60px] object-cover'
           />

@@ -3,6 +3,8 @@ import { IconContext } from "react-icons"
 import { HiEye } from "react-icons/hi"
 import { HiEyeOff } from "react-icons/hi"
 
+import Skeleton from "@mui/material/Skeleton"
+
 export const TextField = ({
   type,
   label,
@@ -11,8 +13,9 @@ export const TextField = ({
   value,
   onChange,
   error,
+  className = "mb-[1.2rem] mt-[0.5rem]",
 }) => (
-  <div className=' mb-[1.2rem] mt-[0.5rem] transition'>
+  <div className={className}>
     <label htmlFor={name} className='text-[#454545]'>
       {label}
     </label>
@@ -78,3 +81,80 @@ export const ObscurableTextField = ({
     </div>
   )
 }
+
+export const DropdownInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  options = ["something", 2, 3],
+  defaultOption,
+  className = "",
+}) => (
+  <div className={className}>
+    <label htmlFor={name} className='text-[#454545]'>
+      {label}
+    </label>
+    <select id={name} name={name} value={value} onChange={onChange}>
+      <option>{defaultOption}</option>
+      {options.map((option, index) => (
+        <option key={index}>{option}</option>
+      ))}
+    </select>
+
+    {error && <small className='text-xs text-red-600'>{error}</small>}
+  </div>
+)
+
+export const CustomLoaderDropdownInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  isLoading = true,
+  options = [{ id: 0, name: "test1", slug: "test1" }],
+  defaultOption,
+  className = "",
+}) => (
+  <div className={className}>
+    <label htmlFor={name} className='text-[#454545]'>
+      {label}
+    </label>
+
+    {isLoading ? (
+      <Skeleton height={70} animation='wave' />
+    ) : (
+      <select id={name} name={name} onChange={onChange}>
+        <option>{defaultOption}</option>
+
+        {options.map((option, index) => (
+          <option key={index}>{option.name}</option>
+        ))}
+      </select>
+    )}
+
+    {error && <small className='text-xs text-red-600'>{error}</small>}
+  </div>
+)
+//
+
+export const TextAreaField = ({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  className = "mt-[1.5rem]  mb-[1.2rem]",
+}) => (
+  <div className={className}>
+    <label htmlFor={name} className='text-[#454545]'>
+      {label}
+    </label>
+    <textarea value={value} id={name} name={name} onChange={onChange} />
+
+    {error && <small className='text-xs text-red-600'>{error}</small>}
+  </div>
+)
+// "Some text..."

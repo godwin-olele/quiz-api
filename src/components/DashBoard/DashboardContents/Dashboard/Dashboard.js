@@ -9,9 +9,7 @@ import { styled } from "@mui/material/styles"
 import { useStoreActions, useStoreState } from "easy-peasy"
 
 export default function Dashboard({ user }) {
-  let isFetchingData = useStoreState(({ Statistics }) => Statistics.loading)
-
-  let [isLoading, setLoading] = useState(isFetchingData)
+  let isLoading = useStoreState(({ Statistics }) => Statistics.loading)
   let statistics = useStoreState(({ Statistics }) => Statistics.userStatistics)
 
   const fetchUserStatistics = useStoreActions(
@@ -19,19 +17,11 @@ export default function Dashboard({ user }) {
   )
 
   const fetchData = async () => {
-    fetchUserStatistics(user.id)
-      .then(() => {
-        setLoading(false)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    await fetchUserStatistics(user.id)
   }
 
   useEffect(() => {
-    // if (user.id) {
     fetchData()
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

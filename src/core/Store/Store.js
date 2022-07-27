@@ -57,20 +57,18 @@ const Statistics = {
   }),
 
   loading: true,
-  setLoading: action((state, payload) => {
-    state.loading = payload
-  }),
+  setLoading: action((state, payload) => (state.loading = payload)),
 
   //model
   userStatistics: {},
   // method
-  setUserStatistics: action((state, payload) => {
-    state.userStatistics = payload
-  }),
+  setUserStatistics: action(
+    (state, payload) => (state.userStatistics = payload)
+  ),
 
   //actions
   fetchUserStatistics: thunk(async (actions, payload) => {
-    actions.setLoading(true)
+    // actions.setLoading(true)
     //do fetch
     try {
       const { data: res } = await getUserStatistics(payload)

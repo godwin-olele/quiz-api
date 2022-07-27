@@ -6,32 +6,19 @@ const User = {
   user: JSON.parse(localStorage.getItem("userDetails")),
   loading: true,
   // medthods
-  setLoading: action((state, payload) => {
-    state.loading = payload
-  }),
-  setUser: action((state, payload) => {
-    /// do fectchUser
-    state.user = payload
-  }),
+  setLoading: action((state, payload) => (state.loading = payload)),
+  setUser: action((state, payload) => (state.user = payload)),
+
   //actions
-  fetchUserDetails: thunk(async (actions) => {
-    //do fetch
-    try {
-      const { data: res } = await getUserDetails()
-      const { status, message, data } = res
+  // fetchUserDetails: thunk(async (actions) => {
+  //   //do fetch
+  //   try {
+  //     return await getUserDetails()
 
-      console.log(res)
-      if (status == "success") {
-        actions.setUser(data)
-        actions.setLoading(false)
-
-        return data
-      }
-    } catch (e) {
-      console.log(e)
-      return null
-    }
-  }),
+  //   } catch (e) {
+  //     return e
+  //   }
+  // }),
 }
 
 export default User

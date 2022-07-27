@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 // geting ready
 import { loginUser } from "../../../core/api"
 
-import { TextField, ObscurableTextField } from "../../Widgets/TextInputField"
+import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { validateSigninData } from "../../../utils/validators"
 
 export default function Login() {
@@ -128,7 +128,7 @@ export default function Login() {
             {/* form */}
             <form
               className='mt-[3rem] md:w-full w-full'
-              onSubmit={handleSubmit}
+              onSubmit={!loading ? handleSubmit : (e) => e.preventDefault()}
             >
               <TextField
                 type='text'
