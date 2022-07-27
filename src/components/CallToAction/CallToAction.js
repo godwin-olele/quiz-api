@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
-import CountUp from "react-countup";
-import { useNavigate } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useState, useEffect } from "react"
+import CountUp from "react-countup"
+import { useNavigate } from "react-router-dom"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { useStoreState } from "easy-peasy"
 import HorizontalScroll from 'react-scroll-horizontal'
 
 export default function CallToAction() {
-  const [happyCustomer, setHappyCustomer] = useState(44);
-  const [onlineQuestion, setOnlineQuestion] = useState(30);
-  const [category, setCategory] = useState(2);
+  const statistics = useStoreState(({ Statistics }) => Statistics.statistics)
 
-  let navigate = useNavigate();
+  const [happyCustomer, setHappyCustomer] = useState(44)
+  const [onlineQuestion, setOnlineQuestion] = useState(30)
+  const [category, setCategory] = useState(2)
+
+  useEffect(() => {
+    setHappyCustomer(statistics?.users["Total Users"])
+    setOnlineQuestion(statistics?.question.all_questions)
+    setCategory(Object.keys(statistics?.category)?.length)
+  }, [])
+
+  let navigate = useNavigate()
   function handleClick() {
-    navigate("/home");
+    navigate("/home")
   }
   useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
+    AOS.init()
+    AOS.refresh()
+  }, [])
 
 
   let navigateToSignUp = useNavigate();
@@ -40,7 +49,7 @@ export default function CallToAction() {
           data-aos-duration="1500"
         >
           The Quiz Api Includes a wide number of{" "}
-          <span className="text-[#041CF3]">Math’s</span> Questions
+          <span className='text-[#041CF3]'>Math’s</span> Questions
         </h1>
         <p
           className="mt-[1rem] text-[22px] font-medium text-[#373737] call-to-action-sub__text"
@@ -106,5 +115,5 @@ export default function CallToAction() {
         <img src="/images/landing-page.png" alt="" className="w-full" />
       </div>
     </div>
-  );
+  )
 }
