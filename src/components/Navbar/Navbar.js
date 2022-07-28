@@ -60,19 +60,16 @@ export default function Navbar() {
       {(toggleMenu || screenWidth > 1000) && (
         <ul className="list">
           <li className="items">
-            <a href="/home">Home</a>
+            <a href="/">Home</a>
           </li>
           <li className="items">
             <a href="/about">Api</a>
           </li>
           <li className="items">
-            <a href="/contact">Quiz</a>
+            <a href="#features">Features</a>
           </li>
           <li className="items">
-            <a href="/contact">Contact</a>
-          </li>
-          <li className="items">
-            <a href="/contact">Attribute</a>
+            <a href="#footer">Attribute</a>
           </li>
         </ul>
       )}

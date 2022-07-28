@@ -1,14 +1,11 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { IconContext } from "react-icons"
-import { HiEye } from "react-icons/hi"
-import { HiEyeOff } from "react-icons/hi"
 import { ImGoogle } from "react-icons/im"
 import { toast, ToastContainer } from "react-toastify"
 import CircularProgress from "@mui/material/CircularProgress"
 import { useNavigate } from "react-router-dom"
 
-// geting ready
 import { loginUser } from "../../../core/api"
 import "./Login.css"
 
@@ -69,7 +66,7 @@ export default function Login() {
         // if (status == "success") {
         // }
 
-        toast.success("logged in succesfully")
+        toast.success("logged in successfully")
         setTimeout(next, 2000)
       })
       .catch((e) => {
@@ -105,24 +102,29 @@ export default function Login() {
   return (
     <>
       <ToastContainer />
-      <div className='h-screen w-full flex what-we-do__header'>
+      <div className='h-screen w-full flex what-we-do__header what-we-do__header-form'>
         <div className='left-bg-login h-screen w-full px-[5rem]'>
-          <div className='w-full h-auto mt-[5rem] flex justify-between items-center'>
-            <a href='/' className='brand-name'>
-              QuizAPI
-            </a>
-            <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <a href='/about'>Api</a>
-              </li>
-            </ul>
+          <div className='w-full h-auto mt-[5rem] flex flex-col justify-between'>
+            <div className='flex justify-between items-center'>
+              <a href='/' className='brand-name'>
+                QuizAPI
+              </a>
+              <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
+                <li>
+                  <Link to='/'>Home</Link>
+                </li>
+                <li>
+                  <a href='/about'>Api</a>
+                </li>
+              </ul>
+            </div>
+            <div className=' w-full h-[400px] mt-[6rem] flex justify-center items-center'>
+              <img src='/images/flame-8.png' alt='' className='w-full' />
+            </div>
           </div>
         </div>
-        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center'>
-          <div className='mt-[-2rem] w-[450px]'>
+        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center form-section'>
+          <div className='mt-[-2rem] w-[450px] form-section-2'>
             <h1 className='text-[#000000] text-[1.7rem] font-medium'>
               Welcome Back
             </h1>
@@ -174,7 +176,7 @@ export default function Login() {
                 )}
               </button>
               <button
-                className={`mt-[1.5rem] flex justify-center items-center py-[13px] w-full outline-none rounded-[6px] border-2 text-[18px] border-orange text-center text-orange font-semibold transition
+                className={`google-sign-in mt-[1.5rem] flex justify-center items-center py-[13px] w-full outline-none rounded-[6px] border-2 text-[18px] border-orange text-center text-orange font-semibold transition
                `}
               >
                 <IconContext.Provider value={{ className: "google" }}>

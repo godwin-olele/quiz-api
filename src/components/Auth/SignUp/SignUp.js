@@ -105,24 +105,29 @@ export default function SignUp() {
     <>
       <ToastContainer />
 
-      <div className='h-screen w-full flex what-we-do__header'>
-        <div className='left-bg h-screen w-full px-[5rem]'>
-          <div className='w-full h-auto mt-[5rem] flex justify-between items-center'>
-            <a href='/' className='brand-name'>
-              QuizAPI
-            </a>
-            <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <a href='/about'>Api</a>
-              </li>
-            </ul>
+      <div className='h-screen w-full flex what-we-do__header what-we-do__header-form'>
+        <div className='left-bg-login h-screen w-full px-[5rem]'>
+          <div className='w-full h-auto mt-[5rem] flex flex-col justify-between'>
+            <div className='flex justify-between items-center'>
+              <a href='/' className='brand-name'>
+                QuizAPI
+              </a>
+              <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
+                <li>
+                  <Link to='/'>Home</Link>
+                </li>
+                <li>
+                  <a href='/about'>Api</a>
+                </li>
+              </ul>
+            </div>
+            <div className=' w-full h-[400px] mt-[6rem] flex justify-center items-center'>
+              <img src='/images/flame-1235.png' alt='' className='w-full' />
+            </div>
           </div>
         </div>
-        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center'>
-          <div className='mt-[-2rem] w-[450px]'>
+        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center form-section'>
+          <div className='mt-[-2rem] w-[450px] form-section-2'>
             <h1 className='text-[#000000] text-[1.7rem] font-medium'>
               Create New Account
             </h1>

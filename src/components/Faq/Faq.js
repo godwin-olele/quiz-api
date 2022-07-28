@@ -5,30 +5,51 @@ export default function Faq() {
   const [faqArray, setFaqArray] = useState([
     {
       numId: "1.)",
-      question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.",
+      question: "Who is the API for?",
       answer:
-        "Hello",
+        "The API is for developers or hobbyists who want to build a question and answer functionality into their websites or applications.",
       active: false,
     },
     {
       numId: "2.)",
-      question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.",
+      question: "Why should I use the API?",
       answer:
-        "hi",
+        "The API saves developers time building quizzes, flashcards, or trivia applications. Due to its ease of integration and use, the application can be launched faster.",
       active: false,
     },
     {
       numId: "3.)",
-      question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.",
+      question: "Where do the questions come from?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.",
+        "Questions come from a variety of sources: User contributions, scripts scraping public websites, past questions and answers from Public Exams, etc...",
       active: false,
     },
     {
       numId: "4.)",
-      question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.",
+      question: "Why should I trust the answers and explanations?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna. ",
+        "All questions are thoroughly reviewed before being made available to the public for use.",
+      active: false,
+    },
+    {
+      numId: "5.)",
+      question: "What if by mistake or oversight I spot an error or issue with a question, where can I raise a complaint or suggest a correction?",
+      answer:
+        "You can click on the feedback or errata form to raise an issue concerning a question.",
+      active: false,
+    },
+    {
+      numId: "6.)",
+      question: "I'm not a developer, how can I benefit from this?",
+      answer:
+        "You can benefit in so many ways: You can submit questions & have it stored permanently in our database for future reference or access. Your submitted questions also get reviewed. At the end of the day, you get to know whether your suggested answer is right or wrong for free :) Adding questions also gives you the chance to help others.",
+      active: false,
+    },
+    {
+      numId: "7.)",
+      question: "Will I be able to do the above without registering?",
+      answer:
+        "No, you can't. You need to have an account so you can get all the recognition & rank you deserve when you contribute or review questions.",
       active: false,
     },
   ]);
