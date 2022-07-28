@@ -69,7 +69,7 @@ export default function Login() {
         // if (status == "success") {
         // }
 
-        toast.success("logged in succesfully")
+        toast.success("logged in successfully")
         setTimeout(next, 2000)
       })
       .catch(({ response: { data: res } }) => {
