@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react"
 import { getAllCategories } from "../../../../../core/api"
 import { validateSubmitQuestion } from "../../../../../utils/validators"
 import CircularProgress from "@mui/material/CircularProgress"
+import { toast, ToastContainer } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+
 import {
   TextField,
   CustomLoaderDropdownInput,
@@ -10,7 +13,6 @@ import {
 } from "../../../../Widgets/InputFields"
 
 import { createNewQuestion } from "../../../../../core/api"
-import { toast, ToastContainer } from "react-toastify"
 // import Skeleton from "@mui/material/Skeleton"
 
 export default function SubmitQuestions() {
@@ -92,10 +94,8 @@ export default function SubmitQuestions() {
     // do validate
   }
 
-  // const navigate = useNavigate()
-  const next = () => {
-    // navigate("/auth/email-verification")
-  }
+  const navigate = useNavigate()
+  const next = () => navigate("dashboard")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -120,11 +120,20 @@ export default function SubmitQuestions() {
 
         if (status == "success") {
           toast.success(message)
+          setTimeout(next, 100)
+        }
+      })
+      .catch((e) => {
+        // console.log(e)
+        if (!e?.response.data) {
+          setLoading(false)
+          return toast.error("Unable to connect to our servers!")
         }
 
-        // setTimeout(next, 5000)
-      })
-      .catch(({ response: { data: res } }) => {
+        const {
+          response: { data: res },
+        } = e
+
         const { status, message, error } = res
 
         console.log(res)
@@ -148,7 +157,7 @@ export default function SubmitQuestions() {
           // })
         })
 
-        console.log(errors)
+        // console.log(errors)
         setLoading(false)
       })
   }

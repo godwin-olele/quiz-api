@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Routes, Route, Navigate } from "react-router-dom"
 import UserDashboard from "./UserDashboard/UserDashboard"
 import AdminDashboard from "./AdminDashboard/AdminDashboard"
-import Users from "./UserDashboard/DashboardContents/Users/Users"
+import Users from "./AdminDashboard/DashboardContents/Users"
+import Questions from "./UserDashboard/DashboardContents/Questions"
 
 import { useNavigate } from "react-router-dom"
 import { getUserDetails } from "../../core/api"
@@ -30,7 +31,7 @@ function Home() {
         }
       })
       .catch((e) => {
-        console.log(e)
+        // console.log(e)
         if (e?.response) {
           // const {data: {status, message, error}} = e.response
           if (e.response.status == 401) {
@@ -51,6 +52,10 @@ function Home() {
       <Routes>
         <Route path='/*' element={<UserDashboard />} index />
 
+        {/* user stuff test */}
+        <Route path='/q' element={<Questions />} />
+
+        {/* admin stuff test */}
         <Route path='/admin' element={<AdminDashboard />} />
         <Route path='/users' element={<Users />} />
 

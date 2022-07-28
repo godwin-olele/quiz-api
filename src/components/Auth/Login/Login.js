@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 // geting ready
 import { loginUser } from "../../../core/api"
-import "./Login.css";
+import "./Login.css"
 
 import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { validateSigninData } from "../../../utils/validators"
@@ -72,7 +72,16 @@ export default function Login() {
         toast.success("logged in succesfully")
         setTimeout(next, 2000)
       })
-      .catch(({ response: { data: res } }) => {
+      .catch((e) => {
+        // console.log(e)
+        if (!e?.response.data) {
+          setLoading(false)
+          return toast.error("Unable to connect to our servers!")
+        }
+
+        const {
+          response: { data: res },
+        } = e
         const { status, message, error } = res
 
         console.log(res)

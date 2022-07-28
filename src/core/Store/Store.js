@@ -12,12 +12,12 @@ import { getStatistics, getUserStatistics } from "../api"
 
 // 1.  Question submission >
 // 2. Landing page statistics >
+// 3. Logged in Users' Question List >
 // 4. Logged in Users' Question stat >
-// 3. Logged in Users' Question List 
-// 5. API helper form 
+// 5. API helper form
 // 6. Admin Dashboard verification of questions.
 // 7. Users Administration, make and "unmake" staff user.
-// 8. Feedback form. 
+// 8. Feedback form. >
 
 const Statistics = {
   // model

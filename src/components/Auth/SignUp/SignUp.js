@@ -57,7 +57,16 @@ export default function SignUp() {
 
         setTimeout(next, 5000)
       })
-      .catch(({ response: { data: res } }) => {
+      .catch((e) => {
+        // console.log(e)
+        if (!e?.response.data) {
+          setLoading(false)
+          return toast.error("Unable to connect to our servers!")
+        }
+
+        const {
+          response: { data: res },
+        } = e
         const { status, message, error } = res
 
         console.log(res)
@@ -67,11 +76,24 @@ export default function SignUp() {
           return toast.error(error[0])
         }
 
+        // const keys = Object.keys(error)
+        // keys.forEach((e) => {
+        //   setErrors({
+        //     [e]: error[e][0],
+        //   })
+        // })
         const keys = Object.keys(error)
+        const err = {}
         keys.forEach((e) => {
+          err[e] = error[e][0] ?? error[e]
           setErrors({
-            [e]: error[e][0],
+            ...errors,
+            ...err,
           })
+
+          // console.log({
+          //   [e]: error[e][0] ?? error[e],
+          // })
         })
         setLoading(false)
       })

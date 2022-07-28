@@ -1,9 +1,11 @@
 import React, { useState } from "react"
-import { validateSendFeedback } from "../../../../../utils/validators"
-import { TextField } from "../../../../Widgets/InputFields"
-import { createFeedback } from "../../../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+
+import { createFeedback } from "../../../../../core/api"
+import { validateSendFeedback } from "../../../../../utils/validators"
 import { LoadingButton } from "../../../../Widgets/Button/MyButtons"
+import { TextField } from "../../../../Widgets/InputFields"
 
 export default function Feedback() {
   const [form, setForm] = useState({
@@ -15,6 +17,9 @@ export default function Feedback() {
   // ui stuff
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate()
+  const next = () => navigate("dashboard")
 
   const handleChange = (e) => {
     setForm({
@@ -44,15 +49,23 @@ export default function Feedback() {
     createFeedback(form)
       .then(({ data: res }) => {
         const { status, message, data } = res
-        console.log(res)
+        // console.log(res)
 
         if (status == "success") {
           toast.success(message)
+          setTimeout(next, 100)
+        }
+      })
+      .catch((e) => {
+        // console.log(e)
+        if (!e?.response.data) {
+          setLoading(false)
+          return toast.error("Unable to connect to our servers!")
         }
 
-        // setTimeout(next, 5000)
-      })
-      .catch(({ response: { data: res } }) => {
+        const {
+          response: { data: res },
+        } = e
         const { status, message, error } = res
 
         console.log(res)
@@ -68,6 +81,20 @@ export default function Feedback() {
         //     [e]: error[e][0],
         //   })
         // })
+
+        const keys = Object.keys(error)
+        const err = {}
+        keys.forEach((e) => {
+          err[e] = error[e][0] ?? error[e]
+          setErrors({
+            ...errors,
+            ...err,
+          })
+
+          // console.log({
+          //   [e]: error[e][0] ?? error[e],
+          // })
+        })
         setLoading(false)
       })
   }
@@ -78,11 +105,11 @@ export default function Feedback() {
     <>
       <ToastContainer />
 
-      <div
-        className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'
-        onSubmit={handleSubmit}
-      >
-        <form className=' w-[600px] h-auto submit-question-form'>
+      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
+        <form
+          className=' w-[600px] h-auto submit-question-form'
+          onSubmit={loading ? (e) => e.preventDefault() : handleSubmit}
+        >
           <h1 className='text-[#000000] text-[1.7rem] font-medium'>
             Correction Form
           </h1>

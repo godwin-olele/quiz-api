@@ -1,5 +1,5 @@
 import { action, thunk } from "easy-peasy"
-import { getUserDetails, logoutUser } from "../api"
+import { getUserDetails, logoutUser, getUserQuestions } from "../api"
 
 // this is a model
 const User = {
@@ -20,6 +20,25 @@ const User = {
   //     return e
   //   }
   // }),
+
+  questions: [],
+  setQuestions: action((state, payload) => (state.questions = payload)),
+  fetchUserQuestions: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await getUserQuestions(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        // actions.setLoading(false)
+        actions.setQuestions(data.results)
+        return data
+      }
+    } catch (e) {
+      return null
+    }
+  }),
 }
 
 export default User

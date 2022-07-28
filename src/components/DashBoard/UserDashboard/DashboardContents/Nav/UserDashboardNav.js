@@ -24,6 +24,8 @@ export default function UserDashboardNav() {
 
   const activeTab = params["*"]
 
+  console.log(params)
+  console.log(activeTab)
   // const loadingUserState = useStoreActions
 
   const { avatar, bio, first_name, id, last_name, username } = user
@@ -81,22 +83,22 @@ export default function UserDashboardNav() {
     {
       title: "Dashboard",
       icon: "/images/Dashboard.png",
-      to: "",
+      to: ["", "questions"],
     },
     {
       title: "Submit Questions",
       icon: "/images/submit.png",
-      to: "submit-questions",
+      to: ["submit-questions"],
     },
     {
       title: "Feedback",
       icon: "/images/Feedback.png",
-      to: "feedback",
+      to: ["feedback"],
     },
     {
       title: "Search Questions",
       icon: "/images/search.png",
-      to: "search-questions",
+      to: ["search-questions"],
     },
   ]
 
@@ -125,8 +127,8 @@ export default function UserDashboardNav() {
               <TabTitle
                 title={title}
                 icon={icon}
-                isActive={activeTab == to}
-                link={to}
+                isActive={to.includes(activeTab)}
+                link={to[0]}
                 key={index}
               />
             ))}
