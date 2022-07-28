@@ -14,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  overflow: clip
+  overflow: clip;
 }
 
 code {
@@ -238,14 +238,26 @@ input[type="search"]:not(:placeholder-shown) {
     padding: 0 20px;
     height: auto;
     margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .call-to-action-sub__text {
+    text-align: center;
+  }
+  .img-right {
+    width: 100%;
+    margin-left: 0;
   }
   .call-to-action-container .call-to-action-sub__container {
     width: 100%;
+    grid-row-start: 2;
   }
   .call-to-action-container
     .call-to-action-sub__container
     .call-to-action-header {
-    font-size: 8vw;
+    font-size: 7.2vw;
+    height: auto;
+    text-align: center;
   }
   .call-to-action-container
     .call-to-action-sub__container
@@ -279,9 +291,6 @@ input[type="search"]:not(:placeholder-shown) {
   }
 
   .nav-auth {
-    display: none;
-  }
-  .img-right {
     display: none;
   }
   .second-box,
@@ -389,6 +398,10 @@ input[type="search"]:not(:placeholder-shown) {
   }
   .developer {
     font-size: 20px;
+  }
+
+  .large-set-of-question {
+    grid-row-start: 2;
   }
 }
 
@@ -540,6 +553,9 @@ input[type="search"]:not(:placeholder-shown) {
   }
   .developer {
     font-size: 20px;
+  }
+  .large-set-of-question {
+    grid-row-start: 2;
   }
 
 }

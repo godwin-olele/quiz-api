@@ -36,7 +36,7 @@ export default function SubmitQuestions() {
   const [categories, setCategories] = useState([])
 
   const typeList = ["multiple-choice", "True / False"]
-  const difficultyList = ["eazy", "medium", "hard"]
+  const difficultyList = ["easy", "medium", "hard"]
 
   const fetchCategories = () => {
     setCatLoading(true)
