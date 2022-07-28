@@ -14,6 +14,7 @@ import Store from "./core/Store/Store"
 
 import ProtectedRoutes from "./components/DashBoard/ProtectedRoutes"
 import Home from "./components/DashBoard"
+import ApiHelper from "./components/ApiHelper/ApiHelper"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
@@ -23,11 +24,13 @@ root.render(
         <Route path='/' element={<App />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='api-helper' element={<ApiHelper/>} />
         <Route
           path='/auth/email-verification'
           element={<VerificationMessage />}
         />
         <Route path='/auth/verify' element={<VerifyEmail />} />
+        
 
         <Route element={<ProtectedRoutes />}>
           <Route path='/dashboard/*' element={<Home />} />

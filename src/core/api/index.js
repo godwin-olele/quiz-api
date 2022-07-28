@@ -2,6 +2,8 @@ import { API_URL } from "../../constants"
 const axios = require("axios")
 // working on it.
 export const isLoggedIn = () => localStorage.getItem("accessToken")
+export const logoutUser = () => localStorage.clear()
+
 // export const isVerified = () => localStorage.getItem("isVerified")
 
 // initialize auth
@@ -233,31 +235,31 @@ export const getUserDetails = async () => {
   return response
 }
 
-export const logoutCurrentUser = async () => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.post(`/users/logout`)
+// export const logoutCurrentUser = async () => {
+//   // dont worry about it
+//   // bcuz validation is already done
+//   const response = await fetch.post(`/users/logout`)
 
-  if (response.status === 200) {
-    localStorage.removeItem("token")
-    localStorage.removeItem("userDetails")
+//   if (response.status === 200) {
+//     localStorage.removeItem("token")
+//     localStorage.removeItem("userDetails")
 
-    return response
-  }
-  return response
-}
+//     return response
+//   }
+//   return response
+// }
 
-export const logoutAllUsersExceptYou = async () => {
-  // dont worry about it
-  // bcuz validation is already done
-  const response = await fetch.post(`/users/logout?all=true`)
+// export const logoutAllUsersExceptYou = async () => {
+//   // dont worry about it
+//   // bcuz validation is already done
+//   const response = await fetch.post(`/users/logout?all=true`)
 
-  if (response.status === 200) {
-    return response
-  }
+//   if (response.status === 200) {
+//     return response
+//   }
 
-  return response
-}
+//   return response
+// }
 
 export const getStatistics = async () => await fetch.get(`/statistics`)
 
@@ -354,3 +356,32 @@ export const updateCategoryById = async (id, body) =>
   await fetch.put(`/categories/${id}/`, body)
 
 //hurray... i hv finnished
+
+// // when err on login 
+// error: {
+//   credential: "is required",
+//   password: "is required",
+// }
+
+
+// // when err on signup 
+// error: { 
+//   username: "is required",
+//  email: "is required",
+//   password: "is required", 
+//   password2: "is required" 
+// }
+
+// // when err on submit question 
+
+// error: {
+//   question: "is required",
+//   difficulty: "is required",
+//   type: "is required",
+//   category: 'is required',
+//   correct_answer: "is required",
+//   incorrect_answer_fields: {
+//     incorrect_answer_1: "is required",
+//   },
+//   explanation: "is required",
+// }

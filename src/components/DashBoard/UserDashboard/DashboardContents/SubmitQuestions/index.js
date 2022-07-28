@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react"
-import { getAllCategories } from "../../../../core/api"
-import { validateSubmitQuestion } from "../../../../utils/validators"
+import { getAllCategories } from "../../../../../core/api"
+import { validateSubmitQuestion } from "../../../../../utils/validators"
 import CircularProgress from "@mui/material/CircularProgress"
+import { toast, ToastContainer } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+
+import { LoadingButton } from "../../../../Widgets/Button/MyButtons"
+
 import {
   TextField,
   CustomLoaderDropdownInput,
   DropdownInput,
   TextAreaField,
-} from "../../../Widgets/InputFields"
+} from "../../../../Widgets/InputFields"
 
-import { createNewQuestion } from "../../../../core/api"
-import { toast, ToastContainer } from "react-toastify"
+import { createNewQuestion } from "../../../../../core/api"
 // import Skeleton from "@mui/material/Skeleton"
 
 export default function SubmitQuestions() {
@@ -36,7 +40,7 @@ export default function SubmitQuestions() {
   const [categories, setCategories] = useState([])
 
   const typeList = ["multiple-choice", "True / False"]
-  const difficultyList = ["eazy", "medium", "hard"]
+  const difficultyList = ["easy", "medium", "hard"]
 
   const fetchCategories = () => {
     setCatLoading(true)
@@ -92,10 +96,8 @@ export default function SubmitQuestions() {
     // do validate
   }
 
-  // const navigate = useNavigate()
-  const next = () => {
-    // navigate("/auth/email-verification")
-  }
+  const navigate = useNavigate()
+  const next = () => navigate("dashboard")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -120,11 +122,20 @@ export default function SubmitQuestions() {
 
         if (status == "success") {
           toast.success(message)
+          setTimeout(next, 100)
+        }
+      })
+      .catch((e) => {
+        // console.log(e)
+        if (!e?.response.data) {
+          setLoading(false)
+          return toast.error("Unable to connect to our servers!")
         }
 
-        // setTimeout(next, 5000)
-      })
-      .catch(({ response: { data: res } }) => {
+        const {
+          response: { data: res },
+        } = e
+
         const { status, message, error } = res
 
         console.log(res)
@@ -137,20 +148,18 @@ export default function SubmitQuestions() {
         const keys = Object.keys(error)
         const err = {}
         keys.forEach((e) => {
-
           err[e] = error[e][0] ?? error[e]
-      setErrors({
-        ...errors,
-        ...err})
+          setErrors({
+            ...errors,
+            ...err,
+          })
 
-        // console.log({
-        //   [e]: error[e][0] ?? error[e],
-        // })
+          // console.log({
+          //   [e]: error[e][0] ?? error[e],
+          // })
+        })
 
-      })
-      
-
-        console.log(errors)
+        // console.log(errors)
         setLoading(false)
       })
   }
@@ -229,39 +238,46 @@ export default function SubmitQuestions() {
               onChange={handleChange}
               error={errors.correct_answer}
             />
-              <>
+            <>
               <label htmlFor='incorrect_answers' className='text-[#454545]'>
-                  Incorrect Answer
-                </label>
-                <div className='flex flex-wrap gap-2'>
-                  <TextField
-                    label=''
-                    name='incorrect_answer_1'
-                    value={incorrect_answer_fields.incorrect_answer_1 ?? ""}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_1 ?? ''}
-                  />
-            {type !== "True / False" && (
-               <>
-                  <TextField
-                    label=''
-                    name='incorrect_answer_2'
-                    value={incorrect_answer_fields.incorrect_answer_2 ?? ""}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_2 ?? ''}
-                  />
-                   <TextField
-                    label='Correct Answer'
-                    name='correct_answer'
-                    value={incorrect_answer_fields.incorrect_answer_3}
-                    onChange={handleAnswerFieldsChange}
-                    error={errors?.incorrect_answer_fields?.incorrect_answer_3 ?? ''}
-                  /> 
-               </>
-
-)}
-</div>
-              </>
+                Incorrect Answer
+              </label>
+              <div className='flex flex-wrap gap-2'>
+                <TextField
+                  label=''
+                  name='incorrect_answer_1'
+                  value={incorrect_answer_fields.incorrect_answer_1 ?? ""}
+                  onChange={handleAnswerFieldsChange}
+                  error={
+                    errors?.incorrect_answer_fields?.incorrect_answer_1 ?? ""
+                  }
+                />
+                {type !== "True / False" && (
+                  <>
+                    <TextField
+                      label=''
+                      name='incorrect_answer_2'
+                      value={incorrect_answer_fields.incorrect_answer_2 ?? ""}
+                      onChange={handleAnswerFieldsChange}
+                      error={
+                        errors?.incorrect_answer_fields?.incorrect_answer_2 ??
+                        ""
+                      }
+                    />
+                    <TextField
+                      label='Correct Answer'
+                      name='correct_answer'
+                      value={incorrect_answer_fields.incorrect_answer_3}
+                      onChange={handleAnswerFieldsChange}
+                      error={
+                        errors?.incorrect_answer_fields?.incorrect_answer_3 ??
+                        ""
+                      }
+                    />
+                  </>
+                )}
+              </div>
+            </>
 
             <TextField
               label='Image'
@@ -280,7 +296,9 @@ export default function SubmitQuestions() {
             />
           </div>
 
-          <button
+          <LoadingButton isLoading={loading || isCatLoading} text='Submit' />
+
+          {/* <button
             className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition`}
           >
             {loading || isCatLoading ? (
@@ -288,7 +306,7 @@ export default function SubmitQuestions() {
             ) : (
               "Submit"
             )}
-          </button>
+          </button> */}
         </form>
       </div>
     </>
