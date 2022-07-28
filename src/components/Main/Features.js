@@ -12,7 +12,9 @@ export default function Features() {
     <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header">
       <div className="flex justify-center items-center my-0 mx-auto ">
         <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
-        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] features-header-text">Features</h1>
+        <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] features-header-text">
+          Features
+        </h1>
         <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
       </div>
       <div className="grid grid-cols-1 gap-[30px] w-full mt-[4rem]">
@@ -22,11 +24,14 @@ export default function Features() {
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <h1 className="text-[30px] feature-grid-header-text-1">Multiple Choice Questions</h1>
+            <h1 className="text-[30px] feature-grid-header-text-1">
+              A large set of questions
+            </h1>
             <p className="text-[18px] mt-[0.5rem] text-[#373737] feature-grid-sub-header-text-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna, porttitor
+              Our database of questions is constantly growing. It contains a
+              variety of well-written questions divided into different
+              categories. Additionally, questions are being added and reviewed
+              on daily basis.
             </p>
           </div>
           <img
@@ -50,11 +55,15 @@ export default function Features() {
             data-aos="fade-left"
             data-aos-duration="1000"
           >
-            <h1 className="text-[30px] feature-grid-header-text-1">Search For Questions</h1>
+            <h1 className="text-[30px] feature-grid-header-text-1">
+              User contributions
+            </h1>
             <p className="text-[18px] mt-[0.5rem] text-[#373737] feature-grid-sub-header-text-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna, porttitor
+              There are many more questions in the universe that are yet to be
+              added to our database. We haven't even scratched the surface! We
+              want you to assist us in gathering the rest of these questions! To
+              add your question and answer to our collection, sign up and submit
+              it here.
             </p>
           </div>
         </div>
@@ -64,11 +73,14 @@ export default function Features() {
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <h1 className="text-[30px] feature-grid-header-text-1">Save Questions</h1>
+            <h1 className="text-[30px] feature-grid-header-text-1">
+              Free and Easy to use
+            </h1>
             <p className="text-[18px] mt-[0.5rem] text-[#373737] feature-grid-sub-header-text-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna, porttitor
+              Our easy to use & simple RESTful API can easily be integrated into
+              both websites & applications. The API helper form alongside our
+              well-written API documentation makes the integration process
+              easier.
             </p>
           </div>
           <img

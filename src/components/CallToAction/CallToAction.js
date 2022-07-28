@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from "react"
-import CountUp from "react-countup"
-import { useNavigate } from "react-router-dom"
-import AOS from "aos"
-import "aos/dist/aos.css"
-import { useStoreState } from "easy-peasy"
-import HorizontalScroll from 'react-scroll-horizontal'
+import React, { useState, useEffect } from "react";
+import CountUp from "react-countup";
+import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useStoreState } from "easy-peasy";
+import HorizontalScroll from "react-scroll-horizontal";
 
 export default function CallToAction() {
-  const statistics = useStoreState(({ Statistics }) => Statistics.statistics)
+  const statistics = useStoreState(({ Statistics }) => Statistics.statistics);
 
-  const [happyCustomer, setHappyCustomer] = useState(44)
-  const [onlineQuestion, setOnlineQuestion] = useState(30)
-  const [category, setCategory] = useState(2)
+  const [happyCustomer, setHappyCustomer] = useState(0);
+  const [onlineQuestion, setOnlineQuestion] = useState(0);
+  const [category, setCategory] = useState(0);
 
   useEffect(() => {
-    setHappyCustomer(statistics?.users["Total Users"])
-    setOnlineQuestion(statistics?.question.all_questions)
-    setCategory(Object.keys(statistics?.category)?.length)
-  }, [])
+    setHappyCustomer(statistics?.users["Total Users"]);
+    setOnlineQuestion(statistics?.question.all_questions);
+    setCategory(Object.keys(statistics?.category)?.length);
+  }, []);
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   function handleClick() {
-    navigate("/home")
+    navigate("/home");
   }
   useEffect(() => {
-    AOS.init()
-    AOS.refresh()
-  }, [])
-
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   let navigateToSignUp = useNavigate();
   function handleClickSignup() {
@@ -48,72 +47,76 @@ export default function CallToAction() {
           data-aos="fade-down-right"
           data-aos-duration="1500"
         >
-          The Quiz Api Includes a wide number of{" "}
-          <span className='text-[#041CF3]'>Math’s</span> Questions
+          The Quiz Bank contains a wide number of{" "}
+          <span className="text-[#041CF3]">Mathematics</span> questions.
         </h1>
-        <p
-          className="mt-[1rem] text-[22px] font-medium text-[#373737] call-to-action-sub__text"
-        >
-          Test your knowledge or easily embed a quiz on your website with the
-          quiz api
+        <p className="mt-[1rem] text-[22px] font-medium text-[#373737] call-to-action-sub__text">
+          Quiz Bank API is proudly powered by PlanetScale database. Easily embed
+          a quiz or create a practice test using our API.
         </p>
         <div className="flex justify-between items-center w-full mt-[3rem] auth-btn-container">
-          <button className="rounded-[10px] border-2 text-[20px] w-full border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 " onClick={handleClickLogin}>
+          <button
+            className="rounded-[10px] border-2 text-[20px] w-full border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 "
+            onClick={handleClickLogin}
+          >
             Login
           </button>
-          <button className="rounded-[10px] py-[10px] px-[40px] w-full border-2 text-[20px] border-orange font-medium text-orange ml-[3rem] auth-btn-container-2"  onClick={handleClickSignup}>
+          <button
+            className="rounded-[10px] py-[10px] px-[40px] w-full border-2 text-[20px] border-orange font-medium text-orange ml-[3rem] auth-btn-container-2"
+            onClick={handleClickSignup}
+          >
             Sign-Up
           </button>
         </div>
         <div className="w-full h-auto mt-[4rem] flex justify-between items-center site-info">
-            <div className=" w-full h-auto first-box">
-              <h1 className="text-[30px] font-medium site-info-1">
-                <CountUp
-                  isCounting
-                  end={happyCustomer}
-                  easing="linear"
-                  duration={3.5}
-                />
-                K&nbsp;+
-              </h1>
+          <div className=" w-full h-auto first-box">
+            <h1 className="text-[30px] font-medium site-info-1">
+              <CountUp
+                isCounting
+                end={happyCustomer}
+                easing="linear"
+                duration={3.5}
+              />
+              K&nbsp;+
+            </h1>
 
-              <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
-                Happy Customer
-              </p>
-            </div>
-            <div className="w-full h-auto ml-[2.5rem] second-box">
-              <h1 className="text-[30px] font-medium site-info-1">
-                <CountUp
-                  isCounting
-                  end={onlineQuestion}
-                  easing="linear"
-                  duration={3.5}
-                />
-                K&nbsp;+
-              </h1>
-              <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
-                Online Questions
-              </p>
-            </div>
-            <div className="w-full h-auto ml-[2.5rem] third-box">
-              <h1 className="text-[30px] font-medium site-info-1">
-                <CountUp
-                  isCounting
-                  end={category}
-                  easing="linear"
-                  duration={3.5}
-                />
-                K&nbsp;+
-              </h1>
-              <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
-                Categories
-              </p>
-            </div>
+            <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
+              Happy Customer
+            </p>
           </div>
+          <div className="w-full h-auto ml-[2.5rem] second-box">
+            <h1 className="text-[30px] font-medium site-info-1">
+              <CountUp
+                isCounting
+                end={onlineQuestion}
+                easing="linear"
+                duration={3.5}
+              />
+              K&nbsp;+
+            </h1>
+            <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
+              Online Questions
+            </p>
+          </div>
+          <div className="w-full h-auto ml-[2.5rem] third-box">
+            <h1 className="text-[30px] font-medium site-info-1">
+              <CountUp
+                isCounting
+                end={category}
+                easing="linear"
+                duration={3.5}
+              />
+              K&nbsp;+
+            </h1>
+            <p className="text-[1.1rem] text-[#373737] site-info-1__subtext">
+              Categories
+            </p>
+          </div>
+        </div>
       </div>
       <div className="w-[1400px] h-auto ml-[5rem] img-right">
         <img src="/images/landing-page.png" alt="" className="w-full" />
       </div>
     </div>
-  )
+  );
 }
