@@ -111,7 +111,7 @@ export default function Login() {
               </ul>
             </div>
             <div className=" w-full h-[400px] mt-[6rem] flex justify-center items-center">
-              <img src="/images/flame-8.png" alt="" className="w-full" />
+              <img src="/images/sammy-29.png" alt="" className="w-full" />
             </div>
           </div>
         </div>

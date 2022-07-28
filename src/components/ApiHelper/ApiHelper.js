@@ -77,8 +77,8 @@ export default function ApiHelper() {
     <>
       <ToastContainer />
 
-      <div className="h-screen w-full flex what-we-do__header">
-        <div className="bg-[#f387047e] h-screen w-full px-[5rem]">
+      <div className="h-screen w-full flex what-we-do__header what-we-do__header-form">
+        <div className="bg-[#f387047e] left-bg-login h-screen w-full px-[5rem]">
           <div className="w-full h-auto mt-[5rem] flex flex-col justify-between">
             <div className="flex justify-between items-center">
               <a href="/" className="brand-name">
@@ -93,13 +93,13 @@ export default function ApiHelper() {
                 </li>
               </ul>
             </div>
-            <div className=" w-full h-[400px] mt-[6rem] flex justify-center items-center">
+            <div className=" w-full h-[500px] mt-[6rem] flex justify-center items-center">
               <img src="/images/flame-8.png" alt="" className="w-full"/>
             </div>
           </div>
         </div>
-        <div className="bg-[#fff] w-[1700px] h-screen flex justify-center items-center">
-          <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center">
+        <div className="bg-[#fff] w-[1700px] h-screen flex justify-center items-center form-section">
+          <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center form-section-2">
             <form className=" w-[600px] h-auto submit-question-form">
               <h1 className="text-[#000000] text-[1.7rem] font-medium">
                 API Helper
