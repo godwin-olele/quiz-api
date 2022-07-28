@@ -24,10 +24,6 @@ export default function UserDashboardNav() {
 
   const activeTab = params["*"]
 
-  console.log(params)
-  console.log(activeTab)
-  // const loadingUserState = useStoreActions
-
   const { avatar, bio, first_name, id, last_name, username } = user
 
   const Nav = () => (
@@ -83,7 +79,7 @@ export default function UserDashboardNav() {
     {
       title: "Dashboard",
       icon: "/images/Dashboard.png",
-      to: ["", "questions"],
+      to: ["", "questions"], // place the important route first
     },
     {
       title: "Submit Questions",
@@ -93,7 +89,7 @@ export default function UserDashboardNav() {
     {
       title: "Feedback",
       icon: "/images/Feedback.png",
-      to: ["feedback"],
+      to: ["submit-feedback"],
     },
     {
       title: "Search Questions",
@@ -106,7 +102,7 @@ export default function UserDashboardNav() {
     <Link to={link}>
       <div
         className={`flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ${
-          isActive && "border-r-2 border-orange"
+          isActive && "border-r-2 border-orange text-orange"
         }`}
       >
         <img src={icon} alt='' className='w-[30px] h-[30px]' />
@@ -154,7 +150,7 @@ export default function UserDashboardNav() {
         <Routes>
           <Route path='/*' element={<Dashboard user={user} />} />
           <Route path='/submit-questions' element={<SubmitQuestions />} />
-          <Route path='/feedback' element={<Feedback />} />
+          <Route path='/submit-feedback' element={<Feedback />} />
           <Route path='/search-questions' element={<SearchQuestions />} />
           <Route path='/questions' element={<Questions />} />
         </Routes>

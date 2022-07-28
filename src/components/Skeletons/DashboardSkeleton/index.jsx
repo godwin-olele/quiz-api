@@ -1,12 +1,6 @@
-import React, { useState } from "react"
-// import { MdOutlineDashboard } from "react-icons/md"
-// import { IconContext } from "react-icons"
 import Skeleton from "@mui/material/Skeleton"
 
-// import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
-// import { useStoreActions, useStoreState } from "easy-peasy"
-
-export default function UserDashboardNav() {
+export default function DashboardSkeleton({ tabs, boxes }) {
   const Nav = () => (
     <nav
       className='navigation-dashboard bg-[#fff]'
@@ -24,29 +18,6 @@ export default function UserDashboardNav() {
       </div>
     </nav>
   )
-
-  const tabs = [
-    {
-      title: "Dashboard",
-      icon: "/images/Dashboard.png",
-      to: "",
-    },
-    {
-      title: "Submit Questions",
-      icon: "/images/submit.png",
-      to: "submit-questions",
-    },
-    {
-      title: "Feedback",
-      icon: "/images/Feedback.png",
-      to: "feedback",
-    },
-    {
-      title: "Search Questions",
-      icon: "/images/search.png",
-      to: "search-questions",
-    },
-  ]
 
   const TabTitle = () => (
     <Skeleton
@@ -76,7 +47,7 @@ export default function UserDashboardNav() {
         </div>
 
         {/* content */}
-        <MainSkeleton />
+        <MainSkeleton boxes={boxes} />
 
         {/* <Routes>
           <Route path='/*' element={<Dashboard user={user} />} />
@@ -89,37 +60,19 @@ export default function UserDashboardNav() {
   )
 }
 
-const MainSkeleton = () => (
+const MainSkeleton = ({ boxes }) => (
   <>
     {/* // show a skeleton here */}
 
     <div className='w-full h-screen grid grid-cols-3 gap-x-[50px] py-[3rem] px-[1rem]'>
-      <div>
-        <Skeleton
-          className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'
-          height={300}
-        />
-      </div>
-      <div>
-        <Skeleton
-          className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'
-          height={300}
-        />
-      </div>
-      <div>
-        <Skeleton
-          className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'
-          height={300}
-        />
-      </div>
-      {/* <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'>
-      </div>
-      <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'>
-        <Skeleton />
-      </div>
-      <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'>
-        <Skeleton />
-      </div> */}
+      {boxes.map((box, index) => (
+        <div key={index}>
+          <Skeleton
+            className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[0px] flex items-center relative'
+            height={300}
+          />
+        </div>
+      ))}
     </div>
   </>
 )

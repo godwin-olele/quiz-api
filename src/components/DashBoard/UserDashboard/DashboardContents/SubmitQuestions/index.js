@@ -5,6 +5,8 @@ import CircularProgress from "@mui/material/CircularProgress"
 import { toast, ToastContainer } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 
+import { LoadingButton } from "../../../../Widgets/Button/MyButtons"
+
 import {
   TextField,
   CustomLoaderDropdownInput,
@@ -38,7 +40,7 @@ export default function SubmitQuestions() {
   const [categories, setCategories] = useState([])
 
   const typeList = ["multiple-choice", "True / False"]
-  const difficultyList = ["eazy", "medium", "hard"]
+  const difficultyList = ["easy", "medium", "hard"]
 
   const fetchCategories = () => {
     setCatLoading(true)
@@ -294,7 +296,9 @@ export default function SubmitQuestions() {
             />
           </div>
 
-          <button
+          <LoadingButton isLoading={loading || isCatLoading} text='Submit' />
+
+          {/* <button
             className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition`}
           >
             {loading || isCatLoading ? (
@@ -302,7 +306,7 @@ export default function SubmitQuestions() {
             ) : (
               "Submit"
             )}
-          </button>
+          </button> */}
         </form>
       </div>
     </>
