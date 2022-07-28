@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useStoreState } from "easy-peasy";
-import HorizontalScroll from "react-scroll-horizontal";
+import Typed from "react-typed";
 
 export default function CallToAction() {
   const statistics = useStoreState(({ Statistics }) => Statistics.statistics);
@@ -42,13 +42,28 @@ export default function CallToAction() {
     <div className="px-[7rem] w-full h-[800px] flex justify-between items-center call-to-action-container">
       <div className=" w-[1300px] h-auto call-to-action-sub__container">
         <h1
-          className="text-[50px] font-medium call-to-action-header"
+          className="text-[3vw] font-medium call-to-action-header h-auto"
           data-speed="0.95"
           data-aos="fade-down-right"
           data-aos-duration="1500"
         >
           The Quiz Bank contains a wide number of{" "}
-          <span className="text-[#041CF3]">Mathematics</span> questions.
+          <span className="text-[#041CF3]">
+            <Typed
+              strings={[
+                "mathematics",
+                "animal",
+                "entertainment",
+                "chemistry",
+                "history",
+                "biology",
+              ]}
+              typeSpeed={80}
+              backSpeed={30}
+              loop
+            />
+          </span>{" "}
+          questions.
         </h1>
         <p className="mt-[1rem] text-[22px] font-medium text-[#373737] call-to-action-sub__text">
           Quiz Bank API is proudly powered by PlanetScale database. Easily embed

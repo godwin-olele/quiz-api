@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 export default function Features() {
   useEffect(() => {
@@ -9,7 +10,7 @@ export default function Features() {
   }, []);
 
   return (
-    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header">
+    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header" id="features">
       <div className="flex justify-center items-center my-0 mx-auto ">
         <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
         <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] features-header-text">
@@ -20,7 +21,7 @@ export default function Features() {
       <div className="grid grid-cols-1 gap-[30px] w-full mt-[4rem]">
         <div className="flex justify-between items-center h-auto w-full feature-grid">
           <div
-            className="h-auto w-full"
+            className="h-auto w-full large-set-of-question"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -62,14 +63,20 @@ export default function Features() {
               There are many more questions in the universe that are yet to be
               added to our database. We haven't even scratched the surface! We
               want you to assist us in gathering the rest of these questions! To
-              add your question and answer to our collection, sign up and submit
-              it here.
+              add your question and answer to our collection,{" "}
+              <Link
+                to="/Signup"
+                className="border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto"
+              >
+                Sign-up
+              </Link>{" "}
+              and submit it here.
             </p>
           </div>
         </div>
         <div className="flex justify-between items-center h-auto w-full feature-grid">
           <div
-            className="h-auto w-full"
+            className="h-auto w-full large-set-of-question"
             data-aos="fade-right"
             data-aos-duration="1000"
           >

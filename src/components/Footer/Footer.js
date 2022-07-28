@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] pt-[7rem] pb-[3rem] social-container">
+    <div className="w-full h-auto bg-orange what-we-do__header text-center px-[7rem] pt-[7rem] pb-[3rem] social-container" id="footer">
       <p className="text-[2rem] text-[#ffffff] mb-[1rem] social">Built for:</p>
       <p className="text-[1.5rem] text-[#ffffff] flex justify-center items-center mt-[2rem] developer">
         Hashnode x PlanetScale Hackathon
