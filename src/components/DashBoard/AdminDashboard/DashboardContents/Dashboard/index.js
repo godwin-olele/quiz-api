@@ -48,7 +48,7 @@ export default function AdminDashboard({ user }) {
 
   return (
     <>
-      <div className='w-full h-[600px] py-[3rem] px-[1rem] admin-dashboard__Content'>
+      <div className='w-full h-[600px] py-[3rem] px-[1rem] admin-dashboard__Content dashboard-container-home'>
         <div className='left-nav rounded-[10px] bg-[#fff] p-[30px] flex items-center relative'>
           {isLoading ? (
             <div className='w-full flex justify-center items-center'>
