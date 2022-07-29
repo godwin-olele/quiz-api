@@ -7,13 +7,13 @@ import Questions from "../Questions";
 import { IconContext } from "react-icons";
 import { CgMenu } from "react-icons/cg";
 import { CgMenuMotion } from "react-icons/cg";
-import SearchBar from "search-bar-react";
+import { BiSearchAlt } from "react-icons/bi";
+
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function UserDashboardNav() {
-  // const [menu, setMenu] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -54,16 +54,16 @@ export default function UserDashboardNav() {
         QuizAPI
       </a>
       <div className="big-screen__searchBar">
-        <SearchBar
-          onChange={(text) => console.log(text)}
-          onFocus={() => console.log("focused")}
-          size="large"
-          width="500px"
-          autoFocus
-          placeholder="Search..."
-          onClear={() => console.log("closed")}
-          value="Initial Value"
-        />
+        <div class="search-box">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search something.."
+          />
+          <button class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
       </div>
       <div className="flex justify-between items-center avatar-and-name__container__mobile">
         <p className=" text-[18px] text-[#373737] font-semibold userName__mobile">
@@ -122,24 +122,22 @@ export default function UserDashboardNav() {
     <>
       <Nav />
       <main className="w-full h-auto bg-[#fafafa] p-[20px] flex dashboard-bg__mobile">
-        <div className="w-full small-screen__searchBar">
-          <div className="">
-            <SearchBar
-              
-              onChange={(text) => console.log(text)}
-              onFocus={() => console.log("focused")}
-              size="large"
-              width="100%"
-              autoFocus
-              placeholder="Search..."
-              onClear={() => console.log("closed")}
-              value="Initial Value"
+      <div className="w-full small-screen__searchBar flex justify-between items-center">
+          <div class="searchBox">
+            <input
+              class="searchInput"
+              type="text"
+              name=""
+              placeholder="Search"
             />
+            <button className="searchButton">
+            <IconContext.Provider value={{ className: "menu-icon" }}>
+              <BiSearchAlt />
+            </IconContext.Provider>
+            </button>
           </div>
-          <button onClick={toggleNav} className="mt-[1rem]">
-            <IconContext.Provider
-              value={{ className: "menu-icon" }}
-            >
+          <button onClick={toggleNav} className="mt-[1rem] btn">
+            <IconContext.Provider value={{ className: "menu-icon" }}>
               <div>{toggleMenu ? <CgMenuMotion /> : <CgMenu />}</div>
             </IconContext.Provider>
           </button>
