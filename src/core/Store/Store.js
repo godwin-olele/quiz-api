@@ -1,7 +1,7 @@
 import User from "../models/User.model"
 import { thunk, action, createStore } from "easy-peasy"
 
-import { getStatistics, getUserStatistics } from "../api"
+import { getStatistics, getUserStatistics, getAllUsers } from "../api"
 // todo
 // - [x] Sign up
 // - [x] Account verification
@@ -57,6 +57,7 @@ const Statistics = {
       const { status, message, data } = res
 
       if (status == "success") {
+        actions.setLoading(false)
         actions.setStatistics(data)
         return data
       }
@@ -76,16 +77,43 @@ const Statistics = {
   ),
 
   //actions
-  fetchUserStatistics: thunk(async (actions, payload) => {
+  fetchUserStatistics: thunk(
+    async (actions, payload, { getStoreState, getState }) => {
+      // const id = getStoreState(({ User }) => User.user.id)
+      // console.log(id)
+      // actions.setLoading(true)
+      //do fetch
+      try {
+        const { data: res } = await getUserStatistics(payload)
+        const { status, message, data } = res
+
+        if (status == "success") {
+          actions.setLoading(false)
+          actions.setUserStatistics(data)
+          return data
+        }
+      } catch (e) {
+        return null
+      }
+    }
+  ),
+
+  //model
+  users: [],
+  // method
+  setUsers: action((state, payload) => (state.users = payload)),
+
+  //actions
+  fetchAllUsers: thunk(async (actions, payload) => {
     // actions.setLoading(true)
     //do fetch
     try {
-      const { data: res } = await getUserStatistics(payload)
+      const { data: res } = await getAllUsers()
       const { status, message, data } = res
 
       if (status == "success") {
-        actions.setLoading(false)
-        actions.setUserStatistics(data)
+        //  actions.setLoading(false)
+        actions.setUsers(data.results)
         return data
       }
     } catch (e) {
