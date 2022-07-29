@@ -135,48 +135,58 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #f9ba8641 inset !important;
 }
 */
-.search-form {
-  position: relative;
-  width: 30rem;
-  background: #ef8733;
-  border-radius: var(--rad);
-}
 
-input[type="search"] {
-  width: 100%;
-  background: #f1f1f1;
-  padding: 0 1.6rem;
-  border-radius: var(--rad);
-  appearance: none;
-  transition: all var(--dur) var(--bez);
-  transition-property: width, border-radius;
-  z-index: 1;
+.search-box {
+  width: 350px;
   position: relative;
-  outline: none;
-  border: none;
-  height: 50px;
-  font-family: var(--font-fam);
-  color: var(--color-dark);
-  font-size: 18px;
-}
-.submit {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  font-weight: bold;
-  background: #ef8733;
-  border-radius: 10px;
-  color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-input[type="search"]:not(:placeholder-shown) {
-  border-radius: var(--rad) 0 0 var(--rad);
-  width: calc(100% - var(--btn-width));
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
+.search-input {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  padding: 15px 45px 15px 15px;
+  background-color: #eaeaeb;
+  color: #6c6c6c;
+  border-radius: 6px;
+  border: none;
+  transition: all 0.4s;
+}
+
+.search-input:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0 1px 5px #d2d2d2;
+  -moz-box-shadow: 0 1px 12px #d0d0d0;
+  -webkit-box-shadow: 0 1px 12px #c7c7c7;
+}
+
+.search-btn {
+  background-color: transparent;
+  font-size: 18px;
+  padding: 6px 9px;
+  margin-left: -45px;
+  border: none;
+  color: #6c6c6c;
+  transition: all 0.4s;
+  z-index: 10;
+}
+
+.search-btn:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  color: black;
+}
+
+.search-btn:focus {
+  outline: none;
+  color: black;
+}
 .small-screen__searchBar {
   display: none;
 }
@@ -449,7 +459,7 @@ input[type="search"]:not(:placeholder-shown) {
     padding-top: 7rem;
   }
   .userName__mobile {
-    font-size: 4vw
+    font-size: 4vw;
   }
   .search-form__mobile {
     display: none;
