@@ -630,4 +630,44 @@ input:-webkit-autofill:active {
   .large-set-of-question {
     grid-row-start: 2;
   }
+  .search-form__mobile {
+    display: none;
+  }
+  .avatar__mobile {
+    width: 40px;
+    height: 40px;
+  }
+  .small-screen__searchBar {
+    display: block;
+  }
+  .big-screen__searchBar {
+    display: none;
+  }
+  .menu-icon {
+    font-size: 25px;
+  }
+  .dashboard-bg__mobile {
+    display: block;
+  }
+    /** side navbar on dashboard for mobile **/
+    .left-nav__mobile {
+      position: absolute;
+      top: 13.3rem;
+      z-index: 9999;
+      min-height: auto;
+      margin: 0;
+      min-width: 200px;
+    }
+    .dashboard-bg__mobile {
+      display: block;
+      min-height: 100vh;
+    }
+    .mobile-hamburger {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 1rem;
+    }
+    .logout-container__mobile {
+      height: 100px;
+    }
 }
