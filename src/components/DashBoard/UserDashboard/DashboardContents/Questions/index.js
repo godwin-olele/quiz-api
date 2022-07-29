@@ -79,15 +79,15 @@ const RenderActions = ({ params }) =>
 //   },
 // ]
 
-{
-  /*checkboxSelection */
-}
+// {
+//   /*checkboxSelection */
+// }
 
 export default function Questions() {
   // let isLoading = useStoreState(({ Statistics }) => Statistics.loading)
   let id = useStoreState(({ User }) => User.user.id)
   let questions = useStoreState(({ User }) => User.questions)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const fetchUserQuestions = useStoreActions(
     ({ User }) => User.fetchUserQuestions
