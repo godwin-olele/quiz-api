@@ -1,79 +1,84 @@
-import React, { useState } from "react"
-import { MdOutlineDashboard } from "react-icons/md"
-import { IconContext } from "react-icons"
-import Dashboard from "../Dashboard"
-import SubmitQuestions from "../SubmitQuestions"
-import Feedback from "../Feedback"
-import SearchQuestions from "../SearchQuestions"
-import Questions from "../Questions"
+import React, { useState, useEffect } from "react";
+import Dashboard from "../Dashboard";
+import SubmitQuestions from "../SubmitQuestions";
+import Feedback from "../Feedback";
+import SearchQuestions from "../SearchQuestions";
+import Questions from "../Questions";
+import { IconContext } from "react-icons";
+import { CgMenu } from "react-icons/cg";
+import { CgMenuMotion } from "react-icons/cg";
+import SearchBar from "search-bar-react";
 
-import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
-import { useStoreActions, useStoreState } from "easy-peasy"
+import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function UserDashboardNav() {
+  // const [menu, setMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", changeWidth);
+
+    return () => {
+      window.removeEventListener("resize", changeWidth);
+    };
+  }, []);
+
   // store
-  const user = useStoreState(({ User }) => User.user)
-  const logoutUser = useStoreActions(({ User }) => User.logout)
+  const user = useStoreState(({ User }) => User.user);
+  const logoutUser = useStoreActions(({ User }) => User.logout);
   const logout = () => {
-    logoutUser()
-    window.location.href = "/"
-  }
+    logoutUser();
+    window.location.href = "/";
+  };
 
-  const navigate = useNavigate()
-  const params = useParams()
+  const navigate = useNavigate();
+  const params = useParams();
 
-  const activeTab = params["*"]
+  const activeTab = params["*"];
 
-  const { avatar, bio, first_name, id, last_name, username } = user
+  const { avatar, bio, first_name, id, last_name, username } = user;
 
   const Nav = () => (
-    <nav className='navigation-dashboard bg-[#fff]'>
-      <a href='/' className='brand-name'>
+    <nav className="navigation-dashboard bg-[#fff]">
+      <a href="/" className="brand-name brand-name__mobile">
         QuizAPI
       </a>
-      <button className='hamburger'>
-        {/* icon from heroicons.com */}
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          className='h-5 w-5'
-          viewBox='0 0 20 20'
-          fill='white'
-        >
-          <path
-            fillRule='evenodd'
-            d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z'
-            clipRule='evenodd'
-          />
-        </svg>
-      </button>
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        role='search'
-        className='search-form'
-      >
-        <input
-          id='search'
-          type='search'
-          placeholder='Search...'
+      <div className="big-screen__searchBar">
+        <SearchBar
+          onChange={(text) => console.log(text)}
+          onFocus={() => console.log("focused")}
+          size="large"
+          width="500px"
           autoFocus
-          required
+          placeholder="Search..."
+          onClear={() => console.log("closed")}
+          value="Initial Value"
         />
-        <button type='submit' className='submit'>
-          Go
-        </button>
-      </form>
-      <div className='flex justify-between items-center w-[200px]'>
-        <p className=' text-[18px] text-[#373737] font-semibold'>{username}</p>
+      </div>
+      <div className="flex justify-between items-center avatar-and-name__container__mobile">
+        <p className=" text-[18px] text-[#373737] font-semibold userName__mobile">
+          {username}
+        </p>
         <div>
           <img
             src={avatar}
-            alt='avater'
-            className='rounded-full w-[60px] h-[60px] object-cover'
+            alt="avatar"
+            className="rounded-full w-[50px] h-[50px] object-cover ml-[1rem] avatar__mobile"
           />
         </div>
       </div>
     </nav>
-  )
+  );
 
   const tabs = [
     {
@@ -96,7 +101,7 @@ export default function UserDashboardNav() {
       icon: "/images/search.png",
       to: ["search-questions"],
     },
-  ]
+  ];
 
   const TabTitle = ({ title, icon, isActive, link }) => (
     <Link to={link}>
@@ -105,56 +110,80 @@ export default function UserDashboardNav() {
           isActive && "border-r-2 border-orange text-orange"
         }`}
       >
-        <img src={icon} alt='' className='w-[30px] h-[30px]' />
-        <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
+        <img src={icon} alt="" className="w-[30px] h-[30px]" />
+        <p className="text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]">
           {title}
         </p>
       </div>
     </Link>
-  )
+  );
 
   return (
     <>
       <Nav />
-      <main className='w-full h-auto bg-[#fafafa] p-[20px] flex'>
-        <div className='w-[350px] mr-[3rem] min-h-screen rounded-[10px] bg-[#ffffff] py-[3rem] left-nav'>
-          <div className='w-full h-auto grid grid-cols-1'>
-            {tabs.map(({ title, icon, to }, index) => (
-              <TabTitle
-                title={title}
-                icon={icon}
-                isActive={to.includes(activeTab)}
-                link={to[0]}
-                key={index}
-              />
-            ))}
+      <main className="w-full h-auto bg-[#fafafa] p-[20px] flex dashboard-bg__mobile">
+        <div className="w-full small-screen__searchBar">
+          <div className="">
+            <SearchBar
+              
+              onChange={(text) => console.log(text)}
+              onFocus={() => console.log("focused")}
+              size="large"
+              width="100%"
+              autoFocus
+              placeholder="Search..."
+              onClear={() => console.log("closed")}
+              value="Initial Value"
+            />
           </div>
-          <div className='border-t-[1px] border-[#c4c4c47b] h-[200px] mt-[5rem] flex items-center'>
-            <div
-              onClick={logout}
-              className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '
+          <button onClick={toggleNav} className="mt-[1rem]">
+            <IconContext.Provider
+              value={{ className: "menu-icon" }}
             >
-              <img
-                src='/images/logout.png'
-                alt=''
-                className='w-[30px] h-[30px]'
-              />
-              <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
-                Log Out
-              </p>
+              <div>{toggleMenu ? <CgMenuMotion /> : <CgMenu />}</div>
+            </IconContext.Provider>
+          </button>
+        </div>
+        {(toggleMenu || screenWidth > 1000) && (
+          <div className="w-[350px] mr-[3rem] min-h-screen rounded-[10px] bg-[#ffffff] py-[3rem] left-nav left-nav__mobile">
+            <div className="w-full h-auto grid grid-cols-1">
+              {tabs.map(({ title, icon, to }, index) => (
+                <TabTitle
+                  title={title}
+                  icon={icon}
+                  isActive={to.includes(activeTab)}
+                  link={to[0]}
+                  key={index}
+                />
+              ))}
+            </div>
+            <div className="border-t-[1px] border-[#c4c4c47b] h-[200px] mt-[5rem] flex items-center logout-container__mobile">
+              <div
+                onClick={logout}
+                className="flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] "
+              >
+                <img
+                  src="/images/logout.png"
+                  alt=""
+                  className="w-[30px] h-[30px]"
+                />
+                <p className="text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]">
+                  Log Out
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* content */}
         <Routes>
-          <Route path='/*' element={<Dashboard user={user} />} />
-          <Route path='/submit-questions' element={<SubmitQuestions />} />
-          <Route path='/submit-feedback' element={<Feedback />} />
-          <Route path='/search-questions' element={<SearchQuestions />} />
-          <Route path='/questions' element={<Questions />} />
+          <Route path="/*" element={<Dashboard user={user} />} />
+          <Route path="/submit-questions" element={<SubmitQuestions />} />
+          <Route path="/submit-feedback" element={<Feedback />} />
+          <Route path="/search-questions" element={<SearchQuestions />} />
+          <Route path="/questions" element={<Questions />} />
         </Routes>
       </main>
     </>
-  )
+  );
 }

@@ -10,7 +10,10 @@ export default function Features() {
   }, []);
 
   return (
-    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header" id="features">
+    <div
+      className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header"
+      id="features"
+    >
       <div className="flex justify-center items-center my-0 mx-auto ">
         <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
         <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] features-header-text">
@@ -85,9 +88,21 @@ export default function Features() {
             </h1>
             <p className="text-[18px] mt-[0.5rem] text-[#373737] feature-grid-sub-header-text-1">
               Our easy to use & simple RESTful API can easily be integrated into
-              both websites & applications. The API helper form alongside our
-              well-written API documentation makes the integration process
-              easier.
+              both websites & applications. The{" "}
+              <Link
+                to="/api-helper"
+                className="border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto"
+              >
+                API helper form
+              </Link>{" "}
+              alongside our well-written API{" "}
+              <Link
+                to="/api-helper"
+                className="border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto"
+              >
+                documentation
+              </Link>{" "}
+              makes the integration process easier.
             </p>
           </div>
           <img

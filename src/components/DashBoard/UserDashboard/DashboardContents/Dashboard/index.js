@@ -46,7 +46,7 @@ export default function Dashboard({ user }) {
     <>
       {/* // show a skeleton here */}
 
-      <div className='w-full h-screen grid grid-cols-3 gap-x-[50px] py-[3rem] px-[1rem]'>
+      <div className='w-full h-screen grid grid-cols-3 gap-x-[50px] py-[3rem] px-[1rem] dashboard-container-home'>
         <div
           onClick={() => navigate("questions")}
           className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'

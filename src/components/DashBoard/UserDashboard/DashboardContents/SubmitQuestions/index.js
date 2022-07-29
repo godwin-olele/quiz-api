@@ -178,7 +178,7 @@ export default function SubmitQuestions() {
   return (
     <>
       <ToastContainer />
-      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center items-center'>
+      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center items-center dashboard-submit-question-container'>
         <form
           className=' w-[600px] h-auto submit-question-form'
           onSubmit={handleSubmit}

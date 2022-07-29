@@ -3,7 +3,7 @@ import React from "react";
 export default function SearchQuestions() {
   return (
     <>
-      <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center">
+      <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center dashboard-search-question-container">
         <form className=" w-[600px] h-auto submit-question-form">
           <h1 className="text-[#000000] text-[1.7rem] font-medium">
             Search Question

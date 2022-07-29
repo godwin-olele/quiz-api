@@ -15,6 +15,7 @@ import Store from "./core/Store/Store"
 import ProtectedRoutes from "./components/DashBoard/ProtectedRoutes"
 import Home from "./components/DashBoard"
 import ApiHelper from "./components/ApiHelper/ApiHelper"
+import UserDashboard from "./components/DashBoard/UserDashboard/UserDashboard"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
