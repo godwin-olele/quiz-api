@@ -477,7 +477,62 @@ input:-webkit-autofill:active {
   .menu-icon {
     font-size: 25px;
   }
+
+  /** search bar mobile **/
+  .searchBox {
+    position: absolute;
+    background: #2f3640;
+    height: auto;
+    border-radius: 40px;
+    padding: 10px;
+
 }
+
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 3px;
+}
+
+.searchBox:hover > .searchButton {
+  background: white;
+  color : #2f3640;
+}
+
+.searchButton {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+
+}
+
+
+}
+@media screen and (max-width: 620px) {
+  .searchBox:hover > .searchInput {
+      width: 150px;
+      padding: 0 6px;
+  }
+  }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   .call-to-action-container {
@@ -649,25 +704,25 @@ input:-webkit-autofill:active {
   .dashboard-bg__mobile {
     display: block;
   }
-    /** side navbar on dashboard for mobile **/
-    .left-nav__mobile {
-      position: absolute;
-      top: 13.3rem;
-      z-index: 9999;
-      min-height: auto;
-      margin: 0;
-      min-width: 200px;
-    }
-    .dashboard-bg__mobile {
-      display: block;
-      min-height: 100vh;
-    }
-    .mobile-hamburger {
-      display: block;
-      font-size: 40px;
-      margin-bottom: 1rem;
-    }
-    .logout-container__mobile {
-      height: 100px;
-    }
+  /** side navbar on dashboard for mobile **/
+  .left-nav__mobile {
+    position: absolute;
+    top: 13.3rem;
+    z-index: 9999;
+    min-height: auto;
+    margin: 0;
+    min-width: 200px;
+  }
+  .dashboard-bg__mobile {
+    display: block;
+    min-height: 100vh;
+  }
+  .mobile-hamburger {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 1rem;
+  }
+  .logout-container__mobile {
+    height: 100px;
+  }
 }

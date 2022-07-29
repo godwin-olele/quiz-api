@@ -5,6 +5,7 @@ import Users from "../Users";
 import { IconContext } from "react-icons";
 import { CgMenu } from "react-icons/cg";
 import { CgMenuMotion } from "react-icons/cg";
+import { BiSearchAlt } from "react-icons/bi";
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import { useStoreActions, useStoreState } from "easy-peasy";
@@ -116,20 +117,21 @@ export default function AdminDashboardNav() {
     <>
       <Nav />
       <main className="w-full h-auto bg-[#fafafa] p-[20px] flex dashboard-bg__mobile">
-        <div className="w-full small-screen__searchBar flex justify-between">
-          <div class="search-box">
+        <div className="w-full small-screen__searchBar flex justify-between items-center">
+          <div class="searchBox">
             <input
-              class="search-input"
+              class="searchInput"
               type="text"
-              placeholder="Search something.."
+              name=""
+              placeholder="Search"
             />
-            <button class="search-btn">
-              <IconContext.Provider value={{ className: "search-btn" }}>
-                <CgMenuMotion />
-              </IconContext.Provider>
+            <button className="searchButton">
+            <IconContext.Provider value={{ className: "menu-icon" }}>
+              <BiSearchAlt />
+            </IconContext.Provider>
             </button>
           </div>
-          <button onClick={toggleNav} className="mt-[1rem]">
+          <button onClick={toggleNav} className="mt-[1rem] btn">
             <IconContext.Provider value={{ className: "menu-icon" }}>
               <div>{toggleMenu ? <CgMenuMotion /> : <CgMenu />}</div>
             </IconContext.Provider>
