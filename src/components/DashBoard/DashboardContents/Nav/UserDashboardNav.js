@@ -24,7 +24,7 @@ export default function UserDashboardNav() {
 
   const Nav = () => (
     <nav className='navigation-dashboard bg-[#fff]'>
-      <a href='/' className='brand-name'>
+      <a href='/' className='brand-name brand-name__mobile'>
         QuizAPI
       </a>
       <button className='hamburger'>
@@ -64,7 +64,7 @@ export default function UserDashboardNav() {
           <img
             src={avatar}
             alt='avater'
-            className='rounded-full w-[60px] h-[60px] object-cover'
+            className='rounded-full w-[50px] h-[50px] object-cover'
           />
         </div>
       </div>

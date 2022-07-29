@@ -5,7 +5,8 @@ import DashboardSkeleton from "../../Skeletons/DashboardSkeleton"
 import { useStoreState } from "easy-peasy"
 
 export default function UserDashboard() {
-  let UIloading = useStoreState(({ User }) => User.loading)
+  //let UIloading = useStoreState(({ User }) => User.loading)
+  //{UIloading ? <DashboardSkeleton /> : <DashboardNav />}
 
-  return <>{UIloading ? <DashboardSkeleton /> : <DashboardNav />}</>
+  return <><DashboardNav /></>
 }

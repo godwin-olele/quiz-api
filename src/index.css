@@ -14,7 +14,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  overflow: clip;
+ /* overflow: clip;
+*/
 }
 
 code {
@@ -403,6 +404,13 @@ input[type="search"]:not(:placeholder-shown) {
   .large-set-of-question {
     grid-row-start: 2;
   }
+
+
+  /** user dashboard styling for mobile **/
+  .navigation-dashboard  {
+    padding: 1rem 20px;
+  }
+
 }
 
 
