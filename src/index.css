@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -449,7 +450,7 @@ input[type="search"]:not(:placeholder-shown) {
     padding-top: 7rem;
   }
   .userName__mobile {
-    font-size: 4vw
+    font-size: 4vw;
   }
   .search-form__mobile {
     display: none;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import { useStoreActions, useStoreState } from "easy-peasy"
+import Chip from "@mui/material/Chip"
 
 const _columns = [
   { field: "id", headerName: "ID", width: 100 },
@@ -28,11 +29,38 @@ const _columns = [
   },
 ]
 
-const RenderActions = ({ params }) =>
+const RenderActions = ({ params, onClick }) =>
   params.row.is_staff ? (
-    <h1 className='text-red'>Remove</h1>
+    <Chip
+      label='remove'
+      size='small'
+      onClick={onClick}
+      sx={{ width: "70px", color: "#D82525", backgroundColor: "#fafafa" }}
+    />
   ) : (
-    <h3 className='text-green-300'>add</h3>
+    <Chip
+      label='add'
+      size='small'
+      onClick={onClick}
+      sx={{ width: "70px", color: "#25D842", backgroundColor: "#fafafa" }}
+    />
+  )
+
+const RenderStaff = ({ params }) =>
+  params.row.is_staff ? (
+    <Chip
+      label='Staff'
+      size='small'
+      onClick={() => {}}
+      sx={{ width: "80px", color: "#F38704", backgroundColor: "#FAEFE2" }}
+    />
+  ) : (
+    <Chip
+      label='User'
+      size='small'
+      onClick={() => {}}
+      sx={{ width: "80px", color: "#331D02", backgroundColor: "#E3E3E3" }}
+    />
   )
 
 export default function DataTable() {
@@ -75,14 +103,16 @@ export default function DataTable() {
         headerName: "Status",
         type: "string",
         width: 150,
-        renderCell: (params) => (params.row.is_staff ? "Staff" : "User"),
+        renderCell: (params) => <RenderStaff params={params} />,
       },
       {
         field: "actions",
         headerName: "Actions",
         type: "actions",
         width: 150,
-        renderCell: (params) => <RenderActions params={params} />,
+        renderCell: (params) => (
+          <RenderActions params={params} onClick={() => {}} />
+        ),
       },
     ],
     []
