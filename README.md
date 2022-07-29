@@ -6,12 +6,28 @@
 
 Work on,
 
-- [ ] Sign up
-- [ ] Account verification
-- [ ] Login
-- [ ] Users dashboard
-- [ ] Submission of questions
+- [x] Sign up
+- [x] Account verification
+- [x] Login
+- [x] Users dashboard
+- [x] Submission of questions
 - [ ] Admin Dashboard
+- [x] Landing page statistics
+- [x] Logged in Users' Question List
+- [x] Logged in Users' Question stat
+- [x] API helper form
+- [ ] Admin Dashboard verification of questions
+- [ ] Users Administration, make and "unmake" staff user
+- [x] Feedback form
+
+// 1. Question submission >
+// 2. Landing page statistics >
+// 3. Logged in Users' Question List >
+// 4. Logged in Users' Question stat >
+// 5. API helper form
+// 6. Admin Dashboard verification of questions.
+// 7. Users Administration, make and "unmake" staff user.
+// 8. Feedback form. >
 
 # Getting Started with Create React App
 

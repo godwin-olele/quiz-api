@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress"
+import { useNavigate } from "react-router-dom"
 
 import CircularProgress from "@mui/material/CircularProgress"
 
@@ -15,6 +16,7 @@ export default function Dashboard({ user }) {
   const fetchUserStatistics = useStoreActions(
     ({ Statistics }) => Statistics.fetchUserStatistics
   )
+  const navigate = useNavigate()
 
   const fetchData = async () => {
     await fetchUserStatistics(user.id)
@@ -45,7 +47,10 @@ export default function Dashboard({ user }) {
       {/* // show a skeleton here */}
 
       <div className='w-full h-screen grid grid-cols-3 gap-x-[50px] py-[3rem] px-[1rem]'>
-        <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative'>
+        <div
+          onClick={() => navigate("questions")}
+          className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'
+        >
           {isLoading ? (
             <div className='w-full flex justify-center items-center'>
               <CircularProgress />
@@ -60,7 +65,7 @@ export default function Dashboard({ user }) {
             </div>
           )}
         </div>
-        <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative'>
+        <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'>
           {isLoading ? (
             <div className='w-full flex justify-center items-center'>
               <CircularProgress />
@@ -81,7 +86,7 @@ export default function Dashboard({ user }) {
             </div>
           )}
         </div>
-        <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative'>
+        <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'>
           {isLoading ? (
             <div className='w-full flex justify-center items-center'>
               <CircularProgress />

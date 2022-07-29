@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { MdOutlineDashboard } from "react-icons/md"
 import { IconContext } from "react-icons"
-import Dashboard from "../Dashboard/Dashboard"
-import SubmitQuestions from "../SubmitQuestions/SubmitQuestions"
-import Feedback from "../Feedback/Feedback"
-import SearchQuestions from "../SearchQuestions/SearchQuestions"
+import Dashboard from "../Dashboard"
+import SubmitQuestions from "../SubmitQuestions"
+import Feedback from "../Feedback"
+import SearchQuestions from "../SearchQuestions"
+import Questions from "../Questions"
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
 import { useStoreActions, useStoreState } from "easy-peasy"
@@ -12,13 +13,16 @@ import { useStoreActions, useStoreState } from "easy-peasy"
 export default function UserDashboardNav() {
   // store
   const user = useStoreState(({ User }) => User.user)
+  const logoutUser = useStoreActions(({ User }) => User.logout)
+  const logout = () => {
+    logoutUser()
+    window.location.href = "/"
+  }
 
   const navigate = useNavigate()
   const params = useParams()
 
   const activeTab = params["*"]
-
-  // const loadingUserState = useStoreActions
 
   const { avatar, bio, first_name, id, last_name, username } = user
 
@@ -75,22 +79,22 @@ export default function UserDashboardNav() {
     {
       title: "Dashboard",
       icon: "/images/Dashboard.png",
-      to: "",
+      to: ["", "questions"], // place the important route first
     },
     {
       title: "Submit Questions",
       icon: "/images/submit.png",
-      to: "submit-questions",
+      to: ["submit-questions"],
     },
     {
       title: "Feedback",
       icon: "/images/Feedback.png",
-      to: "feedback",
+      to: ["submit-feedback"],
     },
     {
       title: "Search Questions",
       icon: "/images/search.png",
-      to: "search-questions",
+      to: ["search-questions"],
     },
   ]
 
@@ -98,7 +102,7 @@ export default function UserDashboardNav() {
     <Link to={link}>
       <div
         className={`flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ${
-          isActive && "border-r-2 border-orange"
+          isActive && "border-r-2 border-orange text-orange"
         }`}
       >
         <img src={icon} alt='' className='w-[30px] h-[30px]' />
@@ -119,14 +123,17 @@ export default function UserDashboardNav() {
               <TabTitle
                 title={title}
                 icon={icon}
-                isActive={activeTab == to}
-                link={to}
+                isActive={to.includes(activeTab)}
+                link={to[0]}
                 key={index}
               />
             ))}
           </div>
           <div className='border-t-[1px] border-[#c4c4c47b] h-[200px] mt-[5rem] flex items-center'>
-            <div className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '>
+            <div
+              onClick={logout}
+              className='flex justify-start items-center w-full  px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] '
+            >
               <img
                 src='/images/logout.png'
                 alt=''
@@ -143,8 +150,9 @@ export default function UserDashboardNav() {
         <Routes>
           <Route path='/*' element={<Dashboard user={user} />} />
           <Route path='/submit-questions' element={<SubmitQuestions />} />
-          <Route path='/feedback' element={<Feedback />} />
+          <Route path='/submit-feedback' element={<Feedback />} />
           <Route path='/search-questions' element={<SearchQuestions />} />
+          <Route path='/questions' element={<Questions />} />
         </Routes>
       </main>
     </>
