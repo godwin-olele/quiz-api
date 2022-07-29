@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { CgMenu } from "react-icons/cg";
+import { CgMenuMotion } from "react-icons/cg";
 
 export default function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -89,12 +90,8 @@ export default function Navbar() {
       </div>
 
       <button onClick={toggleNav} className="btn">
-      <IconContext.Provider
-          value={{ className: "scroll-arrow" }}
-        >
-          <div>
-            <GiHamburgerMenu />
-          </div>
+        <IconContext.Provider value={{ className: "scroll-arrow" }}>
+          <div>{toggleMenu ? <CgMenuMotion /> : <CgMenu />}</div>
         </IconContext.Provider>
       </button>
     </nav>

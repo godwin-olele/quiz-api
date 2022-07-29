@@ -21,3 +21,22 @@
 
 }
 
+@media only screen and (min-width: 650px) and (max-width: 900px)  {
+    .left-bg-login {
+        display: none;
+    }
+    .form-section {
+        width: 100%;
+    }
+    .form-section-2 {
+        width: 100%;
+    }
+    .what-we-do__header-form {
+        padding: 0 100px;
+        height: 100vh;
+    }
+    .google-sign-in {
+        font-size: 18px;
+    }
+}
+

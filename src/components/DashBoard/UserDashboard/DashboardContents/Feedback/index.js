@@ -105,7 +105,7 @@ export default function Feedback() {
     <>
       <ToastContainer />
 
-      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
+      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center dashboard-feedback-container'>
         <form
           className=' w-[600px] h-auto submit-question-form'
           onSubmit={loading ? (e) => e.preventDefault() : handleSubmit}
