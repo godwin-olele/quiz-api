@@ -24,10 +24,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} />
-        <Route path='api-helper' element={<ApiHelper />} />
+        <Route path='api' element={<ApiHelper />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
-        <Route path='admin' element={ <AdminDashboardNav/>} />
+        {/*<Route path='admin' element={ <AdminDashboardNav/>} /> */}
        
         <Route
           path='/auth/email-verification'
