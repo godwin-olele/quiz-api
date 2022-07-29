@@ -77,23 +77,26 @@ const Statistics = {
   ),
 
   //actions
-  fetchUserStatistics: thunk(async (actions, payload, { getStoreState }) => {
-    const id = getStoreState((state) => state.user.id)
-    // actions.setLoading(true)
-    //do fetch
-    try {
-      const { data: res } = await getUserStatistics(id)
-      const { status, message, data } = res
+  fetchUserStatistics: thunk(
+    async (actions, payload, { getStoreState, getState }) => {
+      // const id = getStoreState(({ User }) => User.user.id)
+      // console.log(id)
+      // actions.setLoading(true)
+      //do fetch
+      try {
+        const { data: res } = await getUserStatistics(payload)
+        const { status, message, data } = res
 
-      if (status == "success") {
-        actions.setLoading(false)
-        actions.setUserStatistics(data)
-        return data
+        if (status == "success") {
+          actions.setLoading(false)
+          actions.setUserStatistics(data)
+          return data
+        }
+      } catch (e) {
+        return null
       }
-    } catch (e) {
-      return null
     }
-  }),
+  ),
 
   //model
   users: [],

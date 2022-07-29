@@ -18,7 +18,7 @@ function Home() {
   const fetchData = async () => {
     fetchUserDetails()
       .then((data) => {
-        console.log("data", data)
+        // console.log("data", data)
         if (data == "unauthorized") {
           navigate("/Login") // add queryString
           localStorage.clear()

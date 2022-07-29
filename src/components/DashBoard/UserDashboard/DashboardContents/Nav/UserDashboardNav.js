@@ -6,7 +6,7 @@ import SubmitQuestions from "../SubmitQuestions"
 import Feedback from "../Feedback"
 import SearchQuestions from "../SearchQuestions"
 import Questions from "../Questions"
-import SVG from "react-inlinesvg"
+
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom"
 import { useStoreActions, useStoreState } from "easy-peasy"
 
@@ -78,27 +78,22 @@ export default function UserDashboardNav() {
   const tabs = [
     {
       title: "Dashboard",
-      // icon: "/images/Dashboard.png",
-      icon: "/images/icons/dashboard.svg",
+      icon: "/images/Dashboard.png",
       to: ["", "questions"], // place the important route first
     },
     {
       title: "Submit Questions",
-      // icon: "/images/submit.png",
-      icon: "/images/icons/doc_add.svg",
-
+      icon: "/images/submit.png",
       to: ["submit-questions"],
     },
     {
       title: "Feedback",
-      // icon: "/images/Feedback.png",
-      icon: "/images/icons/feedback.svg",
+      icon: "/images/Feedback.png",
       to: ["submit-feedback"],
     },
     {
       title: "Search Questions",
-      // icon: "/images/search.png",
-      icon: "/images/icons/search.svg",
+      icon: "/images/search.png",
       to: ["search-questions"],
     },
   ]
@@ -106,12 +101,14 @@ export default function UserDashboardNav() {
   const TabTitle = ({ title, icon, isActive, link }) => (
     <Link to={link}>
       <div
-        className={`flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] text-[#4c4c4c] ${
-          isActive && "border-r-2 border-orange text-[#F38704]"
+        className={`flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ${
+          isActive && "border-r-2 border-orange text-orange"
         }`}
       >
-        <img src={icon} alt='' className='w-[30px] h-[30px] fill-[#F38704]' />
-        <p className='text-[17px] font-semibold ml-[1.5rem]'>{title}</p>
+        <img src={icon} alt='' className='w-[30px] h-[30px]' />
+        <p className='text-[17px] text-[#4c4c4c] font-semibold ml-[1.5rem]'>
+          {title}
+        </p>
       </div>
     </Link>
   )

@@ -277,7 +277,7 @@ export const getPublicQuestions = async (
   category,
   difficulty,
   type,
-  search,
+  search
 ) =>
   await fetch.get(
     `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`
@@ -355,24 +355,30 @@ export const deleteCategoryById = async (id) =>
 export const updateCategoryById = async (id, body) =>
   await fetch.put(`/categories/${id}/`, body)
 
+// /api/v1/users/:userid/staff
+export const addUserStaff = async (userId) =>
+  await fetch.post(`/users/${userId}/staff`)
+
+export const removeUserStaff = async (userId) =>
+  await fetch.delete(`/users/${userId}/staff`)
+
 //hurray... i hv finnished
 
-// // when err on login 
+// // when err on login
 // error: {
 //   credential: "is required",
 //   password: "is required",
 // }
 
-
-// // when err on signup 
-// error: { 
+// // when err on signup
+// error: {
 //   username: "is required",
 //  email: "is required",
-//   password: "is required", 
-//   password2: "is required" 
+//   password: "is required",
+//   password2: "is required"
 // }
 
-// // when err on submit question 
+// // when err on submit question
 
 // error: {
 //   question: "is required",
