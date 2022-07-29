@@ -1,156 +1,263 @@
-import React, { useState } from "react";
-import { validateSendFeedback } from "../../utils/validators";
-import { TextField } from "../Widgets/InputFields";
-import { createFeedback } from "../../core/api";
-import { toast, ToastContainer } from "react-toastify";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import Alert from "@mui/material/Alert"
+import IconButton from "@mui/material/IconButton"
+import { MdOutlineContentCopy } from "react-icons/md"
+import { ToastContainer, toast } from "react-toastify"
+
+import { validateApiHelper } from "../../utils/validators"
+import {
+  TextField,
+  CustomLoaderDropdownInput,
+  DropdownInput,
+} from "../Widgets/InputFields"
+import { LoadingButton } from "../Widgets/Button/MyButtons"
+
+import { getAllCategories } from "../../core/api"
+import { API_URL } from "../../constants"
 
 export default function ApiHelper() {
   const [form, setForm] = useState({
-    question: "",
-    issue: "",
-    explanation: "",
-  });
+    limit: "",
+    category: "",
+    difficulty: "",
+    type: "",
+  })
+
+  const typeList = ["multiple-choice", "True / False"]
+  const difficultyList = ["easy", "medium", "hard"]
 
   // ui stuff
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [isCatLoading, setCatLoading] = useState(true)
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+  const [errors, setErrors] = useState({})
+  const [url, setUrl] = useState(null)
+  const [categories, setCategories] = useState([])
 
-    // do validate
-  };
+  const fetchCategories = () => {
+    setCatLoading(true)
+    // fetchCategories
+    getAllCategories()
+      .then(({ data: res }) => {
+        const { status, message, data } = res
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+        if (data) {
+          setCategories(data.results)
+          setCatLoading(false)
+        }
+        // setCatLoading(false)
+        // setCategories(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
 
-    // do submit
-    const possibleErrors = validateSendFeedback(form);
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
+  const validate = (form) => {
+    const possibleErrors = validateApiHelper(form)
 
     if (Object.keys(possibleErrors).length > 0) {
-      setLoading(false);
-      return setErrors(possibleErrors);
+      setErrors(possibleErrors)
+      return false
     }
 
-    setErrors({});
+    setErrors({})
+    return true
+  }
 
-    // continue
+  const generateUrl = async (limit, category, difficulty, type) => {
+    // `/questions?limit=${limit}&category=${limit}&difficulty=${difficulty}&type=${type}&search=${search}`
+    setLoading(true)
+    const uri = `${API_URL}questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}`
+    await setTimeout(() => setLoading(false), 500)
 
-    createFeedback(form)
-      .then(({ data: res }) => {
-        const { status, message, data } = res;
-        console.log(res);
+    setUrl(uri)
+    return uri
+  }
 
-        if (status == "success") {
-          toast.success(message);
-        }
+  const handleChange = (e) => {
+    const newForm = {
+      ...form,
+      [e.target.name]: e.target.value,
+    }
 
-        // setTimeout(next, 5000)
-      })
-      .catch(({ response: { data: res } }) => {
-        const { status, message, error } = res;
+    setForm(newForm)
 
-        console.log(res);
+    // do validate
+    validate(newForm)
+    if (url) setUrl(null)
+  }
 
-        if (Array.isArray(error)) {
-          setLoading(false);
-          return toast.error(error[0]);
-        }
+  const handleCategoryChange = (e) => {
+    const cat = categories.find((cat) => (cat.name = e.target.value))
 
-        // const keys = Object.keys(error)
-        // keys.forEach((e) => {
-        //   setErrors({
-        //     [e]: error[e][0],
-        //   })
-        // })
-        setLoading(false);
-      });
-  };
+    const newForm = {
+      ...form,
+      [e.target.name]: e.target.value,
+    }
+    setForm(newForm)
 
-  const { question, issue, explanation } = form;
+    // do validate
+    validate(newForm)
+    if (url) setUrl(null)
+  }
+
+  const { limit, category, difficulty, type } = form
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    // do submit
+    if (validate(form)) generateUrl(limit, category, difficulty, type)
+  }
+
   return (
     <>
       <ToastContainer />
-
-      <div className="h-screen w-full flex what-we-do__header">
-        <div className="bg-[#f387047e] h-screen w-full px-[5rem]">
-          <div className="w-full h-auto mt-[5rem] flex flex-col justify-between">
-            <div className="flex justify-between items-center">
-              <a href="/" className="brand-name">
+      <div className='h-screen w-full flex what-we-do__header'>
+        <div className='bg-[#f387047e] h-screen w-full px-[5rem]'>
+          <div className='w-full h-auto mt-[5rem] flex flex-col justify-between'>
+            <div className='flex justify-between items-center'>
+              <a href='/' className='brand-name'>
                 QuizAPI
               </a>
-              <ul className="flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 ">
+              <ul className='flex justify-between items-center w-[130px] text-[18px] font-medium text-[#454545] underline underline-offset-4 '>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <a href="/about">Api</a>
+                  <a href='/about'>Api</a>
                 </li>
               </ul>
             </div>
-            <div className=" w-full h-[400px] mt-[6rem] flex justify-center items-center">
-              <img src="/images/flame-8.png" alt="" className="w-full"/>
+            <div className=' w-full h-[400px] mt-[6rem] flex justify-center items-center'>
+              <img src='/images/flame-8.png' alt='' className='w-full' />
             </div>
           </div>
         </div>
-        <div className="bg-[#fff] w-[1700px] h-screen flex justify-center items-center">
-          <div className="w-full h-auto py-[3rem] px-[1rem] flex justify-center">
-            <form className=" w-[600px] h-auto submit-question-form">
-              <h1 className="text-[#000000] text-[1.7rem] font-medium">
+        <div className='bg-[#fff] w-[1700px] h-screen flex justify-center items-center'>
+          <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
+            {/* main content */}
+            <form
+              onSubmit={handleSubmit}
+              className=' w-[600px] h-auto submit-question-form'
+            >
+              <h1 className='text-[#000000] text-[1.7rem] font-medium'>
                 API Helper
               </h1>
 
-              <div className="mt-[2rem]">
+              <div className='mt-[2rem]'>
                 <TextField
-                  label="Number of Questions"
-                  name="question"
-                  value={question}
+                  label='Number of Questions'
+                  name='limit'
+                  value={limit}
                   onChange={handleChange}
-                  error={errors.question}
-                  placeholder="10"
+                  error={errors.limit}
+                  placeholder='10'
+                />
+
+                {/* <TextField
+                  label='Category'
+                  name='explanation'
+                  value={category}
+                  onChange={handleChange}
+                  error={errors.category}
+                  placeholder='Select category'
+                /> */}
+
+                <CustomLoaderDropdownInput
+                  label='Category'
+                  name='category'
+                  value={category}
+                  onChange={handleCategoryChange}
+                  error={errors.category}
+                  placeholder='Select category'
+                  isLoading={isCatLoading}
+                  options={categories}
+                  defaultOption='Select category'
+                />
+
+                <DropdownInput
+                  label='Difficulty'
+                  name='difficulty'
+                  value={difficulty}
+                  onChange={handleChange}
+                  error={errors.difficulty}
+                  options={difficultyList}
+                  defaultOption='Select Difficulty'
+                />
+
+                <DropdownInput
+                  label='Type'
+                  name='type'
+                  value={type}
+                  onChange={handleChange}
+                  error={errors.type}
+                  options={typeList}
+                  defaultOption='Select Type'
+                />
+
+                {/* <TextField
+                  label='Difficulty'
+                  name='issue'
+                  value={difficulty}
+                  onChange={handleChange}
+                  error={errors.difficulty}
+                  placeholder='Select difficulty'
                 />
 
                 <TextField
-                  label="Category"
-                  name="explanation"
-                  value={explanation}
+                  label='Type'
+                  name='explanation'
+                  value={type}
                   onChange={handleChange}
-                  error={errors.explanation}
-                  placeholder="Select category"
-                />
-                <TextField
-                  label="Difficulty"
-                  name="issue"
-                  value={issue}
-                  onChange={handleChange}
-                  error={errors.issue}
-                  placeholder="Select difficulty"
-                />
-
-                <TextField
-                  label="Type"
-                  name="explanation"
-                  value={explanation}
-                  onChange={handleChange}
-                  error={errors.explanation}
-                  placeholder="Select type"
-                />
+                  error={errors.type}
+                  placeholder='Select type'
+                /> */}
               </div>
-              <button
-                className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition
-               `}
-              >
+
+              <div className='my-[1rem] w-full'>
+                {url && (
+                  <Alert
+                    severity='success'
+                    action={
+                      <IconButton
+                        aria-label='close'
+                        color='inherit'
+                        size='small'
+                        onClick={() => {
+                          // do copy
+                          navigator.clipboard.writeText(url)
+                          toast.success("Copied!")
+                        }}
+                      >
+                        <MdOutlineContentCopy />
+                      </IconButton>
+                    }
+                  >
+                    <h3 className='text-xs'>{url}</h3>
+                  </Alert>
+                )}
+              </div>
+
+              <LoadingButton
+                isLoading={loading || isCatLoading}
+                text='Submit'
+              />
+
+              {/* <button
+                className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#ffffff] font-semibold mt-auto transition`}>
                 Generate API URL
-              </button>
+              </button> */}
             </form>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
