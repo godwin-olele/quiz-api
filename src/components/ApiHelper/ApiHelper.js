@@ -221,7 +221,7 @@ export default function ApiHelper() {
                 /> */}
               </div>
 
-              <div className='my-[5px] w-full'>
+              <div className='my-[1rem] w-full'>
                 {url && (
                   <Alert
                     severity='success'
