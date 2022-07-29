@@ -7,7 +7,7 @@ import Questions from "../Questions";
 import { IconContext } from "react-icons";
 import { CgMenu } from "react-icons/cg";
 import { CgMenuMotion } from "react-icons/cg";
-import SearchBar from "search-bar-react";
+
 
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import { useStoreActions, useStoreState } from "easy-peasy";
