@@ -273,11 +273,11 @@ export const getUserQuestions = async (userId) =>
 // Questions sections
 
 export const getPublicQuestions = async (
-  search,
   limit,
   category,
   difficulty,
-  type
+  type,
+  search,
 ) =>
   await fetch.get(
     `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`

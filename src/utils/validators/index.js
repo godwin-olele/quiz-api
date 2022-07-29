@@ -189,7 +189,23 @@ export const validateSendFeedback = (form) => {
 
   if (issue === "") errors["issue"] = "cannot be empty"
   if (explanation === "") errors["explanation"] = "cannot be empty"
-  if (explanation < 3) errors["explanation"] = "cannot less than 3 characters"
+  if (explanation < 3)
+    errors["explanation"] = "cannot be less than 3 characters"
+
+  return errors
+}
+
+export const validateApiHelper = (form) => {
+  const { limit, category, difficulty, type } = form
+
+  const errors = {}
+
+  // if (!limit) errors["question"] = "is required"
+
+  if (limit === "") errors["limit"] = "cannot be empty"
+  if (category === "") errors["category"] = "cannot be empty"
+  if (difficulty === "") errors["difficulty"] = "cannot be empty"
+  if (type === "") errors["type"] = "cannot be empty"
 
   return errors
 }
