@@ -101,7 +101,7 @@ export default function Features() {
                 className="border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto"
               >
                 documentation
-              </Link>
+              </Link>{" "}
               makes the integration process easier.
             </p>
           </div>
