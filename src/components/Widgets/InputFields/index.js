@@ -14,6 +14,7 @@ export const TextField = ({
   onChange,
   error,
   className = "mb-[1.2rem] mt-[0.5rem]",
+  ...others
 }) => (
   <div className={className}>
     <label htmlFor={name} className='text-[#454545]'>
@@ -28,6 +29,7 @@ export const TextField = ({
       placeholder={placeholder ?? ""}
       value={value}
       onChange={onChange}
+      {...others}
     />
     {error && <small className='text-xs text-red-600'>{error}</small>}
   </div>

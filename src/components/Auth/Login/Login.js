@@ -16,7 +16,7 @@ import { LoadingButton } from "../../Widgets/Button/MyButtons"
 
 export default function Login() {
   const [form, setForm] = useState({
-    credential: "",
+    username: "",
     password: "",
   })
 
@@ -51,18 +51,16 @@ export default function Login() {
     setErrors({})
 
     // do fetch
-    // bolu
-    // 12345678
-    const isEmail = (email) => email.includes("@")
-    const { credential, password } = form
+    // const isEmail = (email) => email.includes("@")
+    // const { credential, password } = form
 
-    const currentCredential = isEmail(credential) ? "email" : "username"
-    const credentials = {
-      [currentCredential]: credential,
-      password,
-    }
+    // const currentCredential = isEmail(credential) ? "email" : "username"
+    // const credentials = {
+    //   [currentCredential]: credential,
+    //   password,
+    // }
 
-    loginUser(credentials)
+    loginUser(form)
       .then(({ data: res }) => {
         const { status, message, data } = res
         // if (status == "success") {
@@ -99,7 +97,7 @@ export default function Login() {
       })
   }
 
-  const { credential, password } = form
+  const { username, password } = form
 
   return (
     <>
@@ -147,11 +145,11 @@ export default function Login() {
               <TextField
                 type='text'
                 label='Username / Email'
-                name='credential'
-                value={credential}
+                name='username'
+                value={username}
                 placeholder='Elonmusk'
                 onChange={handleChange}
-                error={errors.credential}
+                error={errors.username}
               />
               <ObscurableTextField
                 label='Password'
