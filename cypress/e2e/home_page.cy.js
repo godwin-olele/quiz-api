@@ -1,6 +1,6 @@
 describe("The Home Page", () => {
   it("successfully loads", () => {
     cy.visit('/');
-    cy.viewport('iphone-7');
+    cy.viewport('iphone-5');
   });
 });
