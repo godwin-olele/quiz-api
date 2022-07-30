@@ -44,8 +44,6 @@ export default function AdminDashboard({ user }) {
   const total_users = users["Total Users"]
   const total_staff = users["Total Staff"]
 
-  console.log(statistics)
-
   return (
     <>
       <div className='w-full h-[600px] py-[3rem] px-[1rem] admin-dashboard__Content dashboard-container-home'>

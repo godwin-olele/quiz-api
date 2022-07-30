@@ -10,7 +10,7 @@ export const logoutUser = () => localStorage.clear()
 const init = () => {
   const instance = axios.create({
     /// fallback to development url when production is not found
-    baseURL: process.env.REACT_APP_API_URL || API_URL,
+    baseURL: API_URL,
   })
 
   if (isLoggedIn()) {
@@ -279,9 +279,9 @@ export const getPublicQuestions = async (
   type,
   search
 ) =>
-  await fetch.get(
-    `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`
-  )
+  await fetch.get(`/questions`, {
+    params: { limit, category, difficulty, type, search },
+  })
 
 //create
 export const createNewQuestion = async (body) =>
@@ -303,10 +303,10 @@ export const deleteQuestionById = async (id, body) =>
 //
 // /questions/:questionid/verification
 export const verifyQuestionById = async (id, body) =>
-  await fetch.post(`/questions/${id}/verification/`, body)
+  await fetch.post(`/questions/${id}/verification`, body)
 // /questions/:questionid/verification
 export const unverifyQuestionById = async (id) =>
-  await fetch.delete(`/questions/${id}/verification/`)
+  await fetch.delete(`/questions/${id}/verification`)
 
 // staff only routes
 
