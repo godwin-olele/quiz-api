@@ -3,6 +3,8 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import { Link } from "react-router-dom"
 
+import { DOCS } from "../../constants"
+
 export default function Features() {
   useEffect(() => {
     AOS.init()
@@ -97,7 +99,7 @@ export default function Features() {
               </Link>{" "}
               alongside our well-written API{" "}
               <a
-                href='https://github.com/BOVAGE/QuizBank/tree/main/backend/'
+                href={DOCS}
                 target='_blank'
                 rel='no-referrer'
                 className='border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto'
