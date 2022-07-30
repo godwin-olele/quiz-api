@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { IconContext } from "react-icons"
 import { ImGoogle } from "react-icons/im"
 import { toast, ToastContainer } from "react-toastify"
-import CircularProgress from "@mui/material/CircularProgress"
+// import CircularProgress from "@mui/material/CircularProgress"
 import { useNavigate } from "react-router-dom"
 
 import { loginUser } from "../../../core/api"
@@ -11,6 +11,8 @@ import "./Login.css"
 
 import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { validateSigninData } from "../../../utils/validators"
+
+import { LoadingButton } from "../../Widgets/Button/MyButtons"
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -81,8 +83,6 @@ export default function Login() {
         } = e
         const { status, message, error } = res
 
-        console.log(res)
-
         if (Array.isArray(error)) {
           setLoading(false)
           return toast.error(error[0])
@@ -94,6 +94,8 @@ export default function Login() {
             credential: error[e][0],
           })
         })
+
+        setLoading(false)
       })
   }
 
@@ -114,7 +116,7 @@ export default function Login() {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <a href='/about'>Api</a>
+                  <Link to='/api'>Api</Link>
                 </li>
               </ul>
             </div>
@@ -162,7 +164,9 @@ export default function Login() {
                 Forgot Password?
               </p>
 
-              <button
+              <LoadingButton isLoading={loading} text='Sign In' />
+
+              {/* <button
                 type='submit'
                 className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#fdfbe3] font-semibold mt-auto transition ${
                   loading && "opacity-25"
@@ -172,9 +176,9 @@ export default function Login() {
                 {!loading ? (
                   "Sign In"
                 ) : (
-                  <CircularProgress color='inherit' size={25} />
+                  <CircularProgress color="inherit" size={25} />
                 )}
-              </button>
+              </button> */}
               <button
                 className={`google-sign-in mt-[1.5rem] flex justify-center items-center py-[13px] w-full outline-none rounded-[6px] border-2 text-[18px] border-orange text-center text-orange font-semibold transition
                `}

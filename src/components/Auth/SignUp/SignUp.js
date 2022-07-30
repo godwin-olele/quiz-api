@@ -5,7 +5,9 @@ import { TextField, ObscurableTextField } from "../../Widgets/InputFields"
 import { signupUser } from "../../../core/api"
 import { toast, ToastContainer } from "react-toastify"
 import { useNavigate } from "react-router-dom"
-import CircularProgress from "@mui/material/CircularProgress"
+// import CircularProgress from "@mui/material/CircularProgress"
+
+import { LoadingButton } from "../../Widgets/Button/MyButtons"
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -117,7 +119,7 @@ export default function SignUp() {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <a href='/about'>Api</a>
+                  <Link to='/api'>Api</Link>
                 </li>
               </ul>
             </div>
@@ -180,7 +182,9 @@ export default function SignUp() {
                 error={errors.password2}
               />
 
-              <button
+              <LoadingButton isLoading={loading} text='Create Account' />
+
+              {/* <button
                 className={`py-[13px] w-full outline-none border-none rounded-[6px] bg-orange text-[18px] text-center text-[#fdfbe3] font-semibold mt-auto transition ${
                   loading && "opacity-25"
                 }`}
@@ -188,9 +192,9 @@ export default function SignUp() {
                 {!loading ? (
                   "Create Account"
                 ) : (
-                  <CircularProgress color='inherit' size={25} />
+                  <CircularProgress color="inherit" size={25} />
                 )}
-              </button>
+              </button> */}
             </form>
           </div>
         </div>

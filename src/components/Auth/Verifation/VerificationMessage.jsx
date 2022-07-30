@@ -17,7 +17,7 @@ export default function VerificationMessage() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/about">Api</a>
+                <Link to="/api">Api</Link>
               </li>
             </ul>
           </div>
