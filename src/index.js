@@ -26,8 +26,7 @@ root.render(
         <Route path='api' element={<ApiHelper />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
-        <Route path='/404' element={ <PageNotFound/>} />
-       
+
         <Route
           path='/auth/email-verification'
           element={<VerificationMessage />}
@@ -37,6 +36,8 @@ root.render(
         <Route element={<ProtectedRoutes />}>
           <Route path='/dashboard/*' element={<Home />} />
         </Route>
+
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   </Provider>
