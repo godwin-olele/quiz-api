@@ -412,7 +412,12 @@ input:-webkit-autofill:active {
     font-size: 25px;
   }
   .developer {
-    font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .developer .hashnode, .developer .planetscale {
+    font-size: 5vw;
   }
 
   .large-set-of-question {
