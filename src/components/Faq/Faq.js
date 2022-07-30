@@ -64,7 +64,7 @@ export default function Faq() {
     setFaqArray(newFaqArray);
   };
   return (
-    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header faq-main-container-mobile">
+    <div className="px-[7rem] py-[7rem] w-full h-auto what-we-do__header faq-main-container-mobile" id="faq">
       <div className="flex justify-center items-center my-0 mx-auto ">
         <div className="w-[250px] h-[5px] bg-orange rounded-full header-line"></div>
         <h1 className="text-[35px] ml-[1.5rem] mr-[1.5rem] faq-header-text">
