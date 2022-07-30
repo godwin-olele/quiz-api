@@ -29,19 +29,19 @@ const _columns = [
   },
 ]
 
-const RenderActions = ({ params, onClick }) =>
+const RenderActions = ({ params, add, remove }) =>
   params.row.is_staff ? (
     <Chip
       label='remove'
       size='small'
-      onClick={onClick}
+      onClick={remove}
       sx={{ width: "70px", color: "#D82525", backgroundColor: "#fafafa" }}
     />
   ) : (
     <Chip
       label='add'
       size='small'
-      onClick={onClick}
+      onClick={add}
       sx={{ width: "70px", color: "#25D842", backgroundColor: "#fafafa" }}
     />
   )
@@ -51,14 +51,12 @@ const RenderStaff = ({ params }) =>
     <Chip
       label='Staff'
       size='small'
-      onClick={() => {}}
       sx={{ width: "80px", color: "#F38704", backgroundColor: "#FAEFE2" }}
     />
   ) : (
     <Chip
       label='User'
       size='small'
-      onClick={() => {}}
       sx={{ width: "80px", color: "#331D02", backgroundColor: "#E3E3E3" }}
     />
   )
@@ -71,6 +69,13 @@ export default function DataTable() {
     ({ Statistics }) => Statistics.fetchAllUsers
   )
 
+  const { addUserStaff, removeUserStaff } = useStoreActions(
+    ({ Statistics: { addUserStaff, removeUserStaff } }) => ({
+      addUserStaff,
+      removeUserStaff,
+    })
+  )
+
   const fetchData = async () => {
     setLoading(true)
     const data = await fetchAllUsers()
@@ -81,6 +86,18 @@ export default function DataTable() {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const addStaff = async (id) => {
+    setLoading(true)
+    const m = await addUserStaff(id)
+    if (m) fetchData()
+  }
+
+  const removeStaff = async (id) => {
+    setLoading(true)
+    const m = await removeUserStaff(id)
+    if (m) fetchData()
+  }
 
   const [pageSize, setPageSize] = useState(5)
 
@@ -111,7 +128,11 @@ export default function DataTable() {
         type: "actions",
         width: 150,
         renderCell: (params) => (
-          <RenderActions params={params} onClick={() => {}} />
+          <RenderActions
+            params={params}
+            add={() => addStaff(params.row.id)}
+            remove={() => removeStaff(params.row.id)}
+          />
         ),
       },
     ],
@@ -120,7 +141,7 @@ export default function DataTable() {
 
   return (
     <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
-      <div className='w-[700px] h-auto'>
+      <div className='w-full'>
         <h1 className='text-[#000000] text-[1.7rem] font-medium'>
           User Administration
         </h1>

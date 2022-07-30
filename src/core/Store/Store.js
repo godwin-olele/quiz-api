@@ -1,7 +1,16 @@
 import User from "../models/User.model"
 import { thunk, action, createStore } from "easy-peasy"
 
-import { getStatistics, getUserStatistics, getAllUsers } from "../api"
+import {
+  getStatistics,
+  getUserStatistics,
+  getAllUsers,
+  addUserStaff,
+  removeUserStaff,
+  verifyQuestionById,
+  unverifyQuestionById,
+  getUnverifiedQuestions,
+} from "../api"
 // todo
 // - [x] Sign up
 // - [x] Account verification
@@ -115,6 +124,100 @@ const Statistics = {
         //  actions.setLoading(false)
         actions.setUsers(data.results)
         return data
+      }
+    } catch (e) {
+      return null
+    }
+  }),
+
+  //actions
+  addUserStaff: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await addUserStaff(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        //  actions.setLoading(false)
+
+        return message
+      }
+    } catch (e) {
+      return null
+    }
+  }),
+
+  //actions
+  removeUserStaff: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await removeUserStaff(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        return message
+      }
+    } catch (e) {
+      return null
+    }
+  }),
+
+  //model
+  questions: [],
+  // method
+  setQuestions: action((state, payload) => (state.questions = payload)),
+
+  //actions
+  fetchAllQuestions: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await getUnverifiedQuestions()
+      const { status, message, data } = res
+
+      if (status == "success") {
+        //  actions.setLoading(false)
+        actions.setQuestions(data.results)
+
+        return data
+      }
+    } catch (e) {
+      return null
+    }
+  }),
+
+  //actions
+  verifyQuestion: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await verifyQuestionById(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        //  actions.setLoading(false)
+
+        return message
+      }
+    } catch (e) {
+      return null
+    }
+  }),
+
+  //actions
+  unverifyQuestion: thunk(async (actions, payload) => {
+    // actions.setLoading(true)
+    //do fetch
+    try {
+      const { data: res } = await unverifyQuestionById(payload)
+      const { status, message, data } = res
+
+      if (status == "success") {
+        //  actions.setLoading(false)
+
+        return message
       }
     } catch (e) {
       return null
