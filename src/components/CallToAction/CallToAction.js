@@ -42,7 +42,7 @@ export default function CallToAction() {
     <div className="px-[7rem] w-full h-[800px] flex justify-between items-center call-to-action-container">
       <div className=" w-[1300px] h-auto call-to-action-sub__container">
         <h1
-          className="text-[3vw] font-medium call-to-action-header h-auto"
+          className="text-[3.1vw] font-medium call-to-action-header h-auto"
           data-speed="0.95"
           data-aos="fade-down-right"
           data-aos-duration="1500"

@@ -64,7 +64,7 @@ export default function Navbar() {
             <a href='/'>Home</a>
           </li>
           <li className='items'>
-            <a href='/api-helper'>Api</a>
+            <a href='/api'>Api</a>
           </li>
           <li className='items'>
             <a href='#features'>Features</a>
