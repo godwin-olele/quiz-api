@@ -1,8 +1,14 @@
 import { action, thunk } from "easy-peasy"
-import { getUserDetails, logoutUser, getUserQuestions } from "../api"
+import {
+  isLoggedIn,
+  getUserDetails,
+  logoutUser,
+  getUserQuestions,
+} from "../api"
 
 // this is a model
 const User = {
+  isAuthenticated: isLoggedIn() ? true : false,
   user: JSON.parse(localStorage.getItem("userDetails")),
   loading: true,
   // medthods
