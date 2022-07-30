@@ -32,7 +32,7 @@ export const validateSignupData = (form) => {
 
 export const validateSigninData = (form) => {
   const errors = {}
-  const { credential, password } = form
+  const { username, password } = form
 
   // //email validation
   // if(email === '') errors['email'] = 'email cannot be empty'
@@ -40,9 +40,9 @@ export const validateSigninData = (form) => {
   // if(email.includes('@')) errors['email'] = 'please provide a valid email'
 
   //username validation
-  if (credential === "") errors["credential"] = "cannot be empty"
-  if (credential.length < 3)
-    errors["credential"] = "cannot less than 3 characters"
+  if (username === "") errors["username"] = "cannot be empty"
+  if (username.length < 3)
+    errors["username"] = "cannot less than 3 characters"
   // if(username.includes('@')) errors['email'] = 'please provide a valid email'
 
   //username validation
