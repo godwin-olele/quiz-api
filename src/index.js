@@ -15,6 +15,7 @@ import Store from "./core/Store/Store"
 import ProtectedRoutes from "./components/DashBoard/ProtectedRoutes"
 import Home from "./components/DashBoard"
 import ApiHelper from "./components/ApiHelper/ApiHelper"
+import PageNotFound from "./components/404/PageNotFound"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
@@ -25,6 +26,8 @@ root.render(
         <Route path='api' element={<ApiHelper />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/404' element={ <PageNotFound/>} />
+       
         <Route
           path='/auth/email-verification'
           element={<VerificationMessage />}
