@@ -10,7 +10,7 @@ export const logoutUser = () => localStorage.clear()
 const init = () => {
   const instance = axios.create({
     /// fallback to development url when production is not found
-    baseURL: process.env.REACT_APP_API_URL || API_URL,
+    baseURL: API_URL,
   })
 
   if (isLoggedIn()) {
