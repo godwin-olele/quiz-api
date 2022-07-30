@@ -70,7 +70,14 @@ export default function SubmitQuestions() {
       ...form,
       [e.target.name]: e.target.value,
     })
+    // do validate
+  }
 
+  const handleImageChange = (e) => {
+    // setForm({
+    //   ...form,
+    //   [e.target.name]: Buffer.from(e.target.files[0]),
+    // })
     // do validate
   }
 
@@ -87,8 +94,6 @@ export default function SubmitQuestions() {
     }
 
     setForm(newForm)
-    console.log(newForm)
-
     // do validate
   }
 
@@ -171,6 +176,7 @@ export default function SubmitQuestions() {
         setLoading(false)
       })
   }
+  console.log(form)
 
   const {
     question,
@@ -290,9 +296,9 @@ export default function SubmitQuestions() {
             <TextField
               label='Image'
               name='image'
-              value={image}
-              onChange={handleChange}
-              error={errors.image ?? ""}
+              // value={image ?? ""}
+              onChange={handleImageChange}
+              error={errors.image}
               type='file'
               accept='image/png, image/jpeg'
             />
