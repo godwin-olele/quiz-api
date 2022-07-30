@@ -8,18 +8,51 @@ const User = {
   // medthods
   setLoading: action((state, payload) => (state.loading = payload)),
   setUser: action((state, payload) => (state.user = payload)),
-  logout: thunk(({ setUser }) => logoutUser()),
+  logout: thunk(() => logoutUser()),
 
-  //actions
-  // fetchUserDetails: thunk(async (actions) => {
-  //   //do fetch
-  //   try {
-  //     return await getUserDetails()
+  // actions
+  fetchUserDetails: thunk(async (actions) => {
+    //do fetch
+    try {
+      return await getUserDetails()
+        .then(({ data: res }) => {
+          const { status, message, data } = res
 
-  //   } catch (e) {
-  //     return e
-  //   }
-  // }),
+          if (status == "success") {
+            actions.setLoading(false)
+            actions.setUser(data)
+
+            return true
+          }
+        })
+        .catch((e) => {
+          // console.log(e)
+          if (e?.response) {
+            // const {data: {status, message, error}} = e.response
+            if (e.response.status == 401) {
+              return "unauthorized"
+            }
+          }
+        })
+
+      // const { status, message, data } = response.data.data
+
+      // if (status == "success") {
+      //   actions.setLoading(false)
+      //   actions.setUser(data)
+      // }
+
+      // const { status, message, data } = res
+
+      // if (status == "success") {
+      //   actions.setLoading(false)
+      //   actions.setStatistics(data)
+      //   return data
+      // }
+    } catch (e) {
+      return null
+    }
+  }),
 
   questions: [],
   setQuestions: action((state, payload) => (state.questions = payload)),

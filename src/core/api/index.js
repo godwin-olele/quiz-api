@@ -10,7 +10,7 @@ export const logoutUser = () => localStorage.clear()
 const init = () => {
   const instance = axios.create({
     /// fallback to development url when production is not found
-    baseURL: process.env.REACT_APP_API_URL || API_URL,
+    baseURL: API_URL,
   })
 
   if (isLoggedIn()) {
@@ -277,11 +277,11 @@ export const getPublicQuestions = async (
   category,
   difficulty,
   type,
-  search,
+  search
 ) =>
-  await fetch.get(
-    `/questions?limit=${limit}&category=${category}&difficulty=${difficulty}&type=${type}&search=${search}`
-  )
+  await fetch.get(`/questions`, {
+    params: { limit, category, difficulty, type, search },
+  })
 
 //create
 export const createNewQuestion = async (body) =>
@@ -303,10 +303,10 @@ export const deleteQuestionById = async (id, body) =>
 //
 // /questions/:questionid/verification
 export const verifyQuestionById = async (id, body) =>
-  await fetch.post(`/questions/${id}/verification/`, body)
+  await fetch.post(`/questions/${id}/verification`, body)
 // /questions/:questionid/verification
 export const unverifyQuestionById = async (id) =>
-  await fetch.delete(`/questions/${id}/verification/`)
+  await fetch.delete(`/questions/${id}/verification`)
 
 // staff only routes
 
@@ -355,24 +355,30 @@ export const deleteCategoryById = async (id) =>
 export const updateCategoryById = async (id, body) =>
   await fetch.put(`/categories/${id}/`, body)
 
+// /api/v1/users/:userid/staff
+export const addUserStaff = async (userId) =>
+  await fetch.post(`/users/${userId}/staff`)
+
+export const removeUserStaff = async (userId) =>
+  await fetch.delete(`/users/${userId}/staff`)
+
 //hurray... i hv finnished
 
-// // when err on login 
+// // when err on login
 // error: {
 //   credential: "is required",
 //   password: "is required",
 // }
 
-
-// // when err on signup 
-// error: { 
+// // when err on signup
+// error: {
 //   username: "is required",
 //  email: "is required",
-//   password: "is required", 
-//   password2: "is required" 
+//   password: "is required",
+//   password2: "is required"
 // }
 
-// // when err on submit question 
+// // when err on submit question
 
 // error: {
 //   question: "is required",

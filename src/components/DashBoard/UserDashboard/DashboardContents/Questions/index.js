@@ -79,15 +79,15 @@ const RenderActions = ({ params }) =>
 //   },
 // ]
 
-{
-  /*checkboxSelection */
-}
+// {
+//   /*checkboxSelection */
+// }
 
 export default function Questions() {
   // let isLoading = useStoreState(({ Statistics }) => Statistics.loading)
   let id = useStoreState(({ User }) => User.user.id)
   let questions = useStoreState(({ User }) => User.questions)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const fetchUserQuestions = useStoreActions(
     ({ User }) => User.fetchUserQuestions
@@ -148,8 +148,8 @@ export default function Questions() {
 
   // if (loading) return <h1>Loading...</h1>
   return (
-    <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
-      <div className='w-[800px] h-auto'>
+    <div className='w-full h-screen py-[3rem] px-[1rem] flex justify-center'>
+      <div className='w-full'>
         <h1 className='text-[#000000] text-[1.7rem] font-medium'>Questions</h1>
         <div className='w-full h-[400px] mt-[2rem] bg-[#ffffff]'>
           <DataGrid

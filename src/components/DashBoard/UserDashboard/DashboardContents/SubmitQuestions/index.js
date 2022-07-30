@@ -118,7 +118,7 @@ export default function SubmitQuestions() {
     createNewQuestion(form)
       .then(({ data: res }) => {
         const { status, message, data } = res
-        console.log(res)
+        // console.log(res)
 
         if (status == "success") {
           toast.success(message)
@@ -138,7 +138,7 @@ export default function SubmitQuestions() {
 
         const { status, message, error } = res
 
-        console.log(res)
+        // console.log(res)
 
         if (Array.isArray(error)) {
           setLoading(false)
@@ -178,7 +178,7 @@ export default function SubmitQuestions() {
   return (
     <>
       <ToastContainer />
-      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center items-center'>
+      <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center items-center dashboard-submit-question-container'>
         <form
           className=' w-[600px] h-auto submit-question-form'
           onSubmit={handleSubmit}

@@ -33,7 +33,7 @@ export default function Faq() {
     },
     {
       numId: "5.)",
-      question: "What if by mistake or oversight I spot an error or issue with a question, where can I raise a complaint or suggest a correction?",
+      question: "What if by mistake or oversight, I spot an error or issue with a question, where can I raise a complaint or suggest a correction?",
       answer:
         "You can click on the feedback or errata form to raise an issue concerning a question.",
       active: false,

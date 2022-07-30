@@ -25,6 +25,7 @@ root.render(
         <Route path='api-helper' element={<ApiHelper />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
+
         <Route
           path='/auth/email-verification'
           element={<VerificationMessage />}
