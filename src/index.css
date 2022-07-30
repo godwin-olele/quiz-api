@@ -263,7 +263,7 @@ input:-webkit-autofill:active {
   .call-to-action-container
     .call-to-action-sub__container
     .call-to-action-header {
-    font-size: 6.8vw;
+    font-size: 7.1vw;
     height: auto;
     text-align: center;
   }
@@ -531,7 +531,7 @@ input:-webkit-autofill:active {
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   .call-to-action-container {
-    padding: 0 100px;
+    padding: 0 70px;
     height: auto;
     margin-top: 2rem;
   }
@@ -541,7 +541,7 @@ input:-webkit-autofill:active {
   .call-to-action-container
     .call-to-action-sub__container
     .call-to-action-header {
-    font-size: 40px;
+    font-size: 4.5vw;
   }
   .call-to-action-container
     .call-to-action-sub__container
