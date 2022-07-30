@@ -1,101 +1,53 @@
-# Quiz api
+# <center>QUIZBANK API</center>
 
-## we're in development state
+---
 
-## dev
+<center>
+The largest Quiz Bank API featuring procedurally generated and user submitted questions.
 
-Work on,
+Easily embed a quiz or create a practice test using our API. Question Provider. Solution Provider. Question Bank.
 
-- [x] Sign up
-- [x] Account verification
-- [x] Login
-- [x] Users dashboard
-- [x] Submission of questions
-- [ ] Admin Dashboard
-- [x] Landing page statistics
-- [x] Logged in Users' Question List
-- [x] Logged in Users' Question stat
-- [x] API helper form
-- [ ] Admin Dashboard verification of questions
-- [ ] Users Administration, make and "unmake" staff user
-- [x] Feedback form
+Proudly powered by PlanetScale database.
 
-// 1. Question submission >
-// 2. Landing page statistics >
-// 3. Logged in Users' Question List >
-// 4. Logged in Users' Question stat >
-// 5. API helper form
-// 6. Admin Dashboard verification of questions.
-// 7. Users Administration, make and "unmake" staff user.
-// 8. Feedback form. >
+[![image](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
+[![image](https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white)](https://www.django-rest-framework.org/)
+[![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![image](https://img.shields.io/badge/Hashnode-2962FF?style=for-the-badge&logo=hashnode&logoColor=white)](https://hashnode.com)
+[![image](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com)
 
-# Getting Started with Create React App
+</center>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 👀 Preview
 
-## Available Scripts
+To view, click this [link](https://quizzybank.vercel.app/)
 
-In the project directory, you can run:
+![Landing Page](preview.jpg)
 
-### `npm start`
+## Blog Post
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To know more about this project, you can read this [launch article]()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used:
 
-### `npm test`
+- React
+- Django, Django Rest Framework,
+- Figma
+- PlanetScale MYSQL serverless database
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Attribution
 
-### `npm run build`
+Built for [Hashnode](https://hasnode.com) x [PlanetScale](https://planetscale.com/) Hackathon
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributors
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Boluwatife Fayemi](https://GitHub.com/bovage) - Backend Developer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[John Daniels Adeyemi](https://github.com/John-Daniels) - Frontend Developer
 
-### `npm run eject`
+[Godwin Daniel Olele](https://github.com/Godwindaniel10) - Frontend Developer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[Olamidotun Ogunniran](https://behance.net/Ogunniran) - UI|UX designer
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔐 License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under [MIT License](LICENSE)
