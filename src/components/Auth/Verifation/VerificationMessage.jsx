@@ -5,7 +5,7 @@ export default function VerificationMessage() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen w-full flex what-we-do__header">
+    <div className="h-screen w-full flex what-we-do__header what-we-do__header-form">
       <div className="left-bg-login h-screen w-full px-[5rem]">
         <div className="w-full h-auto mt-[5rem] flex flex-col justify-between">
           <div className="flex justify-between items-center">
@@ -26,8 +26,8 @@ export default function VerificationMessage() {
           </div>
         </div>
       </div>
-      <div className="bg-[#fff] w-[1700px] h-screen flex justify-center items-center">
-        <div className="mt-[-2rem] w-[450px]">
+      <div className="bg-[#fff] w-[1700px] h-screen flex justify-center items-center form-section">
+        <div className="mt-[-2rem] w-[450px] form-section-2">
           <h1 className="text-[#000000] text-[1.7rem] font-medium">
             You are almost in!
           </h1>
