@@ -27,7 +27,6 @@ root.render(
         <Route path='api' element={<ApiHelper />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
-        {/*<Route path='admin' element={ <AdminDashboardNav/>} /> */}
        
         <Route
           path='/auth/email-verification'
