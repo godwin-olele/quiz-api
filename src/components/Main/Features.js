@@ -92,7 +92,7 @@ export default function Features() {
               Our easy to use & simple RESTful API can easily be integrated into
               both websites & applications. The{" "}
               <Link
-                to='/api-helper'
+                to='/api'
                 className='border-none outline-none hover:underline-offset-4 hover:transition-all w-full rounded-[6px] text-[#1e47f3] underline mt-auto'
               >
                 API helper form
