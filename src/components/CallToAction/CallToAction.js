@@ -81,10 +81,10 @@ export default function CallToAction() {
         <div className='flex justify-between items-center w-full mt-[3rem] auth-btn-container'>
           {isAuthenticated && user?.avatar ? (
             <button
-              className='rounded-[10px] border-2 text-[20px] w-[60%] border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 '
+              className='rounded-[10px] border-2 text-[20px] w-[75%] border-orange font-medium  bg-orange py-[10px] px-[40px] text-[#fff] auth-btn-1 '
               onClick={handleClickDash}
             >
-              Goto Dashboard
+              Dashboard
             </button>
           ) : (
             <>
