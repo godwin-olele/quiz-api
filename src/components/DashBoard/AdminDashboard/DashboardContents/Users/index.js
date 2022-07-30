@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import { useStoreActions, useStoreState } from "easy-peasy"
+import Chip from "@mui/material/Chip"
 
 const _columns = [
   { field: "id", headerName: "ID", width: 100 },
@@ -28,11 +29,36 @@ const _columns = [
   },
 ]
 
-const RenderActions = ({ params }) =>
+const RenderActions = ({ params, add, remove }) =>
   params.row.is_staff ? (
-    <h1 className='text-red'>Remove</h1>
+    <Chip
+      label='remove'
+      size='small'
+      onClick={remove}
+      sx={{ width: "70px", color: "#D82525", backgroundColor: "#fafafa" }}
+    />
   ) : (
-    <h3 className='text-green-300'>add</h3>
+    <Chip
+      label='add'
+      size='small'
+      onClick={add}
+      sx={{ width: "70px", color: "#25D842", backgroundColor: "#fafafa" }}
+    />
+  )
+
+const RenderStaff = ({ params }) =>
+  params.row.is_staff ? (
+    <Chip
+      label='Staff'
+      size='small'
+      sx={{ width: "80px", color: "#F38704", backgroundColor: "#FAEFE2" }}
+    />
+  ) : (
+    <Chip
+      label='User'
+      size='small'
+      sx={{ width: "80px", color: "#331D02", backgroundColor: "#E3E3E3" }}
+    />
   )
 
 export default function DataTable() {
@@ -41,6 +67,13 @@ export default function DataTable() {
 
   const fetchAllUsers = useStoreActions(
     ({ Statistics }) => Statistics.fetchAllUsers
+  )
+
+  const { addUserStaff, removeUserStaff } = useStoreActions(
+    ({ Statistics: { addUserStaff, removeUserStaff } }) => ({
+      addUserStaff,
+      removeUserStaff,
+    })
   )
 
   const fetchData = async () => {
@@ -53,6 +86,18 @@ export default function DataTable() {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const addStaff = async (id) => {
+    setLoading(true)
+    const m = await addUserStaff(id)
+    if (m) fetchData()
+  }
+
+  const removeStaff = async (id) => {
+    setLoading(true)
+    const m = await removeUserStaff(id)
+    if (m) fetchData()
+  }
 
   const [pageSize, setPageSize] = useState(5)
 
@@ -75,14 +120,20 @@ export default function DataTable() {
         headerName: "Status",
         type: "string",
         width: 150,
-        renderCell: (params) => (params.row.is_staff ? "Staff" : "User"),
+        renderCell: (params) => <RenderStaff params={params} />,
       },
       {
         field: "actions",
         headerName: "Actions",
         type: "actions",
         width: 150,
-        renderCell: (params) => <RenderActions params={params} />,
+        renderCell: (params) => (
+          <RenderActions
+            params={params}
+            add={() => addStaff(params.row.id)}
+            remove={() => removeStaff(params.row.id)}
+          />
+        ),
       },
     ],
     []
@@ -90,7 +141,7 @@ export default function DataTable() {
 
   return (
     <div className='w-full h-auto py-[3rem] px-[1rem] flex justify-center'>
-      <div className='w-[700px] h-auto'>
+      <div className='w-full'>
         <h1 className='text-[#000000] text-[1.7rem] font-medium'>
           User Administration
         </h1>
