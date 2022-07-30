@@ -173,11 +173,7 @@ export default function AdminDashboardNav() {
           <Route path='/*' element={<AdminDashboard user={user} />} />
           <Route path='/users' element={<Users />} />
           <Route path='/questions' element={<Questions />} />
-          {/* <Route path='/search-questions' element={<SearchQuestions />} />
-          <Route path='/questions' element={<Questions />} /> */}
         </Routes>
-
-        {/*<SubmitQuestions/> <Feedback/> <Users/>   <AdminDashboard /> <SearchQuestions /> */}
       </main>
     </>
   )

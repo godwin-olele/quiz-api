@@ -18,7 +18,6 @@ const User = {
         .then(({ data: res }) => {
           const { status, message, data } = res
 
-          console.log(res)
           if (status == "success") {
             actions.setLoading(false)
             actions.setUser(data)
