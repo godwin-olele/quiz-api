@@ -4,8 +4,14 @@ import "./Navbar.css"
 import { IconContext } from "react-icons"
 import { CgMenu } from "react-icons/cg"
 import { CgMenuMotion } from "react-icons/cg"
+import { useStoreState } from "easy-peasy"
 
 export default function Navbar() {
+  // store
+  const { isAuthenticated, user } = useStoreState(
+    ({ User: { isAuthenticated, user } }) => ({ isAuthenticated, user })
+  )
+
   const [toggleMenu, setToggleMenu] = useState(false)
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [scrollStyle, setScrollStyle] = useState(false)
@@ -74,20 +80,35 @@ export default function Navbar() {
           </li>
         </ul>
       )}
-      <div className='flex justify-between items-center w-[310px] nav-auth'>
-        <button
-          className='rounded-[10px] border-2 text-[18px] border-orange font-medium py-[10px] px-[40px] text-orange'
-          onClick={handleClickLogin}
-        >
-          Login
-        </button>
-        <button
-          className='rounded-[10px] py-[10px] px-[40px] border-2 text-[18px] border-orange font-medium  bg-orange text-[#fff]'
-          onClick={handleClickSignup}
-        >
-          Sign-Up
-        </button>
-      </div>
+      {isAuthenticated && user?.avatar ? (
+        <div className='flex justify-between items-center avatar-and-name__container__mobile auth-container'>
+          <p className='text-[18px] text-[#373737] font-semibold userName__mobile'>
+            {user?.username}
+          </p>
+          <div>
+            <img
+              src={user?.avatar}
+              alt='avatar'
+              className='rounded-full w-[50px] h-[50px] object-cover ml-[1rem] avatar__mobile'
+            />
+          </div>
+        </div>
+      ) : (
+        <div className='flex justify-between items-center w-[310px] nav-auth'>
+          <button
+            className='rounded-[10px] border-2 text-[18px] border-orange font-medium py-[10px] px-[40px] text-orange'
+            onClick={handleClickLogin}
+          >
+            Login
+          </button>
+          <button
+            className='rounded-[10px] py-[10px] px-[40px] border-2 text-[18px] border-orange font-medium  bg-orange text-[#fff]'
+            onClick={handleClickSignup}
+          >
+            Sign-Up
+          </button>
+        </div>
+      )}
 
       <button onClick={toggleNav} className='btn'>
         <IconContext.Provider value={{ className: "scroll-arrow" }}>
