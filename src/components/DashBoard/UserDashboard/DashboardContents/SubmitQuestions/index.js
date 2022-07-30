@@ -176,7 +176,6 @@ export default function SubmitQuestions() {
         setLoading(false)
       })
   }
-  console.log(form)
 
   const {
     question,
