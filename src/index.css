@@ -263,7 +263,7 @@ input:-webkit-autofill:active {
   .call-to-action-container
     .call-to-action-sub__container
     .call-to-action-header {
-    font-size: 7vw;
+    font-size: 6.8vw;
     height: auto;
     text-align: center;
   }
@@ -292,7 +292,7 @@ input:-webkit-autofill:active {
     align-items: start;
   }
   .site-info-1 {
-    font-size: 7vw;
+    font-size: 7.2vw;
   }
   .site-info-1__subtext {
     font-size: 4vw;
