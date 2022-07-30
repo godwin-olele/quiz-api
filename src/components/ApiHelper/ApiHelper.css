@@ -1,0 +1,36 @@
+/** Mobile **/
+
+@media screen and (max-width: 600px) {
+    .left-bg-api {
+        display: none;
+    }
+    .form-section {
+        width: 100%;
+        margin-top: 3rem;
+    }
+    .form-section-2 {
+        width: 100%;
+    }
+    .what-we-do__header-form {
+        padding: 0 20px;
+        height: 120vh;
+    }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 900px)  {
+    .left-bg-api {
+        display: none;
+    }
+    .form-section {
+        width: 100%;
+    }
+    .form-section-2 {
+        width: 100%;
+    }
+    .what-we-do__header-form {
+        padding: 0 100px;
+        height: 100vh;
+    }
+
+}
+
