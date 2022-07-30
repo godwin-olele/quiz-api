@@ -119,7 +119,7 @@ export default function SignUp() {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <a href='/about'>Api</a>
+                  <Link to='/api'>Api</Link>
                 </li>
               </ul>
             </div>
@@ -192,7 +192,7 @@ export default function SignUp() {
                 {!loading ? (
                   "Create Account"
                 ) : (
-                  <CircularProgress color='inherit' size={25} />
+                  <CircularProgress color="inherit" size={25} />
                 )}
               </button> */}
             </form>
