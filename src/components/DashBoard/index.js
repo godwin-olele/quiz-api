@@ -47,7 +47,7 @@ function Home() {
 
         {/* admin stuff test */}
         {/* <Route path='/admin/*' element={<AdminDashboard />} /> */}
-        <Route path='/users' element={<Users />} />
+        {/* <Route path='/users' element={<Users />} /> */}
 
         {/* <Route path='*' element={<h1>Page does not exits</h1>} /> */}
       </Routes>
