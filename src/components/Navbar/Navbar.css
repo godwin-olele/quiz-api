@@ -82,7 +82,7 @@ nav {
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   nav {
-    padding: 0 100px;
+    padding: 0 70px;
   }
   .list {
     flex-direction: column;
