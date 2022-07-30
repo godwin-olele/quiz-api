@@ -70,17 +70,30 @@ export default function SubmitQuestions() {
       ...form,
       [e.target.name]: e.target.value,
     })
+    // do validate
+  }
 
+  const handleImageChange = (e) => {
+    // setForm({
+    //   ...form,
+    //   [e.target.name]: Buffer.from(e.target.files[0]),
+    // })
     // do validate
   }
 
   const handleCategoryChange = (e) => {
-    const cat = categories.find((cat) => (cat.name = e.target.value))
-    setForm({
+    if ([e.target.value] == "Choose category") {
+      return false
+    }
+
+    const cat = categories.find((cat) => cat.name == e.target.value)
+
+    const newForm = {
       ...form,
       [e.target.name]: cat.id,
-    })
+    }
 
+    setForm(newForm)
     // do validate
   }
 
@@ -163,6 +176,7 @@ export default function SubmitQuestions() {
         setLoading(false)
       })
   }
+  console.log(form)
 
   const {
     question,
@@ -265,8 +279,8 @@ export default function SubmitQuestions() {
                       }
                     />
                     <TextField
-                      label='Correct Answer'
-                      name='correct_answer'
+                      label=''
+                      name='incorrect_answer_2'
                       value={incorrect_answer_fields.incorrect_answer_3}
                       onChange={handleAnswerFieldsChange}
                       error={
@@ -282,9 +296,11 @@ export default function SubmitQuestions() {
             <TextField
               label='Image'
               name='image'
-              value={image}
-              onChange={handleChange}
+              // value={image ?? ""}
+              onChange={handleImageChange}
               error={errors.image}
+              type='file'
+              accept='image/png, image/jpeg'
             />
 
             <TextAreaField
