@@ -75,11 +75,19 @@ export default function SubmitQuestions() {
   }
 
   const handleCategoryChange = (e) => {
-    const cat = categories.find((cat) => (cat.name = e.target.value))
-    setForm({
+    if ([e.target.value] == "Choose category") {
+      return false
+    }
+
+    const cat = categories.find((cat) => cat.name == e.target.value)
+
+    const newForm = {
       ...form,
       [e.target.name]: cat.id,
-    })
+    }
+
+    setForm(newForm)
+    console.log(newForm)
 
     // do validate
   }
@@ -265,8 +273,8 @@ export default function SubmitQuestions() {
                       }
                     />
                     <TextField
-                      label='Correct Answer'
-                      name='correct_answer'
+                      label=''
+                      name='incorrect_answer_2'
                       value={incorrect_answer_fields.incorrect_answer_3}
                       onChange={handleAnswerFieldsChange}
                       error={
@@ -284,7 +292,9 @@ export default function SubmitQuestions() {
               name='image'
               value={image}
               onChange={handleChange}
-              error={errors.image}
+              error={errors.image ?? ""}
+              type='file'
+              accept='image/png, image/jpeg'
             />
 
             <TextAreaField

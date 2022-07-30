@@ -60,7 +60,7 @@ export default function UserDashboardNav() {
             placeholder='Search something..'
           />
           <button className='search-btn'>
-            <i class='fas fa-search'></i>
+            <i className='fas fa-search'></i>
           </button>
         </div>
       </div>
@@ -102,8 +102,8 @@ export default function UserDashboardNav() {
     },
   ]
 
-  const TabTitle = ({ title, icon, isActive, link }) => (
-    <Link to={link}>
+  const TabTitle = ({ title, icon, isActive, link, onClick }) => (
+    <Link to={link} onClick={onClick}>
       <div
         className={`flex justify-start items-center px-[20px] py-[17px] cursor-pointer hover:bg-[#c8c8c83a] ${
           isActive && "border-r-2 border-orange text-orange"
@@ -150,6 +150,7 @@ export default function UserDashboardNav() {
                   icon={icon}
                   isActive={to.includes(activeTab)}
                   link={to[0]}
+                  onClick={toggleNav}
                   key={index}
                 />
               ))}
