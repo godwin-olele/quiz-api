@@ -66,8 +66,8 @@ export default function Features() {
             </h1>
             <p className='text-[18px] mt-[0.5rem] text-[#373737] feature-grid-sub-header-text-1'>
               There are many more questions in the universe that are yet to be
-              added to our database. We haven't even scratched the surface! We
-              want you to assist us in gathering the rest of these questions! To
+              added to our database. We haven't even scratched the surface!. We
+              want you to assist us in gathering the rest of these questions!. To
               add your question and answer to our collection,{" "}
               <Link
                 to='/Signup'

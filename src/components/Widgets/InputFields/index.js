@@ -51,7 +51,7 @@ export const ObscurableTextField = ({
         <input
           id={name}
           type={`${!hidden ? "text" : "password"}`}
-          className='w-full py-[13px] px-[20px] rounded-[6px]'
+          className='w-full py-[13px] px-[20px] rounded-l-[6px]'
           name={name}
           autoComplete='false'
           placeholder='********'
