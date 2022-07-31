@@ -272,7 +272,9 @@ input:-webkit-autofill:active {
     .call-to-action-sub__text {
     font-size: 4.5vw;
   }
-
+  .auth-btn-dash {
+    width: 100%;
+  }
   .auth-btn-container {
     display: grid;
     grid-template-columns: 1fr;
