@@ -239,6 +239,11 @@ input:-webkit-autofill:active {
   display: none;
 }
 
+/* api helper styling */
+.api-helper-box {
+  width: 100%;
+}
+
 /** mobile Responsiveness for all pages **/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -540,6 +545,11 @@ input:-webkit-autofill:active {
   .searchBox:hover > .searchInput {
     width: 150px;
     padding: 0 6px;
+  }
+
+  /* api helper styling */
+  .api-helper-box {
+    max-width: 300px;
   }
 }
 

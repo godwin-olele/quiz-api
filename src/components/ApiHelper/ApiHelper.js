@@ -222,10 +222,11 @@ export default function ApiHelper() {
                 /> */}
               </div>
 
-              <div className='my-[1rem] w-full'>
+              <div className='w-full my-[1rem] flex justify-center items-center transition'>
                 {url && (
                   <Alert
                     severity='success'
+                    className=' api-helper-box'
                     action={
                       <IconButton
                         aria-label='close'
@@ -241,7 +242,7 @@ export default function ApiHelper() {
                       </IconButton>
                     }
                   >
-                    <h3 className='text-xs'>{url}</h3>
+                    <h3 className='text-xs text-clip'>{url}</h3>
                   </Alert>
                 )}
               </div>
