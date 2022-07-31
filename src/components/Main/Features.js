@@ -1,15 +1,15 @@
 import React, { useEffect } from "react"
-import AOS from "aos"
-import "aos/dist/aos.css"
+//import AOS from "aos"
+//import "aos/dist/aos.css"
 import { Link } from "react-router-dom"
 
 import { DOCS } from "../../constants"
 
 export default function Features() {
-  useEffect(() => {
-    AOS.init()
-    AOS.refresh()
-  }, [])
+  //useEffect(() => {
+   // AOS.init()
+  //  AOS.refresh()
+ // }, [])
 
   return (
     <div
@@ -27,8 +27,6 @@ export default function Features() {
         <div className='flex justify-between items-center h-auto w-full feature-grid'>
           <div
             className='h-auto w-full large-set-of-question'
-            data-aos='fade-right'
-            data-aos-duration='1000'
           >
             <h1 className='text-[30px] feature-grid-header-text-1'>
               A large set of questions
@@ -44,8 +42,6 @@ export default function Features() {
             src='/images/concept-of-importance-of-work-place-for-employees-in-business.png'
             alt=''
             className='h-[350px] w-[500px] ml-[3rem] feature-grid--img-1'
-            data-aos='zoom-in-left'
-            data-aos-duration='1000'
           />
         </div>
         <div className='flex justify-between items-center h-auto w-full feature-grid-2'>
@@ -53,13 +49,9 @@ export default function Features() {
             src='/images/concept-of-business-lady-doing-research-and-development-of-product.png'
             alt=''
             className='h-[350px] w-[500px] mr-[3rem] feature-grid--img-1'
-            data-aos='zoom-in-right'
-            data-aos-duration='1000'
           />
           <div
             className='h-auto w-full'
-            data-aos='fade-left'
-            data-aos-duration='1000'
           >
             <h1 className='text-[30px] feature-grid-header-text-1'>
               User contributions
@@ -82,8 +74,6 @@ export default function Features() {
         <div className='flex justify-between items-center h-auto w-full feature-grid'>
           <div
             className='h-auto w-full large-set-of-question'
-            data-aos='fade-right'
-            data-aos-duration='1000'
           >
             <h1 className='text-[30px] feature-grid-header-text-1'>
               Free and Easy to use
@@ -113,8 +103,6 @@ export default function Features() {
             src='/images/business-lady-do-multi-tasking.png'
             alt=''
             className='h-[350px] w-[500px] ml-[3rem] feature-grid--img-1'
-            data-aos='zoom-in-left'
-            data-aos-duration='1000'
           />
         </div>
       </div>

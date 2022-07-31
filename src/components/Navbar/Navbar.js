@@ -53,6 +53,11 @@ export default function Navbar() {
     navigateToLogin("/Login")
   }
 
+  let navigateToDash = useNavigate()
+  function handleClickDash() {
+    navigateToDash("/dashboard")
+  }
+
   return (
     <nav
       className={
@@ -81,7 +86,10 @@ export default function Navbar() {
         </ul>
       )}
       {isAuthenticated && user?.avatar ? (
-        <div className='flex justify-between items-center avatar-and-name__container__mobile auth-container'>
+        <div
+          className='flex justify-between items-center avatar-and-name__container__mobile auth-container'
+          onClick={handleClickDash}
+        >
           <p className='text-[18px] text-[#373737] font-semibold userName__mobile'>
             {user?.username}
           </p>

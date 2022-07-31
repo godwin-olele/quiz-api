@@ -239,6 +239,11 @@ input:-webkit-autofill:active {
   display: none;
 }
 
+/* api helper styling */
+.api-helper-box {
+  width: 100%;
+}
+
 /** mobile Responsiveness for all pages **/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -272,7 +277,9 @@ input:-webkit-autofill:active {
     .call-to-action-sub__text {
     font-size: 4.5vw;
   }
-
+  .auth-btn-dash {
+    width: 100%;
+  }
   .auth-btn-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -416,7 +423,8 @@ input:-webkit-autofill:active {
     grid-template-columns: 1fr;
     width: 100%;
   }
-  .developer .hashnode, .developer .planetscale {
+  .developer .hashnode,
+  .developer .planetscale {
     font-size: 5vw;
   }
 
@@ -458,6 +466,12 @@ input:-webkit-autofill:active {
     grid-template-columns: 1fr;
     grid-gap: 20px;
     padding-top: 7rem;
+  }
+  .dashboard-container-skeleton {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    padding-top: 0.5rem;
   }
   .dashboard-submit-question-container,
   .dashboard-search-question-container,
@@ -531,6 +545,11 @@ input:-webkit-autofill:active {
   .searchBox:hover > .searchInput {
     width: 150px;
     padding: 0 6px;
+  }
+
+  /* api helper styling */
+  .api-helper-box {
+    max-width: 300px;
   }
 }
 
