@@ -37,9 +37,7 @@ const Statistics = {
     },
   },
   // medthod
-  setStatistics: action((state, payload) => {
-    state.statistics = payload
-  }),
+  setStatistics: action((state, payload) => (state.statistics = payload)),
 
   //actions
   fetchStatistics: thunk(async (actions) => {

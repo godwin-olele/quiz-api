@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import { useStoreActions, useStoreState } from "easy-peasy"
 import Chip from "@mui/material/Chip"
+import Tooltip from "@mui/material/Tooltip"
 
 // {
 //   field: "actions",
@@ -16,21 +17,63 @@ import Chip from "@mui/material/Chip"
 
 const RenderActions = ({ params, verify, unverify }) =>
   params.row.is_verified ? (
-    <Chip
-      label='unverify'
-      size='small'
-      onClick={unverify}
-      sx={{ width: "70px", color: "#D82525", backgroundColor: "#fafafa" }}
-    />
+    <Tooltip title='click to unverify the question'>
+      <Chip
+        label='unverify'
+        size='small'
+        onClick={unverify}
+        sx={{ width: "70px", color: "#D82525", backgroundColor: "#fafafa" }}
+      />
+    </Tooltip>
   ) : (
-    <Chip
-      label='verify'
-      size='small'
-      onClick={verify}
-      sx={{ width: "70px", color: "#25D842", backgroundColor: "#fafafa" }}
-    />
+    <Tooltip title='click to verify the question'>
+      <Chip
+        label='verify'
+        size='small'
+        onClick={verify}
+        sx={{ minWidth: "70px", color: "#25D842", backgroundColor: "#fafafa" }}
+      />
+    </Tooltip>
   )
 
+const RenderCorrectAnswer = ({ answer }) => (
+  <>
+    <div className='flex justify-center items-center w-full'>
+      <Tooltip title={answer}>
+        <Chip
+          label={answer}
+          size='small'
+          sx={{
+            minWidth: "70px",
+            color: "#25D842",
+            backgroundColor: "#fafafa",
+          }}
+        />
+      </Tooltip>
+    </div>
+  </>
+)
+
+const RenderIncorrectAnswers = ({ answers }) => (
+  <>
+    <div className='flex flex-row justify-start items-start w-full flex-wrap'>
+      {answers.map((answer) => (
+        <Tooltip title={answer}>
+          <Chip
+            label={answer}
+            size='small'
+            sx={{
+              width: "70px",
+              color: "#D82525",
+              backgroundColor: "#fafafa",
+              margin: "1.5px 3px",
+            }}
+          />
+        </Tooltip>
+      ))}
+    </div>
+  </>
+)
 export default function Questions() {
   // let isLoading = useStoreState(({ Statistics }) => Statistics.loading)
   let questions = useStoreState(({ Statistics }) => Statistics.questions)
@@ -96,7 +139,25 @@ export default function Questions() {
         field: "question",
         headerName: "Question",
         width: 200,
-        renderCell: (params) => params.row.question,
+        renderCell: ({ row: { question } }) => (
+          <p className='break-all p-[1px]'>{question}</p>
+        ),
+      },
+      {
+        field: "correct_answer",
+        headerName: "Correct Answer",
+        width: 200,
+        renderCell: (params) => (
+          <RenderCorrectAnswer answer={params.row.correct_answer} />
+        ),
+      },
+      {
+        field: "incorrect_answer",
+        headerName: "Incorect Answers",
+        width: 210,
+        renderCell: (params) => (
+          <RenderIncorrectAnswers answers={params.row.incorrect_answers} />
+        ),
       },
       {
         field: "actions",

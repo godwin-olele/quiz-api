@@ -13,15 +13,13 @@ export default function CallToAction() {
   )
   const statistics = useStoreState(({ Statistics }) => Statistics.statistics)
 
-  const [happyCustomer, setHappyCustomer] = useState(0)
-  const [onlineQuestion, setOnlineQuestion] = useState(0)
-  const [category, setCategory] = useState(0)
+  // const [happyCustomer, setHappyCustomer] = useState(0)
+  // const [onlineQuestion, setOnlineQuestion] = useState(0)
+  // const [category, setCategory] = useState(0)
 
-  useEffect(() => {
-    setHappyCustomer(statistics?.users["Total Users"])
-    setOnlineQuestion(statistics?.question.all_questions)
-    setCategory(Object.keys(statistics?.category)?.length)
-  }, [])
+  const users = statistics?.users["Total Users"]
+  const onlineQuestion = statistics?.question.all_questions
+  const category = Object.keys(statistics?.category)?.length
 
   let navigate = useNavigate()
   function handleClick() {
@@ -46,6 +44,8 @@ export default function CallToAction() {
   function handleClickDash() {
     navigateToDash("/dashboard")
   }
+
+  const calcSuffix = (num) => (num >= 1000 ? "K" : "")
 
   return (
     <div className='px-[7rem] w-full h-[800px] flex justify-between items-center call-to-action-container'>
@@ -103,20 +103,14 @@ export default function CallToAction() {
             </>
           )}
         </div>
-        <div className='w-full h-auto mt-[4rem] flex justify-between items-center site-info'>
+        <div className='w-full h-auto mt-[4rem] flex justify-between items-start site-info'>
           <div className=' w-full h-auto first-box'>
             <h1 className='text-[30px] font-medium site-info-1'>
-              <CountUp
-                isCounting
-                end={happyCustomer}
-                easing='linear'
-                duration={3.5}
-              />
-              K&nbsp;+
+              <CountUp isCounting end={users} easing='linear' duration={3.5} />
+              {calcSuffix(users)}&nbsp;+
             </h1>
-
             <p className='text-[1.1rem] text-[#373737] site-info-1__subtext'>
-              Happy Customer
+              Users
             </p>
           </div>
           <div className='w-full h-auto ml-[2.5rem] second-box'>
@@ -127,7 +121,7 @@ export default function CallToAction() {
                 easing='linear'
                 duration={3.5}
               />
-              K&nbsp;+
+              {calcSuffix(onlineQuestion)}&nbsp;+
             </h1>
             <p className='text-[1.1rem] text-[#373737] site-info-1__subtext'>
               Online Questions
@@ -141,7 +135,7 @@ export default function CallToAction() {
                 easing='linear'
                 duration={3.5}
               />
-              K&nbsp;+
+              {calcSuffix(category)}&nbsp;+
             </h1>
             <p className='text-[1.1rem] text-[#373737] site-info-1__subtext'>
               Categories

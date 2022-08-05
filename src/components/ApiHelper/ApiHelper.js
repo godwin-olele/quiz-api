@@ -132,7 +132,9 @@ export default function ApiHelper() {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <a href='/about'>Api</a>
+                  <a className='invisible' href='/about'>
+                    Api
+                  </a>
                 </li>
               </ul>
             </div>
@@ -161,15 +163,6 @@ export default function ApiHelper() {
                   error={errors.limit}
                   placeholder='10'
                 />
-
-                {/* <TextField
-                  label='Category'
-                  name='explanation'
-                  value={category}
-                  onChange={handleChange}
-                  error={errors.category}
-                  placeholder='Select category'
-                /> */}
 
                 <CustomLoaderDropdownInput
                   label='Category'
@@ -202,24 +195,6 @@ export default function ApiHelper() {
                   options={typeList}
                   defaultOption='Select Type'
                 />
-
-                {/* <TextField
-                  label='Difficulty'
-                  name='issue'
-                  value={difficulty}
-                  onChange={handleChange}
-                  error={errors.difficulty}
-                  placeholder='Select difficulty'
-                />
-
-                <TextField
-                  label='Type'
-                  name='explanation'
-                  value={type}
-                  onChange={handleChange}
-                  error={errors.type}
-                  placeholder='Select type'
-                /> */}
               </div>
 
               <div className='w-full my-[1rem] flex justify-center items-center transition'>
