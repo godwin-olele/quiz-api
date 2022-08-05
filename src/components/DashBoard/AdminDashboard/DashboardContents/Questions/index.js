@@ -139,7 +139,9 @@ export default function Questions() {
         field: "question",
         headerName: "Question",
         width: 200,
-        renderCell: (params) => params.row.question,
+        renderCell: ({ row: { question } }) => (
+          <p className='break-all p-[1px]'>{question}</p>
+        ),
       },
       {
         field: "correct_answer",
