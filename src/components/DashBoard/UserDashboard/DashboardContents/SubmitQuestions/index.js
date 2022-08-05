@@ -29,7 +29,7 @@ export default function SubmitQuestions() {
       // incorrect_answer_2: "",
       // incorrect_answer_3: "",
     },
-    explanation: "Some text...",
+    explanation: "",
     // image: "",
   })
 
@@ -279,7 +279,7 @@ export default function SubmitQuestions() {
                     />
                     <TextField
                       label=''
-                      name='incorrect_answer_2'
+                      name='incorrect_answer_3'
                       value={incorrect_answer_fields.incorrect_answer_3}
                       onChange={handleAnswerFieldsChange}
                       error={
@@ -306,6 +306,7 @@ export default function SubmitQuestions() {
               label='Explanation'
               name='explanation'
               value={explanation}
+              placeholder='Some text...'
               onChange={handleChange}
               error={errors.explanation}
             />

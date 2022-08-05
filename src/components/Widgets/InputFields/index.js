@@ -149,12 +149,19 @@ export const TextAreaField = ({
   onChange,
   error,
   className = "mt-[1.5rem]  mb-[1.2rem]",
+  ...others
 }) => (
   <div className={className}>
     <label htmlFor={name} className='text-[#454545]'>
       {label}
     </label>
-    <textarea value={value} id={name} name={name} onChange={onChange} />
+    <textarea
+      value={value}
+      id={name}
+      name={name}
+      onChange={onChange}
+      {...others}
+    />
 
     {error && <small className='text-xs text-red-600'>{error}</small>}
   </div>

@@ -5,6 +5,7 @@ import LinearProgress, {
 import { useNavigate } from "react-router-dom"
 
 import CircularProgress from "@mui/material/CircularProgress"
+import Tooltip from "@mui/material/Tooltip"
 
 import { styled } from "@mui/material/styles"
 import { useStoreActions, useStoreState } from "easy-peasy"
@@ -47,24 +48,30 @@ export default function Dashboard({ user }) {
       {/* // show a skeleton here */}
 
       <div className='w-full h-screen grid grid-cols-3 gap-x-[50px] py-[3rem] px-[1rem] dashboard-container-home'>
-        <div
-          onClick={() => navigate("questions")}
-          className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'
-        >
-          {isLoading ? (
-            <div className='w-full flex justify-center items-center'>
-              <CircularProgress />
-            </div>
-          ) : (
-            <div>
-              <div className='bg-orange w-[10px] h-[10px] rounded-full absolute top-[1rem] right-[1rem]'></div>
-              <h1 className='text-[30px] text-[#4c4c4c] font-[900]'>
-                {all_question}
-              </h1>
-              <p className='text-[20px] text-[#4c4c4c]'>Submitted Questions</p>
-            </div>
-          )}
-        </div>
+        <Tooltip title='click to view your questions'>
+          <div
+            onClick={() => navigate("questions")}
+            className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'
+            component={Tooltip}
+          >
+            {isLoading ? (
+              <div className='w-full flex justify-center items-center'>
+                <CircularProgress />
+              </div>
+            ) : (
+              <div>
+                <div className='bg-orange w-[10px] h-[10px] rounded-full absolute top-[1rem] right-[1rem]'></div>
+                <h1 className='text-[30px] text-[#4c4c4c] font-[900]'>
+                  {all_question}
+                </h1>
+                <p className='text-[20px] text-[#4c4c4c]'>
+                  Submitted Questions
+                </p>
+              </div>
+            )}
+          </div>
+        </Tooltip>
+
         <div className='left-nav h-[220px] rounded-[10px] bg-[#fff] p-[30px] flex items-center relative cursor-pointer'>
           {isLoading ? (
             <div className='w-full flex justify-center items-center'>
